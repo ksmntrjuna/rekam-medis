@@ -1,0 +1,188 @@
+@font-face {
+	font-family: Montserrat;
+	src: url(Montserrat-Medium.otf);
+}
+
+
+html, body {
+	font-family: Montserrat;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Montserrat';
+	/* font-weight: 700; */
+}
+.text-kuning{
+	color: #FFD571 !important;
+}
+
+table {
+	/* border: none !important; */
+	/*border-collapse:separate !important;
+	border-spacing: 0 1.5em !important;
+	color: black !important;*/
+
+}
+
+.table-curved {
+	/*border-collapse: collapse;*/
+	border-collapse:separate !important;
+	border-spacing: 0 1.5em !important;
+	color: black !important;
+}
+.table-curved th {
+	color: grey;
+	padding: 6px 10px;
+}
+.table-curved th:first-child {
+	padding: 6px;
+}
+.table-curved td {
+	background-color: white;
+	padding: 6px 10px;
+	border-bottom: 2px solid white;
+	border-top: 2px solid white;
+}
+
+.table-curved td:first-child {
+	padding: 6px;
+	border-radius: 8px 0 0 8px;
+	background-color: white !important;
+}
+.table-curved td:last-child {
+	border-radius: 0 5px 5px 0;
+}
+.table-curved tr:hover td:not(:first-child){
+	background-color: #FFD571;
+}
+.table-curved tr:hover td:first-child {
+	padding: 6px;
+	border-radius: 8px 0 0 8px;
+	background-color: #FFD571 !important;
+}
+
+.bayangan{
+	border-radius: 8px !important;
+	box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.2);
+	/* cursor: pointer; */
+}
+
+.table-curved th {
+	border: none !important;
+}
+
+.table-curved td {
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+	border: none !important;
+}
+
+.bg{
+	background-color: #F3EEEE !important;
+	color: black !important;
+}
+
+.kiri{
+	border: 2px solid red !important;
+	border-top-left-radius: 15px !important;
+	border-bottom-left-radius: 15px !important;
+}
+
+.kanan{
+	border: 2px solid red !important;
+	border-top-right-radius: 15px !important;
+	border-bottom-right-radius: 15px;
+}
+
+/* Login */
+.login-form{
+	padding-left:  15%;
+	padding-right: 15%;
+}
+
+.login-kiri{
+	background-color: black;
+	color: #FFD571;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+	/* height: 350px; */
+}
+
+.login-kanan{
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+	width: auto;
+}
+
+.login-bg{
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.login-tombol{
+	width: 100%;
+	background-color: #FFD571;
+	color: black;
+	border-color: #FFD571;
+}
+
+.login-tombol:hover{
+	width: 100%;
+	background-color: white;
+	color: black;
+	border-color: white
+}
+
+.login-logo{
+	width: 90px;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.navbar-fixed-left {
+	margin-top: 5%;
+	width: 70px;
+	position: fixed;
+	height: 80%;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+	background-color: black;
+	color: #FFD571;
+}
+
+@media (max-width: 767px){
+	.login-kiri{
+		border-radius: 15px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+
+	.login-bg{
+		display: none;
+	}
+
+	.login-form{
+		padding-left:  13px;
+		padding-right: 13px;
+	}
+}
+
+.btn-dark{
+	background-color: black !important;
+}
+
+.nav-kiri{
+	border-top-right-radius: 50px !important;
+	border-bottom-right-radius: 50px !important;
+}
