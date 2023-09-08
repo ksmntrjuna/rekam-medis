@@ -13,8 +13,10 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 's3'),
-    'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+    // 'default' => env('FILESYSTEM_DRIVER', 's3'),
+    // 'cloud' => env('FILESYSTEM_CLOUD', 's3'),
+     'default' => env('FILESYSTEM_DRIVER', 'public'),
+    'cloud' => env('FILESYSTEM_CLOUD', 'public'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +50,7 @@ return [
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'), 
+            'bucket' => env('AWS_BUCKET'),
             'folder' => env('AWS_FOLDER'),
             // 'url' => env('SPACES_URL'),
             // 'endpoint' => env('AWS_ENDPOINT'),
