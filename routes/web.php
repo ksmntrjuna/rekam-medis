@@ -64,6 +64,7 @@ Route::post('dashboard/position/upload', [PositionController::class, 'upload']);
 Route::get('dashboard/position/edit/{id}', [PositionController::class, 'edit']);
 Route::post('dashboard/position/update', [PositionController::class, 'update']);
 Route::get('dashboard/position/delete/{id}', [PositionController::class, 'delete']);
+
 Route::get('dashboard/treatment_position', [PositionController::class, 'treatmentPosition']);
 Route::get('dashboard/treatment_position/create', [PositionController::class, 'treatmentPositionCreate']);
 Route::post('dashboard/treatment_position/store', [PositionController::class, 'treatmentPositionStore']);
