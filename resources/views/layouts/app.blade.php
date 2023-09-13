@@ -22,6 +22,11 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/virtual-select.min.css') }}" rel="stylesheet"> --}}
+
+    <!-- CSS Libraries -->
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/select2/dist/css/select2.min.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('node_modules/selectric/public/selectric.css') }}"> --}}
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
@@ -98,11 +103,15 @@
                 </li>
                 <li class="nav-item {{ Request::segment(2) === 'position#fo' ? 'active' : '' }}">
                     <a class="nav-link text-kuning" href="{{ route('dashboard.position') }}"><i
-                            class="fas fa-fw fa-camera-retro text-kuning"></i><span>Posisi Foto</span></a>
+                            class="fas fa-fw fa-camera-retro text-kuning"></i><span>Master Posisi</span></a>
                 </li>
                 <li class="nav-item {{ Request::segment(2) === 'treatment' ? 'active' : '' }}">
                     <a class="nav-link text-kuning" href="{{ route('dashboard.treatment') }}"><i
                             class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) === 'treatmentPosition' ? 'active' : '' }}">
+                    <a class="nav-link text-kuning" href="{{ route('dashboard.treatmentPosition') }}"><i
+                            class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan Posisi</span></a>
                 </li>
             @endif
             <!-- Nav Item - Tables -->
@@ -207,6 +216,10 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/virtual-select.min.js') }}"></script> --}}
+    <script src="{{ asset('node_modules/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('node_modules/selectric/public/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
 
     <!-- Page level plugins -->
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
@@ -220,6 +233,38 @@
     <script>
         $(document).ready(function() {
             $(".select2").select2();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.detail-button').click(function() {
+                var treatmentId = $(this).data('treatment-id');
+                $.ajax({
+                    url: '/get-position-details/' + treatmentId,
+                    type: 'GET',
+                    success: function(response) {
+                        // Mengisi konten modal dengan data position yang diterima
+                        $('#treatmentName').text(response.treatment.name);
+                        var positionList = $('#positionList');
+                        positionList.empty();
+                        $.each(response.positions, function(index, position) {
+                            positionList.append('<li>' + position.name + '</li>');
+                        });
+    
+                        // Menampilkan modal
+                        $('#detailModal').modal('show');
+                    },
+                    error: function() {
+                        alert('Terjadi kesalahan saat mengambil data position.');
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <script type="text/javascript">
+        VirtualSelect.init({
+            ele: '#multiple'
         });
     </script>
     @yield('script')

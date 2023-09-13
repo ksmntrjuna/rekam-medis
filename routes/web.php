@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\MemberController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\PhotoController;
+use App\Http\Controllers\Dashboard\MemberController;
 use App\Http\Controllers\Dashboard\PositionController;
 use App\Http\Controllers\Dashboard\TreatmentController;
+use App\Http\Controllers\Dashboard\TreatmentPositionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,11 +66,12 @@ Route::get('dashboard/position/edit/{id}', [PositionController::class, 'edit']);
 Route::post('dashboard/position/update', [PositionController::class, 'update']);
 Route::get('dashboard/position/delete/{id}', [PositionController::class, 'delete']);
 
-Route::get('dashboard/treatment_position', [PositionController::class, 'treatmentPosition']);
-Route::get('dashboard/treatment_position/create', [PositionController::class, 'treatmentPositionCreate']);
-Route::post('dashboard/treatment_position/store', [PositionController::class, 'treatmentPositionStore']);
-Route::get('dashboard/treatment_position/edit/{id}', [PositionController::class, 'treatmentPositionEdit']);
-Route::post('dashboard/treatment_position/update', [PositionController::class, 'treatmentPositionUpdate']);
+Route::get('dashboard/treatment_position', [TreatmentPositionController::class, 'list'])->name('dashboard.treatmentPosition');
+Route::get('dashboard/treatment_position/create', [TreatmentPositionController::class, 'create']);
+Route::post('dashboard/treatment_position/store', [TreatmentPositionController::class, 'store']);
+Route::get('dashboard/treatment_position/edit/{edit}', [TreatmentPositionController::class, 'edit']);
+Route::put('dashboard/treatment_position/update/{id}', [TreatmentPositionController::class, 'update']);
+Route::get('/get-position-details/{treatmentId}', [TreatmentPositionController::class, 'getPositionDetails']);
 
 Route::get('dashboard/treatment/list', [TreatmentController::class, 'list'])->name('dashboard.treatment');
 Route::get('dashboard/treatment/create', [TreatmentController::class, 'create']);

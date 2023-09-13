@@ -19,14 +19,14 @@
 						<label>Nama</label>
 						<input type="text" class="form-control" placeholder="Nama" name="name" required>
 					</div>
-					<div class="form-group col-md-6">
+					{{-- <div class="form-group col-md-6">
 						<label>Posisi</label>
 						<select class="form-control" name="position" required="">
 							@foreach($position as $p)
 							<option value="{{$p->id}}">{{$p->name}}</option>
 							@endforeach
 						</select>
-					</div>
+					</div> --}}
 				</div>
 				<button type="submit" class="btn btn-dark"> Simpan </button>
 			</form>

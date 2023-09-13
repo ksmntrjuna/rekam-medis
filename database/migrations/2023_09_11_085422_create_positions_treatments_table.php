@@ -15,9 +15,8 @@ class CreatePositionsTreatmentsTable extends Migration
     {
         Schema::create('positions_treatments', function (Blueprint $table) {
             $table->id();
-            $table->string('position_id', 100);
+            $table->string('position_id', 36);
             $table->unsignedBigInteger('treatment_id');
-
             $table->foreign('position_id')->references('id')->on('positions');
             $table->foreign('treatment_id')->references('id')->on('treatments');
             $table->timestamps();

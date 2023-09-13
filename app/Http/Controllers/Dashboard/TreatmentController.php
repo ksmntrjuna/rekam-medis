@@ -31,9 +31,9 @@ class TreatmentController extends Controller
 	}
 
 	public function create(){
-		$position = TreatmentPosition::get();
+		$data = Treatment::get();
 		$datas = [
-			'position' => $position,
+			'data' => $data,
 		];
 		return view('dashboard.treatment.create')->with($datas);
 	}
@@ -50,10 +50,10 @@ class TreatmentController extends Controller
 
 	public function edit($id){
 		$data = Treatment::find($id);
-		$position = TreatmentPosition::get();
+		// $position = TreatmentPosition::get();
 		$datas = [
 			'data' => $data,
-			'position' => $position,
+			// 'position' => $position,
 		];
 		return view('dashboard.treatment.edit')->with($datas);
 	}

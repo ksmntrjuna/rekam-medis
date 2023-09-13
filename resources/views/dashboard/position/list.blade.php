@@ -24,7 +24,7 @@
 			<h5 class="m-0 font-weight-bold text-primary" style="color: black !important;">POSISI</h5> 
 			<br>
 			<a href="{{url('/dashboard/position/create')}}" class="btn btn-dark">Tambah</a>
-			<a href="{{url('dashboard/treatment_position')}}" class="btn btn-dark">Posisi Perawatan</a>
+			{{-- <a href="{{url('dashboard/treatment_position')}}" class="btn btn-dark">Posisi Perawatan</a> --}}
 		</div>
 		@if ($message = Session::get('alert'))
 		<div class="main-content container-fluid">
