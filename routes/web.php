@@ -19,27 +19,27 @@ use App\Http\Controllers\Dashboard\TreatmentPositionController;
 |
 */
 
-Route::get('/download', function(){
+Route::get('/download', function () {
 	$filepath = asset('/file/galeri-natasha-02.apk');
 	return redirect($filepath);
 });
 
-Route::get('/download/dummy', function(){
+Route::get('/download/dummy', function () {
 	$filepath = asset('/file/galeri-natasha-dummy.apk');
 	return redirect($filepath);
 });
 
 Route::get('/', function () {
-    // return view('welcome');
+	// return view('welcome');
 	return redirect('/login');
 });
 
 Route::get('/dashboard', function () {
-    // return view('dashboard');
+	// return view('dashboard');
 	return redirect('/dashboard/patient');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('dashboard/patient', [MemberController::class, 'list'])->name('dashboard.patient');
 Route::get('dashboard/perawatan/{nobase}', [MemberController::class, 'perawatan']);
@@ -71,6 +71,7 @@ Route::get('dashboard/treatment_position/create', [TreatmentPositionController::
 Route::post('dashboard/treatment_position/store', [TreatmentPositionController::class, 'store']);
 Route::get('dashboard/treatment_position/edit/{edit}', [TreatmentPositionController::class, 'edit']);
 Route::put('dashboard/treatment_position/update/{id}', [TreatmentPositionController::class, 'update']);
+Route::delete('dashboard/treatment_position/{treatmentPosition}', [TreatmentPositionController::class, 'destroy']);
 Route::get('/get-position-details/{treatmentId}', [TreatmentPositionController::class, 'getPositionDetails']);
 
 Route::get('dashboard/treatment/list', [TreatmentController::class, 'list'])->name('dashboard.treatment');

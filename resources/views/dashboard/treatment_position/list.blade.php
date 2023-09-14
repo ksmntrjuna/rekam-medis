@@ -9,6 +9,22 @@
                 <br>
                 <a href="{{ url('/dashboard/treatment_position/create') }}" class="btn btn-dark">Tambah</a>
             </div>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if (session('delete'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('delete') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             @if ($message = Session::get('alert'))
                 <div class="main-content container-fluid">
                     <div class="row">
@@ -32,13 +48,14 @@
                             <tr class="font-weight-normal">
                                 <th class="font-weight-normal">No</th>
                                 <th class="font-weight-normal">Perawatan</th>
+                                <th class="font-weight-normal">Posisi</th>
                                 <th class="font-weight-normal">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
-                            $treatment_ids = []; // Variabel untuk menyimpan id perawatan yang sudah ditampilkan
-                            $nomor = 1; // Nomor unik untuk setiap perawatan
+                                $treatment_ids = []; // Variabel untuk menyimpan id perawatan yang sudah ditampilkan
+                                $nomor = 1; // Nomor unik untuk setiap perawatan
                             @endphp
                             @foreach ($data as $i => $d)
                                 @if (!in_array($d->treatment['id'], $treatment_ids))
@@ -46,16 +63,25 @@
                                         <td>{{ $nomor }}</td>
                                         <td>{{ $d->treatment['name'] }}</td>
                                         <td>
+                                            <button class="btn btn-grey detail-button" data-toggle="modal"
+                                                data-target="#detailModal" data-treatment-id="{{ $d->treatment['id'] }}">
+                                                Detail </button>
+                                        </td>
+                                        <td>
                                             <a href="{{ url('dashboard/treatment_position/edit/' . $d->id) }}"
                                                 class="btn btn-dark"> Edit </a>
-                                            <button class="btn btn-dark detail-button" data-toggle="modal"
-                                                data-target="#detailModal"
-                                                data-treatment-id="{{ $d->treatment['id'] }}">Detail</button>
+                                            <form action="{{ url('dashboard/treatment_position/' . $d->id) }}"
+                                                method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @php
-                                    $treatment_ids[] = $d->treatment['id'];
-                                    $nomor++; // Tambahkan nomor setiap kali perawatan baru ditampilkan
+                                        $treatment_ids[] = $d->treatment['id'];
+                                        $nomor++; // Tambahkan nomor setiap kali perawatan baru ditampilkan
                                     @endphp
                                 @endif
                             @endforeach

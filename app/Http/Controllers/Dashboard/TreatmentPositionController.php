@@ -53,7 +53,7 @@ class TreatmentPositionController extends Controller
       $treatment->positions()->sync($position_ids);
       DB::commit();
 
-      return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data berhasil disimpan.');
+      return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Posisi Perawatan Berhasil Dibuat.');
     } catch (\Exception $e) {
       DB::rollback();
 
@@ -91,7 +91,7 @@ class TreatmentPositionController extends Controller
         $treatment->positions()->sync($position_ids);
         DB::commit();
 
-        return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data berhasil disimpan.');
+        return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Posisi Perawatan Berhasil Diupdate.');
       } catch (\Exception $e) {
         DB::rollback();
 
@@ -101,5 +101,12 @@ class TreatmentPositionController extends Controller
       // Tidak ada pemilihan posisi, tidak perlu melakukan perubahan
       return redirect()->to('/dashboard/treatment_position/')->with('info', 'Tidak ada perubahan dilakukan.');
     }
+  }
+
+  public function destroy(TreatmentPosition $treatmentPosition)
+  {
+    $treatmentPosition->delete();
+    TreatmentPosition::where('treatment_id', $treatmentPosition->treatment_id)->delete();
+    return redirect()->to('/dashboard/treatment_position/')->with('delete', 'Data Posisi Perawatan Telah Dihapus');
   }
 }
