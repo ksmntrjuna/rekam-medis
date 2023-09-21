@@ -39,41 +39,55 @@ class TreatmentController extends Controller
 	}
 
 	public function store(Request $request){
+		$existingTreatment = Treatment::where('code', $request->code)->first();
+	
+		if ($existingTreatment) {
+			return redirect('dashboard/treatment/create')->with('error', 'Kode harus unik! Tidak boleh sama.');
+		}
+	
 		$t = new Treatment();
 		$t->code = $request->code;
 		$t->name = $request->name;
-		// $t->status = $request->status;
 		$t->save();
+	
 		LogActivity::create('Tambah Treatment (lama) =>'.$t, 'dashboard');
-		return redirect('dashboard/treatment/list')->with(['alert', 'Data Berhasil Disimpan']);
+		
+		return redirect('dashboard/treatment/list')->with('success', 'Data Berhasil Disimpan');
 	}
+	
 
 	public function edit($id){
 		$data = Treatment::find($id);
-		// $position = TreatmentPosition::get();
 		$datas = [
 			'data' => $data,
-			// 'position' => $position,
 		];
 		return view('dashboard.treatment.edit')->with($datas);
 	}
 
 	public function update(Request $request){
-		$t = Treatment::find($request->id);
-		$t->code = $request->code;
-		$t->name = $request->name;
-		// $t->status = $request->status;
-		$t->save();
+		$treatment = Treatment::find($request->id);
+	
+		$existingTreatment = Treatment::where('code', $request->code)
+			->where('id', '!=', $request->id)
+			->first();
 
+		if ($existingTreatment) {
+			return redirect('dashboard/treatment/edit/'.$request->id)->with('error', 'Kode harus unik! Tidak boleh sama.');
+		}
+	
+		$treatment->code = $request->code;
+		$treatment->name = $request->name;
+		$treatment->save();
+	
 		$data = [
 			'id' => $request->id,
 			'code' => $request->code,
 			'name' => $request->name,
-			// 'status' => $request->status,
 		];
-		$update = Treatment::where('id', $request->id)->update($data);
-		LogActivity::create('Edit Template Position (lama) =>'.$t, 'dashboard');
+		LogActivity::create('Edit Template Position (lama) =>'.$treatment, 'dashboard');
 		LogActivity::create('Edit Template Position (baru)=>'.json_encode($data), 'dashboard');
-		return redirect('dashboard/treatment/list')->with(['alert', 'Data Berhasil Disimpan']);
+	
+		return redirect('dashboard/treatment/list')->with('success', 'Data Berhasil Diupdate');
 	}
+	
 }

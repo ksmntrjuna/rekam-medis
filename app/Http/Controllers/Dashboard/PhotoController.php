@@ -67,9 +67,9 @@ class PhotoController extends Controller
 			'position' => 'required',
 			'photo' => 'image|required|mimes:jpeg,png,jpg,gif,svg,png',
 		]);
-		if($validator->fails()){
-			return response()->json(['status' => 'error', 'message' => $validator->errors()->first()]);
-		}
+		// if($validator->fails()){
+		// 	return response()->json(['status' => 'error', 'message' => $validator->errors()->first()]);
+		// }
 		$patient = Patient::where('nobase', $request->kode_member)->first();
 		if($patient==null){
 			$patient = new Patient();

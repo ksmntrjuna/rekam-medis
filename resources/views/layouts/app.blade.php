@@ -111,7 +111,7 @@
                 </li>
                 <li class="nav-item {{ Request::segment(2) === 'treatmentPosition' ? 'active' : '' }}">
                     <a class="nav-link text-kuning" href="{{ route('dashboard.treatmentPosition') }}"><i
-                            class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan Posisi</span></a>
+                            class="fas fa-fw fa-pager text-kuning"></i><span>Master Perawatan Posisi</span></a>
                 </li>
             @endif
             <!-- Nav Item - Tables -->
