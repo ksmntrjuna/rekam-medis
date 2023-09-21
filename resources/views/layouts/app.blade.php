@@ -87,6 +87,7 @@
             </li>
             @endif
             @if (Auth::user()->role == 'admin')
+<<<<<<< HEAD
             <li class="nav-item {{ Request::segment(2) === 'user' ? 'active' : '' }}">
                 <a class="nav-link text-kuning" href="{{ route('dashboard.user') }}"><i class="fas fa-fw fa-user text-kuning"></i><span>User</span></a>
             </li>
@@ -102,6 +103,28 @@
             <li class="nav-item {{ Request::segment(2) === 'treatmentPosition' ? 'active' : '' }}">
                 <a class="nav-link text-kuning" href="{{ route('dashboard.treatmentPosition') }}"><i class="fas fa-fw fa-pager text-kuning"></i><span>Master Perawatan Posisi</span></a>
             </li>
+=======
+                <li class="nav-item {{ Request::segment(2) === 'user' ? 'active' : '' }}">
+                    <a class="nav-link text-kuning" href="{{ route('dashboard.user') }}"><i
+                            class="fas fa-fw fa-user text-kuning"></i><span>User</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) === 'photo' ? 'active' : '' }}">
+                    <a class="nav-link text-kuning" href="{{ route('dashboard.photo') }}"><i
+                            class="fas fa-fw fa-book text-kuning"></i><span>Foto</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) === 'position#fo' ? 'active' : '' }}">
+                    <a class="nav-link text-kuning" href="{{ route('dashboard.position') }}"><i
+                            class="fas fa-fw fa-camera-retro text-kuning"></i><span>Master Posisi</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) === 'treatment' ? 'active' : '' }}">
+                    <a class="nav-link text-kuning" href="{{ route('dashboard.treatment') }}"><i
+                            class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan</span></a>
+                </li>
+                <li class="nav-item {{ Request::segment(2) === 'treatmentPosition' ? 'active' : '' }}">
+                    <a class="nav-link text-kuning" href="{{ route('dashboard.treatmentPosition') }}"><i
+                            class="fas fa-fw fa-pager text-kuning"></i><span>Master Perawatan Posisi</span></a>
+                </li>
+>>>>>>> 2e30c0f0d71985e826e2d069707d7dbccaecf2a6
             @endif
             <!-- Nav Item - Tables -->
             {{-- <li class="nav-item">

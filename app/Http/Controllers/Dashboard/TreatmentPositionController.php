@@ -53,7 +53,7 @@ class TreatmentPositionController extends Controller
       $treatment->positions()->sync($position_ids);
       DB::commit();
 
-      return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data berhasil disimpan.');
+      return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Posisi Perawatan Berhasil Dibuat.');
     } catch (\Exception $e) {
       DB::rollback();
 
@@ -90,7 +90,7 @@ class TreatmentPositionController extends Controller
         $treatment->positions()->sync($position_ids);
         DB::commit();
 
-        return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data berhasil disimpan.');
+        return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Posisi Perawatan Berhasil Diupdate.');
       } catch (\Exception $e) {
         DB::rollback();
 

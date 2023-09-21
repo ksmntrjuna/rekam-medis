@@ -19,27 +19,27 @@ use App\Http\Controllers\Dashboard\TreatmentPositionController;
 |
 */
 
-Route::get('/download', function(){
+Route::get('/download', function () {
 	$filepath = asset('/file/galeri-natasha-02.apk');
 	return redirect($filepath);
 });
 
-Route::get('/download/dummy', function(){
+Route::get('/download/dummy', function () {
 	$filepath = asset('/file/galeri-natasha-dummy.apk');
 	return redirect($filepath);
 });
 
 Route::get('/', function () {
-    // return view('welcome');
+	// return view('welcome');
 	return redirect('/login');
 });
 
 Route::get('/dashboard', function () {
-    // return view('dashboard');
+	// return view('dashboard');
 	return redirect('/dashboard/patient');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('dashboard/patient', [MemberController::class, 'list'])->name('dashboard.patient');
 Route::get('dashboard/perawatan/{nobase}', [MemberController::class, 'perawatan']);
