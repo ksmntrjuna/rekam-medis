@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Treatment;
 use App\Models\TreatmentPosition;
 use App\Models\LogActivity;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Auth;
 
 class TreatmentController extends Controller
@@ -32,17 +33,27 @@ class TreatmentController extends Controller
 
 	public function create(){
 		$data = Treatment::get();
+		$brands = Brand::all();
 		$datas = [
 			'data' => $data,
+			'brands' => $brands,
+
 		];
 		return view('dashboard.treatment.create')->with($datas);
 	}
 
 	public function store(Request $request){
+		$existingTreatment = Treatment::where('code', $request->code)->first();
+
+		if ($existingTreatment) {
+			return redirect('dashboard/treatment/create')->with('error', 'Kode harus unik! Tidak boleh sama.');
+		}
+
 		$t = new Treatment();
 		$t->code = $request->code;
 		$t->name = $request->name;
-		// $t->status = $request->status;
+		$t->brand_id = $request->brand_id;
+
 		$t->save();
 		LogActivity::create('Tambah Treatment (lama) =>'.$t, 'dashboard');
 		return redirect('dashboard/treatment/list')->with(['alert', 'Data Berhasil Disimpan']);
@@ -50,25 +61,36 @@ class TreatmentController extends Controller
 
 	public function edit($id){
 		$data = Treatment::find($id);
-		// $position = TreatmentPosition::get();
+		$brands = Brand::all();
 		$datas = [
 			'data' => $data,
-			// 'position' => $position,
+			'brands' => $brands,
 		];
 		return view('dashboard.treatment.edit')->with($datas);
 	}
 
 	public function update(Request $request){
+		// $treatment = Treatment::find($request->id);
 		$t = Treatment::find($request->id);
+
+		$existingTreatment = Treatment::where('code', $request->code)
+			->where('id', '!=', $request->id)
+			->first();
+
+		if ($existingTreatment) {
+			return redirect('dashboard/treatment/edit/' . $request->id)->with('error', 'Kode harus unik! Tidak boleh sama.');
+		}
+		
 		$t->code = $request->code;
 		$t->name = $request->name;
-		// $t->status = $request->status;
+		$t->brand_id = $request->brand_id;
 		$t->save();
 
 		$data = [
 			'id' => $request->id,
 			'code' => $request->code,
 			'name' => $request->name,
+			'brand_id' => $request->brand_id,
 			// 'status' => $request->status,
 		];
 		$update = Treatment::where('id', $request->id)->update($data);

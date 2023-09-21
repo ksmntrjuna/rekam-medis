@@ -9,6 +9,7 @@ class Patient extends Model
 {
     use HasFactory;
     protected $table = 'patients';
+	// protected $guarded = 'last';
     public $incrementing = false;
 
     public static function check($nobase){

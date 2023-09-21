@@ -12,17 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TreatmentPositionController extends Controller
 {
-  // public function __construct()
-  // {
-  //   $this->middleware('auth');
-  //   $this->middleware(function ($request, $next) {
-  //     $this->user = Auth::user();
-  //     if ($this->user->role != 'admin') {
-  //       return abort(404);
-  //     }
-  //     return $next($request);
-  //   });
-  // }
+  public function __construct()
+  {
+    $this->middleware('auth');
+    $this->middleware(function ($request, $next) {
+      $this->user = Auth::user();
+      if ($this->user->role != 'admin') {
+        return abort(404);
+      }
+      return $next($request);
+    });
+  }
 
   public function list()
   {
@@ -74,7 +74,6 @@ class TreatmentPositionController extends Controller
     $position = Position::get();
     $treatment = Treatment::get();
 
-    // Menampilkan view edit dengan data yang diperlukan
     return view('dashboard.treatment_position.edit', compact('edit', 'position', 'treatment'));
   }
 
@@ -101,5 +100,12 @@ class TreatmentPositionController extends Controller
       // Tidak ada pemilihan posisi, tidak perlu melakukan perubahan
       return redirect()->to('/dashboard/treatment_position/')->with('info', 'Tidak ada perubahan dilakukan.');
     }
+  }
+
+  public function destroy(TreatmentPosition $treatmentPosition)
+  {
+    $treatmentPosition->delete();
+    TreatmentPosition::where('treatment_id', $treatmentPosition->treatment_id)->delete();
+    return redirect()->to('/dashboard/treatment_position/')->with('delete', 'Data Posisi Perawatan Telah Dihapus');
   }
 }

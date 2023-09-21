@@ -38,15 +38,14 @@
 						</tr>
 					</thead>
 					<tbody>
-
 						@foreach($data as $i => $d)
 						<tr class="bayangan">
 							<td>{{$i+1}}</td>
 							<td><a href="{{url('/dashboard/perawatan/'.$d->kode_member)}}" class="btn btn-dark">{{$d->kode_member}}</a></td>
 							<td>{{$d->nama}}</td>
 							<td>{{$d->branch}}</td>
-							<td>{{date('d-m-Y', strtotime($d->last))}}</td>
-							<td>{{date('H:i', strtotime($d->last))}}</td>
+							<td>{{ date('d-m-Y', strtotime($d->updated_at)) }}</td>
+							<td>{{ date('H:i', strtotime($d->updated_at)) }}</td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -60,12 +59,13 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-	$('.table').dataTable( {
+	$('.table').dataTable({
 		"searching": false
-	} );
-	function clean(){
+	});
+
+	function clean() {
 		$('#nobase').val('');
-		window.location.href='?nobase=';
+		window.location.href = '?nobase=';
 	}
 </script>
 @endsection

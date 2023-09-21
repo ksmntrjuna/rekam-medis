@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('patient_name')->nullable()->index('branch_index');
             $table->string('branch', 255);
             $table->string('user_id', 36)->index('photo_user_id');
-            $table->string('position', 255)->index('position_index');
+            $table->foreign('postreat_id')->references('id')->on('positions_treatments');
             $table->string('photo', 255);
             $table->dateTime('date');
             $table->timestamps();

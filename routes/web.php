@@ -56,7 +56,7 @@ Route::get('dashboard/photo', [PhotoController::class, 'list'])->name('dashboard
 Route::get('dashboard/photo/create', [PhotoController::class, 'create'])->name('dashboard.photo.create');
 Route::post('dashboard/photo/upload', [PhotoController::class, 'upload']);
 Route::get('dashboard/photo/edit/{id}', [PhotoController::class, 'edit']);
-Route::post('dashboard/photo/update', [PhotoController::class, 'update']);
+Route::put('dashboard/photo/update', [PhotoController::class, 'update']);
 Route::get('dashboard/photo/delete/{id}', [PhotoController::class, 'delete']);
 
 Route::get('dashboard/position', [PositionController::class, 'list'])->name('dashboard.position');
@@ -71,6 +71,7 @@ Route::get('dashboard/treatment_position/create', [TreatmentPositionController::
 Route::post('dashboard/treatment_position/store', [TreatmentPositionController::class, 'store']);
 Route::get('dashboard/treatment_position/edit/{edit}', [TreatmentPositionController::class, 'edit']);
 Route::put('dashboard/treatment_position/update/{id}', [TreatmentPositionController::class, 'update']);
+Route::delete('dashboard/treatment_position/{treatmentPosition}', [TreatmentPositionController::class, 'destroy']);
 Route::get('/get-position-details/{treatmentId}', [TreatmentPositionController::class, 'getPositionDetails']);
 
 Route::get('dashboard/treatment/list', [TreatmentController::class, 'list'])->name('dashboard.treatment');
@@ -81,3 +82,4 @@ Route::post('dashboard/treatment/update', [TreatmentController::class, 'update']
 
 Route::get('/lookup/member', [MemberController::class, 'lookup2']);
 Route::get('/position/list', [MemberController::class, 'position2']);
+Route::get('/photo/posisi/{id_perawatan}', [MemberController::class, 'getPosisi']);

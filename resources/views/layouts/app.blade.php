@@ -30,10 +30,7 @@
 
     <!-- Custom styles for this page -->
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css"
-        integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" integrity="sha512-rxThY3LYIfYsVCWPCW9dB0k+e3RZB39f23ylUYTEuZMDrN/vRqLdaCBo/FbvVT6uC2r0ObfPzotsfKF9Qc5W5g==" crossorigin="anonymous" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
     <style type="text/css">
         .datepicker table tr td,
@@ -81,38 +78,30 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Tables -->
-            <li
-                class="nav-item {{ Request::segment(2) === 'patient' || Request::segment(2) === 'perawatan' ? 'active' : '' }}">
-                <a class="nav-link text-kuning" href="{{ route('dashboard.patient') }}"><i
-                        class="fas fa-fw fa-users text-kuning"></i><span>Perawatan</span></a>
+            <li class="nav-item {{ Request::segment(2) === 'patient' || Request::segment(2) === 'perawatan' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.patient') }}"><i class="fas fa-fw fa-users text-kuning"></i><span>Perawatan</span></a>
             </li>
             @if (Auth::user()->role != 'dokter' && Auth::user()->role != 'admin')
-                <li class="nav-item {{ Request::segment(2) === 'photo' ? 'active' : '' }}">
-                    <a class="nav-link text-kuning" href="{{ route('dashboard.photo') }}"><i
-                            class="fas fa-fw fa-book text-kuning"></i><span>Foto</span></a>
-                </li>
+            <li class="nav-item {{ Request::segment(2) === 'photo' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.photo') }}"><i class="fas fa-fw fa-book text-kuning"></i><span>Foto</span></a>
+            </li>
             @endif
             @if (Auth::user()->role == 'admin')
-                <li class="nav-item {{ Request::segment(2) === 'user' ? 'active' : '' }}">
-                    <a class="nav-link text-kuning" href="{{ route('dashboard.user') }}"><i
-                            class="fas fa-fw fa-user text-kuning"></i><span>User</span></a>
-                </li>
-                <li class="nav-item {{ Request::segment(2) === 'photo' ? 'active' : '' }}">
-                    <a class="nav-link text-kuning" href="{{ route('dashboard.photo') }}"><i
-                            class="fas fa-fw fa-book text-kuning"></i><span>Foto</span></a>
-                </li>
-                <li class="nav-item {{ Request::segment(2) === 'position#fo' ? 'active' : '' }}">
-                    <a class="nav-link text-kuning" href="{{ route('dashboard.position') }}"><i
-                            class="fas fa-fw fa-camera-retro text-kuning"></i><span>Master Posisi</span></a>
-                </li>
-                <li class="nav-item {{ Request::segment(2) === 'treatment' ? 'active' : '' }}">
-                    <a class="nav-link text-kuning" href="{{ route('dashboard.treatment') }}"><i
-                            class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan</span></a>
-                </li>
-                <li class="nav-item {{ Request::segment(2) === 'treatmentPosition' ? 'active' : '' }}">
-                    <a class="nav-link text-kuning" href="{{ route('dashboard.treatmentPosition') }}"><i
-                            class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan Posisi</span></a>
-                </li>
+            <li class="nav-item {{ Request::segment(2) === 'user' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.user') }}"><i class="fas fa-fw fa-user text-kuning"></i><span>User</span></a>
+            </li>
+            <li class="nav-item {{ Request::segment(2) === 'photo' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.photo') }}"><i class="fas fa-fw fa-book text-kuning"></i><span>Foto</span></a>
+            </li>
+            <li class="nav-item {{ Request::segment(2) === 'position#fo' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.position') }}"><i class="fas fa-fw fa-camera-retro text-kuning"></i><span>Master Posisi</span></a>
+            </li>
+            <li class="nav-item {{ Request::segment(2) === 'treatment' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.treatment') }}"><i class="fas fa-fw fa-edit text-kuning"></i><span>Master Perawatan</span></a>
+            </li>
+            <li class="nav-item {{ Request::segment(2) === 'treatmentPosition' ? 'active' : '' }}">
+                <a class="nav-link text-kuning" href="{{ route('dashboard.treatmentPosition') }}"><i class="fas fa-fw fa-pager text-kuning"></i><span>Master Perawatan Posisi</span></a>
+            </li>
             @endif
             <!-- Nav Item - Tables -->
             {{-- <li class="nav-item">
@@ -146,29 +135,25 @@
                         <li class="nav-item dropdown no-arrow">
                         </li>
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                     <h5>{{ Auth::user()->name }}</h5>( {{ strtoupper(Auth::user()->role) }} )
                                 </span>
                                 <img class="img-profile rounded-circle" src="{{ asset('img/icon-natasha.png') }}"></a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ url('/dashboard/user/edit/' . Auth::user()->id) }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -227,8 +212,7 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -250,7 +234,7 @@
                         $.each(response.positions, function(index, position) {
                             positionList.append('<li>' + position.name + '</li>');
                         });
-    
+
                         // Menampilkan modal
                         $('#detailModal').modal('show');
                     },
@@ -261,7 +245,7 @@
             });
         });
     </script>
-    
+
     <script type="text/javascript">
         VirtualSelect.init({
             ele: '#multiple'

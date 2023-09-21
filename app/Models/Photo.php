@@ -9,12 +9,13 @@ class Photo extends Model
 {
     use HasFactory;
     protected $table = 'photos';
+    protected $fillable = ['photo', 'patient_name', 'position', 'date', 'user_id', 'note', 'created_at'];
     public $incrementing = false;
 
     public static function getByDate($date, $nobase){
         $data = Photo::select('photos.photo', 'positions.name as position', 'photos.branch', 'users.name', 'users.role', 'photos.treatment_code')
         ->join('users', 'users.id', 'photos.user_id')
-        ->join('positions', 'positions.id', 'photos.position')
+        ->join('positions', 'positions.id', 'photos.postreat_id')
         ->whereDate('date', $date)
         ->where('nobase', $nobase)
         ->where('treatment_code', NULL)
@@ -34,7 +35,7 @@ class Photo extends Model
     public static function getByDateT($date, $nobase, $treatment){
         $data = Photo::select('photos.photo', 'positions.name as position', 'photos.branch', 'users.name', 'users.role', 'photos.treatment_code')
         ->join('users', 'users.id', 'photos.user_id')
-        ->join('positions', 'positions.id', 'photos.position')
+        ->join('positions', 'positions.id', 'photos.postreat_id')
         ->whereDate('date', $date)
         ->where('nobase', $nobase)
         ->where(function($q) use ($treatment){
@@ -59,4 +60,17 @@ class Photo extends Model
         ->get();
         return $data;
     }
+
+    public function treatmentPosition()
+    {
+        return $this->belongsTo(TreatmentPosition::class, 'postreat_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    
+
+    
 }

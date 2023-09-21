@@ -11,6 +11,11 @@ class Treatment extends Model
     use HasFactory;
     protected $table = 'treatments';
 
+	public function brand()
+	{
+		return $this->belongsTo(Brand::class, 'brand_id');
+	}
+
     public static function getByTreatment($id)
 	{
 		$tpid = [];

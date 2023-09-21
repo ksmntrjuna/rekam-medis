@@ -35,4 +35,10 @@ class Position extends Model
 	{
 		return $this->belongsToMany(Treatment::class, 'positions_treatments', 'position_id', 'treatment_id');
 	}
+
+	public function brand()
+	{
+		return $this->belongsTo(Brand::class, 'brand_id');
+	}
+	
 }

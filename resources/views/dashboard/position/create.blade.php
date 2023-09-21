@@ -18,9 +18,17 @@
 					<div class="form-group col-md-6">
 						<label>Role</label>
 						<select class="form-control" name="role_id" required="">
-							<option value="" >Pilih Role</option>
+							<option value="">Pilih Role</option>
 							@foreach($role as $row)
 							<option value="{{$row->id}}">{{strtoupper($row->name)}}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label>Brand</label>
+						<select class="form-control" name="brand_id" required="">
+							@foreach($brands as $p)
+							<option value="{{ $p->id }}">{{ $p->name}}</option>
 							@endforeach
 						</select>
 					</div>
@@ -54,11 +62,12 @@
 	</head>
 	<body>
 		<form method="post" action="{{url('/dashboard/photo/upload')}}" enctype="multipart/form-data">
-			@csrf
-			Kode: <input type="text" name="kode_member"> 
-			Posisi: <input type="text" name="position">
-			photo: <input type="file" name="photo">
-			<button type="submit">simpan</button>
-		</form>
-	</body>
-	</html> --}}
+@csrf
+Kode: <input type="text" name="kode_member">
+Posisi: <input type="text" name="position">
+photo: <input type="file" name="photo">
+<button type="submit">simpan</button>
+</form>
+</body>
+
+</html> --}}

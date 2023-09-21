@@ -20,6 +20,9 @@ return new class extends Migration
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
             $table->string('role_id', 36)->index('position_role_id');
+
+            $table->foreign('brand_id')->references('id')->on('brands');
+
         });
     }
 
