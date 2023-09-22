@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->string('id', 36)->primary();
+            $table->unsignedBigInteger('brand_id');
             $table->string('name', 255);
             $table->string('image', 255)->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
             $table->string('role_id', 36)->index('position_role_id');
-
+            
             $table->foreign('brand_id')->references('id')->on('brands');
 
         });

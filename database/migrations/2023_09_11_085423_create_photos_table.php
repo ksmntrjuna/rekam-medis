@@ -15,15 +15,18 @@ return new class extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->string('id', 36)->primary();
+            $table->unsignedBigInteger('postreat_id');
             $table->string('nobase', 100)->index('nobase_index');
             $table->string('patient_name')->nullable()->index('branch_index');
+            $table->string('position', 255)->index('position_index');
             $table->string('branch', 255);
             $table->string('user_id', 36)->index('photo_user_id');
-            $table->foreign('postreat_id')->references('id')->on('positions_treatments');
             $table->string('photo', 255);
             $table->dateTime('date');
             $table->timestamps();
             $table->string('treatment_code', 255)->nullable()->index('treatment_code_index');
+            
+            $table->foreign('postreat_id')->references('id')->on('positions_treatments');
         });
     }
 

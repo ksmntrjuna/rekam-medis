@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('treatment', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('brand_id');
             $table->string('code', 255)->nullable();
+            $table->foreign('brand_id')->references('id')->on('brands');
             $table->string('name', 255)->nullable();
             $table->timestamps();
             $table->string('treatment_position_id', 255)->nullable()->index('treatment_position_id');
 
-            $table->foreign('brand_id')->references('id')->on('brands');
 
         });
     }
