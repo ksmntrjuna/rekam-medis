@@ -32,9 +32,10 @@
 							<div class="col-md-6">
 								<label>Nomor Telepon</label>
 								<input type="telp" class="form-control" id="telp" name="telp" placeholder="Nomor Telepon" required>
-							</div>	<div class="col-md-6">
+							</div>
+							<div class="col-md-6">
 								<label>Tanggal Perawatan</label>
-								<input type="text" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="Contoh {{date('Y-m-d')}}" id="date" name="date" required>
+								<input type="text" class="form-control datepicker" data-date-format="dd-mm-yyyy" placeholder="Contoh {{date('d-m-Y')}}" id="date" name="date" required>
 							</div>
 						</div>
 					</div>
@@ -42,9 +43,8 @@
 						<label>Jam Perawatan</label>
 						<select class="form-control" name="time" required>
 							<option value="">Pilih Jam</option>
-							@for($i=10; $i<=17;$i++)
-							<option value="{{$i.':00:00'}}">{{$i.':00'}}</option>
-							@endfor
+							@for($i=10; $i<=17;$i++) <option value="{{$i.':00:00'}}">{{$i.':00'}}</option>
+								@endfor
 						</select>
 					</div>
 					@if(Auth::user()->role!='fo')
@@ -53,14 +53,15 @@
 						<select class="form-control select2" style="width: 100%;" name="treatment" id="treatment">
 							<option value="">Konsultasi</option>
 							@foreach($treatment as $t)
-							<option value="{{$t->code}}">{{$t->name}}</option>
+							<option value="{{$t->id}}">{{$t->name}}</option>
 							@endforeach
 						</select>
 					</div>
 					@endif
-					<div class="form-group col-md-2">
+					<div class="form-group col-md-8">
 						<label>Posisi</label>
-						<select class="form-control" name="position" id="position" required="">
+						<select class="form-control select2" name="position" id="position" required>
+							<option value=""></option>
 						</select>
 					</div>
 					@if(Auth::user()->role=='admin')
@@ -97,98 +98,95 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-	$('.datepicker').datepicker({
-	});
-	function fo(){
+	$('.datepicker').datepicker({});
+
+	function fo() {
 		'@foreach($position as $pos)'
 		$('#position').append('<option value="{{$pos->id}}">{{$pos->name}}</option>');
 		'@endforeach'
 	}
-	function del(){
+
+	function del() {
 		$('#kode_member').val('');
-		// $('#treatment').html('');
-		// $('#treatment').append('<option value="">Konsultasi</option>');
-		// $('#position').html('');
+		$('#treatment').html('');
+		$('#treatment').append('<option value="">Konsultasi</option>');
+		$('#position').html('');
 		fo();
 	}
-	function search(){
+
+	function search() {
 		// $('#kode_member').on("keyup input", function(){
-			// var inputVal = $(this).val();
-			var inputVal = $('#kode_member').val();
-			// $('#treatment').html('');
-			req++
-			if(inputVal.length){
-				$.ajax({
-					data: {
-						"_token": "{{ csrf_token() }}",
-						"kode_member": inputVal,
-					},
-					url: "/lookup/member",
-					type: "get",
-					dataType: "json",
-					beforeSend: function() {
-						if (req > 1) req -= 1;
-					},
-					success:function(data) {
-						console.log(data);
-						if(req==1){
-							if(data.status=='success'){
-								var treatment = data.treatment;
-								$('#member').val(1);
-								$('#nama').val(data.data[0].nama);
-								$('#telp').val(data.data[0].telp);
-								$('#nama').prop('readonly', true);
-								$('#telp').prop('readonly', true);
-								// $('#treatment').append('<option value="">Konsultasi</option>');
-								// $.each(treatment, function(key, row){
-								// 	$('#treatment').append('<option value="'+row.code+'">'+row.name+'</option>');
-								// });
-							}else{
-								alert('Member Tidak Ditemukan');
-								$('#member').val(0);
-								$('#nama').val('');
-								$('#telp').val('');
-								$('#nama').prop('readonly', false);
-								$('#telp').prop('readonly', false);
-								// $('#treatment').append('<option value="">Konsultasi</option>');
-							}
-							req -= 1;
+		// var inputVal = $(this).val();
+		var inputVal = $('#kode_member').val();
+		// $('#treatment').html('');
+		req++
+		if (inputVal.length) {
+			$.ajax({
+				data: {
+					"_token": "{{ csrf_token() }}",
+					"kode_member": inputVal,
+				},
+				url: "/lookup/member",
+				type: "get",
+				dataType: "json",
+				beforeSend: function() {
+					if (req > 1) req -= 1;
+				},
+				success: function(data) {
+					console.log(data);
+					if (req == 1) {
+						if (data.status == 'success') {
+							var treatment = data.treatment;
+							$('#member').val(1);
+							$('#nama').val(data.data[0].nama);
+							$('#telp').val(data.data[0].telp);
+							$('#nama').prop('readonly', true);
+							$('#telp').prop('readonly', true);
+							// $('#treatment').append('<option value="">Konsultasi</option>');
+							// $.each(treatment, function(key, row){
+							// 	$('#treatment').append('<option value="'+row.code+'">'+row.name+'</option>');
+							// });
+						} else {
+							alert('Member Tidak Ditemukan');
+							$('#member').val(0);
+							$('#nama').val('');
+							$('#telp').val('');
+							$('#nama').prop('readonly', false);
+							$('#telp').prop('readonly', false);
+							// $('#treatment').append('<option value="">Konsultasi</option>');
 						}
+						req -= 1;
 					}
-				});
-			}
-		// }); 
+				}
+			});
 		}
-	var req="";
-	$(document).ready(function(){
-		'@foreach($position as $pos)'
-		$('#position').append('<option value="{{$pos->id}}">{{$pos->name}}</option>');
-		'@endforeach'
-		$('#treatment').on("change", function(){
+		// }); 
+	}
+	var req = "";
+	$(document).ready(function() {
+		$('#treatment').on("change", function() {
 			var treatment = $(this).val();
 			$('#position').html('');
-			if(treatment.length){
+			if (treatment.length) {
 				$.ajax({
 					data: {
 						"_token": "{{ csrf_token() }}",
-						"nobase": $('#kode_member').val(),
-						"treatment": treatment,
 					},
-					url: "/position/list",
+					url: "/photo/posisi/"+treatment,
 					type: "get",
 					dataType: "json",
-					success: function(data){
-						if(data.status=='success'){
+					success: function(data) {
+						if (data.status == 'success') {
 							var data = data.data;
-							$.each(data, function(key, row){
-								$('#position').append('<option value="'+row.id+'">'+row.name+'</option>');
+							$.each(data, function(key, row) {
+								$('#position').append('<option value="' + row.id + '">' + row.position.name + '</option>');
 							});
-						}else{
+						} else {
 							fo();
 						}
 					}
 				});
-			}else{
+			} else {
 				fo();
 			}
 		});

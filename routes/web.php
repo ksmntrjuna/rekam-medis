@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\MemberController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\PhotoController;
+use App\Http\Controllers\Dashboard\MemberController;
 use App\Http\Controllers\Dashboard\PositionController;
 use App\Http\Controllers\Dashboard\TreatmentController;
+use App\Http\Controllers\Dashboard\TreatmentPositionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,27 +19,27 @@ use App\Http\Controllers\Dashboard\TreatmentController;
 |
 */
 
-Route::get('/download', function(){
+Route::get('/download', function () {
 	$filepath = asset('/file/galeri-natasha-02.apk');
 	return redirect($filepath);
 });
 
-Route::get('/download/dummy', function(){
+Route::get('/download/dummy', function () {
 	$filepath = asset('/file/galeri-natasha-dummy.apk');
 	return redirect($filepath);
 });
 
 Route::get('/', function () {
-    // return view('welcome');
+	// return view('welcome');
 	return redirect('/login');
 });
 
 Route::get('/dashboard', function () {
-    // return view('dashboard');
+	// return view('dashboard');
 	return redirect('/dashboard/patient');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('dashboard/patient', [MemberController::class, 'list'])->name('dashboard.patient');
 Route::get('dashboard/perawatan/{nobase}', [MemberController::class, 'perawatan']);
@@ -55,7 +56,7 @@ Route::get('dashboard/photo', [PhotoController::class, 'list'])->name('dashboard
 Route::get('dashboard/photo/create', [PhotoController::class, 'create'])->name('dashboard.photo.create');
 Route::post('dashboard/photo/upload', [PhotoController::class, 'upload']);
 Route::get('dashboard/photo/edit/{id}', [PhotoController::class, 'edit']);
-Route::post('dashboard/photo/update', [PhotoController::class, 'update']);
+Route::put('dashboard/photo/update', [PhotoController::class, 'update']);
 Route::get('dashboard/photo/delete/{id}', [PhotoController::class, 'delete']);
 
 Route::get('dashboard/position', [PositionController::class, 'list'])->name('dashboard.position');
@@ -65,11 +66,13 @@ Route::get('dashboard/position/edit/{id}', [PositionController::class, 'edit']);
 Route::post('dashboard/position/update', [PositionController::class, 'update']);
 Route::get('dashboard/position/delete/{id}', [PositionController::class, 'delete']);
 
-Route::get('dashboard/treatment_position', [PositionController::class, 'treatmentPosition']);
-Route::get('dashboard/treatment_position/create', [PositionController::class, 'treatmentPositionCreate']);
-Route::post('dashboard/treatment_position/store', [PositionController::class, 'treatmentPositionStore']);
-Route::get('dashboard/treatment_position/edit/{id}', [PositionController::class, 'treatmentPositionEdit']);
-Route::post('dashboard/treatment_position/update', [PositionController::class, 'treatmentPositionUpdate']);
+Route::get('dashboard/treatment_position', [TreatmentPositionController::class, 'list'])->name('dashboard.treatmentPosition');
+Route::get('dashboard/treatment_position/create', [TreatmentPositionController::class, 'create']);
+Route::post('dashboard/treatment_position/store', [TreatmentPositionController::class, 'store']);
+Route::get('dashboard/treatment_position/edit/{edit}', [TreatmentPositionController::class, 'edit']);
+Route::put('dashboard/treatment_position/update/{id}', [TreatmentPositionController::class, 'update']);
+Route::delete('dashboard/treatment_position/{treatmentPosition}', [TreatmentPositionController::class, 'destroy']);
+Route::get('/get-position-details/{treatmentId}', [TreatmentPositionController::class, 'getPositionDetails']);
 
 Route::get('dashboard/treatment/list', [TreatmentController::class, 'list'])->name('dashboard.treatment');
 Route::get('dashboard/treatment/create', [TreatmentController::class, 'create']);
@@ -79,3 +82,4 @@ Route::post('dashboard/treatment/update', [TreatmentController::class, 'update']
 
 Route::get('/lookup/member', [MemberController::class, 'lookup2']);
 Route::get('/position/list', [MemberController::class, 'position2']);
+Route::get('/photo/posisi/{id_perawatan}', [MemberController::class, 'getPosisi']);

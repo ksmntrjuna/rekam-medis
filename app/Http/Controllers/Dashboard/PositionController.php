@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\Photo;
 use App\Models\Treatment;
 use App\Models\TreatmentPosition;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -39,11 +40,13 @@ class PositionController extends Controller
 
 	public function create()
 	{
-		$role = Role::whereIn('id', [3,4])->orderBy('id', 'desc')->get();
+		$brands = Brand::all();
+		$role = Role::whereIn('id', [3, 4])->orderBy('id', 'desc')->get();
 		$treatment = Treatment::get();
 		$datas = [
 			'role' => $role,
 			'treatment' => $treatment,
+			'brands' => $brands,
 		];
 		return view('dashboard.position.create')->with($datas);
 	}
@@ -53,6 +56,8 @@ class PositionController extends Controller
 		$this->validate($request, [
 			'name' => 'required',
 			'status' => 'required',
+			'brand_id' => 'required',
+
 			// 'image' => 'image|required|mimes:jpeg,png,jpg,gif,svg,png',
 		]);
 
@@ -61,6 +66,8 @@ class PositionController extends Controller
 		$position->name = $request->name;
 		$position->role_id = $request->role_id;
 		$position->status = $request->status;
+		$position->brand_id = $request->brand_id;
+
 
 		if (empty($request->file('image'))) {
 			$position->image = '';
@@ -81,11 +88,14 @@ class PositionController extends Controller
 	}
 
 	public function edit($id){
+		$brands = Brand::all();
 		$data = Position::find($id);
 		$role = Role::whereIn('id', [3,4])->orderBy('id', 'desc')->get();
 		$datas = [
 			'data' => $data,
 			'role' => $role,
+			'brands' => $brands,
+
 		];
 
 		return view('dashboard.position.edit')->with($datas);
@@ -93,16 +103,18 @@ class PositionController extends Controller
 
 	public function update(Request $request)
 	{
-		$this->validate($request, [
-			'name' => 'required',
-			'status' => 'required',
-			'role_id' => 'required',
-		]);
+		// $this->validate($request, [
+		// 	'name' => 'required',
+		// 	'status' => 'required',
+		// 	'role_id' => 'required',
+		// ]);
 
 		$data = array(
 			'id' => $request->id,
 			'name' => $request->name,
 			'status' => $request->status,
+			'brand_id' => $request->brand_id,
+
 		);	
 		$p = Position::where('id', $request->id)->first();
 		if ($request->file('image')) {
@@ -129,23 +141,23 @@ class PositionController extends Controller
 		}
 	}
 
-	public function delete($id)
-	{
-		$cek = Photo::where('position', $id)->get();
-		if($cek->count()>0){
-			return redirect('/dashboard/position')->with('alert', 'Data Tidak Dapat Dihapus Karena Sudah Dipakai');
+		public function delete($id)
+		{
+			$cek = Photo::where('position', $id)->get();
+			if($cek->count()>0){
+				return redirect('/dashboard/position')->with('alert', 'Data Tidak Dapat Dihapus Karena Sudah Dipakai');
+			}
+			$p = Position::where('id',$id)->first();
+
+			File::delete(base_path().'/public/uploads/photos/' . $p->image);
+
+			$delete = Position::where('id', $id)->delete();
+
+			if ($delete) {
+				LogActivity::create('Delete Position =>'.$p, 'dashboard');
+				return redirect('/dashboard/position')->with('alert', 'Data Berhasil Dihapus');
+			}
 		}
-		$p = Position::where('id',$id)->first();
-
-		File::delete(base_path().'/public/uploads/photos/' . $p->image);
-
-		$delete = Position::where('id', $id)->delete();
-
-		if ($delete) {
-			LogActivity::create('Delete Position =>'.$p, 'dashboard');
-			return redirect('/dashboard/position')->with('alert', 'Data Berhasil Dihapus');
-		}
-	}
 
 	public function treatmentPosition(){
 		$data = treatmentPosition::get();

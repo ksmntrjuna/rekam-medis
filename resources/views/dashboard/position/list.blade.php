@@ -6,13 +6,30 @@
 		background-color: #ffffff;
 		border-bottom: 2px solid #ebebeb;
 	}
-	.nav-tabs > li {
+
+	.nav-tabs>li {
 		padding: 10px;
 	}
-	a:link    { color: #FFD571; text-decoration: none; }
-	a:visited { color: #FFD571; text-decoration: none; }
-	a:hover   { color: #FFD571; text-decoration: none; }
-	a:active  { color: #FFD571; text-decoration: none; }
+
+	a:link {
+		color: #FFD571;
+		text-decoration: none;
+	}
+
+	a:visited {
+		color: #FFD571;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #FFD571;
+		text-decoration: none;
+	}
+
+	a:active {
+		color: #FFD571;
+		text-decoration: none;
+	}
 </style>
 @endsection
 @section('content')
@@ -21,10 +38,10 @@
 	<!-- DataTales Example -->
 	<div class="mb-4">
 		<div class="card-header py-3">
-			<h5 class="m-0 font-weight-bold text-primary" style="color: black !important;">POSISI</h5> 
+			<h5 class="m-0 font-weight-bold text-primary" style="color: black !important;">POSISI</h5>
 			<br>
 			<a href="{{url('/dashboard/position/create')}}" class="btn btn-dark">Tambah</a>
-			<a href="{{url('dashboard/treatment_position')}}" class="btn btn-dark">Posisi Perawatan</a>
+			{{-- <a href="{{url('dashboard/treatment_position')}}" class="btn btn-dark">Posisi Perawatan</a> --}}
 		</div>
 		@if ($message = Session::get('alert'))
 		<div class="main-content container-fluid">
@@ -56,6 +73,7 @@
 									<th class="font-weight-normal">No</th>
 									<th class="font-weight-normal">Nama</th>
 									<th class="font-weight-normal">Status</th>
+									<th class="font-weight-normal">Brand</th>
 									<!-- <th class="font-weight-normal">Foto</th> -->
 									<th class="font-weight-normal">Aksi</th>
 								</tr>
@@ -72,6 +90,7 @@
 										Tidak Aktif
 										@endif
 									</td>
+									<td>{{$row->brand['name']}}</td>
 									<td>
 										<a href="{{url('dashboard/position/edit/'.$row->id)}}" class="btn btn-dark"> Edit </a>&nbsp;<a href="#" class="btn btn-dark" onclick="del('{{ url('dashboard/position/delete', $row->id) }}')"> Hapus </a>
 									</td>
@@ -112,20 +131,20 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-	function del(url){
+	function del(url) {
 		$('#delete').modal();
-		$('#del').html('<a class="btn btn-danger" href="'+url+'">Hapus</a>');
-	}     
-</script> 
+		$('#del').html('<a class="btn btn-danger" href="' + url + '">Hapus</a>');
+	}
+</script>
 <script type="text/javascript">
 	var tp = window.location.hash.substr(1);
-	$('.t-'+tp).attr('style', 'background: #000; color: #fff;');
+	$('.t-' + tp).attr('style', 'background: #000; color: #fff;');
 	$('#tab a').click(function(e) {
 		$('.t').attr('style', 'background: #fff');
 		e.preventDefault();
 		$(this).tab('show');
 		var t = $(this).attr('id');
-		$('.'+t).attr('style', 'background: #000; color: #fff;');
+		$('.' + t).attr('style', 'background: #000; color: #fff;');
 	});
 
 	$("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {

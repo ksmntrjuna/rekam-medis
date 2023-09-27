@@ -39,21 +39,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($data as $i => $row)
+							@foreach($mergedData as $i => $row)
 							<tr class="bayangan">
-								<td>{{$i+1}}</td>
-								<td>{{$row->nobase}}<br>{{date('d-m-Y', strtotime($row->date))}}</td>
+								<td>{{ $i + 1 }}</td>
+								<td>{{ $row->nobase }}</td>
+								<td>{{ $row->posisi }}</td>
 								<td>
-									{!! isset($row->treatment_code) ? $row->treatment_code.'<br>' : '' !!}
-									{{$row->posisi}}
+									<a href="{{$row->photo}}">
+										<div>
+											<img src="{{asset($row->photo)}}" alt="image" width="150" height="100">
+										</div>
+									</a>
 								</td>
 								<td>
-									{{-- @if(file_exists(public_path('/uploads/photos/'.$row->photo))) --}}
-									<img src="{{config('thirdparty.s3.url')}}{{config('filesystems.disks.s3.folder').''.$row->photo}}" width="150" style="border-radius: 5px;">
-									{{-- @endif --}}
-								</td>
-								<td>
-									<a href="{{url('dashboard/photo/edit/'.$row->id)}}" class="btn btn-dark"> Edit </a>&nbsp;<a href="#" class="btn btn-dark" onclick="del('{{ url('dashboard/photo/delete', $row->id) }}')"> Hapus </a>
+									<a href="{{ url('dashboard/photo/edit/' . $row->id) }}" class="btn btn-dark"> Edit </a>&nbsp;<a href="#" class="btn btn-dark" onclick="del('{{ url('dashboard/photo/delete', $row->id) }}')"> Hapus </a>
 								</td>
 							</tr>
 							@endforeach
@@ -89,18 +88,19 @@
 	@endsection
 	@section('script')
 	<script type="text/javascript">
-		function del(url){
+		function del(url) {
 			$('#delete').modal();
-			$('#del').html('<a class="btn btn-danger" href="'+url+'">Hapus</a>');
+			$('#del').html('<a class="btn btn-danger" href="' + url + '">Hapus</a>');
 		}
-		function clean(){
+
+		function clean() {
 			$('#nobase').val('');
 			window.location.href = '?nobase=';
-		}     
-	</script> 
+		}
+	</script>
 	<script type="text/javascript">
-		$('.table').dataTable( {
+		$('.table').dataTable({
 			"searching": false
-		} );
+		});
 	</script>
 	@endsection
