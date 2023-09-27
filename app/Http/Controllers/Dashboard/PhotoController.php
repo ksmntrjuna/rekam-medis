@@ -79,7 +79,6 @@ class PhotoController extends Controller
 			'position' => 'required',
 			'photo' => 'image|required|mimes:jpeg,png,jpg,gif,svg,png',
 		]);
-<<<<<<< HEAD
 
 		if ($validator->fails()) {
 			return response()->json(['status' => 'error', 'message' => $validator->errors()->first()]);
@@ -88,13 +87,6 @@ class PhotoController extends Controller
 
 		$patient = Patient::where('nobase', strtoupper($request->kode_member))->first();
 		if ($patient == null) {
-=======
-		// if($validator->fails()){
-		// 	return response()->json(['status' => 'error', 'message' => $validator->errors()->first()]);
-		// }
-		$patient = Patient::where('nobase', $request->kode_member)->first();
-		if($patient==null){
->>>>>>> 2e30c0f0d71985e826e2d069707d7dbccaecf2a6
 			$patient = new Patient();
 			$patient->id = Str::uuid();
 			$patient->nobase = strtoupper($request->kode_member);
