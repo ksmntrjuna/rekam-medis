@@ -29,8 +29,7 @@
 							<th class="font-weight-normal">No</th>
 							<th class="font-weight-normal">Kode</th>
 							<th class="font-weight-normal">Nama</th>
-							<th class="font-weight-normal">Brand</th>
-							{{-- <th class="font-weight-normal">Posisi</th> --}}
+							<th class="font-weight-normal">Brand</th>	
 							<th class="font-weight-normal">Aksi</th>
 						</tr>
 					</thead>
@@ -42,11 +41,6 @@
 							<td>{{$d->code}}</td>
 							<td>{{$d->name}}</td>
 							<td>{{$d->brand['name']}}</td>
-							{{-- <td>
-								@foreach(Position::getByTreatment($d->treatment_position_id) as $j => $p)
-								{{$p->name}}<br>
-							@endforeach
-							</td> --}}
 							<td>
 								<a href="{{url('dashboard/treatment/edit/'.$d->id)}}" class="btn btn-dark"> Edit </a>&nbsp;
 							</td>

@@ -95,14 +95,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="detailModalLabel">Detail Position</h5>
+                        <h5 class="modal-title" id="detailModalLabel">Detail Posisi</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h6>Treatment Name: <span id="treatmentName"></span></h6>
-                        <h6>Positions:</h6>
+                        <h6>Nama Perawatan: <span id="treatmentName"></span></h6>
+                        <h6>Posisi:</h6>
                         <ul id="positionList"></ul>
                     </div>
                     <div class="modal-footer">

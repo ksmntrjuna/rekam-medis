@@ -72,20 +72,24 @@ class PhotoController extends Controller
 
 	public function upload(Request $request)
 	{
+		// Validasi input
 		$validator = Validator::make($request->all(), [
 			'kode_member' => 'required',
 			'nama' => 'required',
 			'telp' => 'required|numeric',
 			'position' => 'required',
 			'photo' => 'image|required|mimes:jpeg,png,jpg,gif,svg,png',
+			'treatment' => 'required', // Tambahkan validasi untuk treatment
 		]);
 
 		if ($validator->fails()) {
 			return response()->json(['status' => 'error', 'message' => $validator->errors()->first()]);
 		}
 
-
+		// Cek apakah patient sudah ada berdasarkan 'nobase'
 		$patient = Patient::where('nobase', strtoupper($request->kode_member))->first();
+
+		// Jika belum ada, buat patient baru
 		if ($patient == null) {
 			$patient = new Patient();
 			$patient->id = Str::uuid();
@@ -95,11 +99,14 @@ class PhotoController extends Controller
 			$patient->save();
 		}
 
+		// Format tanggal dan waktu
 		$date = $request->date . ' ' . $request->time;
 
+		// Buat objek Photo
 		$photo = new Photo();
 		$photo->id = Str::uuid();
 
+		// Handle file photo
 		$photoPath = null;
 		if ($request->hasFile('photo')) {
 			$uploadedPhoto = $request->file('photo');
@@ -109,13 +116,20 @@ class PhotoController extends Controller
 			$photo->photo = $photoPath;
 		}
 
+		// Isi kolom-kolom pada Photo
 		$photo->nobase = $request->kode_member;
 		$photo->patient_name = strtoupper($request->nama);
 		$photo->postreat_id = $request->position;
-		$photo->date = $date;
-		$photo->user_id = null;
-		$photo->branch = null;
 
+		// Dapatkan treatment code dari tabel treatments
+		$treatmentId = $request->treatment;
+		$treatmentCode = Treatment::find($treatmentId)->code;
+
+		$photo->treatment_code = $treatmentCode; // Tambahkan treatment_code
+
+		$photo->date = $date;
+
+		// Isi user_id dan branch
 		if (Auth::user()->role == 'admin') {
 			$user_id = $request->user_id;
 			$branch = User::find($user_id)->branch;
@@ -128,16 +142,20 @@ class PhotoController extends Controller
 
 		$photo->note = $request->note;
 
+		// Simpan Photo ke database
 		$photo->save();
 
+		// Update last pada Patient jika perlu
 		$patient = Patient::where('nobase', $request->kode_member)->orderBy('created_at', 'desc')->first();
 		if ($patient->last < $date) {
 			$patient->last = $date;
 			$patient->save();
 		}
 
+		// Log aktivitas
 		LogActivity::create('Upload Photo [dashboard] =>' . $photo, 'dashboard');
 
+		// Redirect ke halaman yang sesuai
 		return redirect('/dashboard/photo')->with('alert', 'Data Berhasil Diupdate');
 	}
 
@@ -173,7 +191,9 @@ class PhotoController extends Controller
 			'telp' => 'required|numeric',
 			'position' => 'required',
 			'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,png',
+			'date' => 'required|date_format:d-m-y',
 			// Tambahkan aturan validasi untuk 'date' dan 'time' jika diperlukan
+			'treatment' => 'required', // Tambahkan aturan validasi untuk treatment
 		]);
 
 		// Cek apakah validasi gagal
@@ -192,11 +212,16 @@ class PhotoController extends Controller
 			return redirect('/dashboard/photo')->with('alert', 'Foto tidak ditemukan');
 		}
 
+		// Dapatkan treatment code dari tabel treatments
+		$treatmentId = $request->treatment;
+		$treatmentCode = Treatment::find($treatmentId)->code;
+
 		// Persiapkan data yang akan diupdate
 		$data = [
 			'nobase' => $request->kode_member,
 			'postreat_id' => $request->position,
 			'note' => $request->note,
+			'treatment_code' => $treatmentCode, // Tambahkan treatment_code
 			// Tambahkan field lain yang perlu diupdate sesuai kebutuhan
 		];
 

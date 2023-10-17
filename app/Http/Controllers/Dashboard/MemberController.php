@@ -67,7 +67,7 @@ class MemberController extends Controller
         $auth = Auth::user();
         $patient = Patient::where('nobase', $nobase)->first();
 
-        $data = Photo::select(DB::raw('DATE(date) dates'), 'nobase', 'branch', 'created_at')
+        $data = Photo::select(DB::raw('DATE(date) dates'), 'nobase', 'branch', 'created_at', 'treatment_code')
             ->where('nobase', $nobase)
             ->with(['treatmentPosition.position'])
             ->when($auth->role != 'dokter' && $auth->role != 'admin' && $auth->role != 'cabang', function ($query) use ($auth) {
@@ -80,6 +80,7 @@ class MemberController extends Controller
             ->groupBy('dates')
             ->get();
 
+        // dd($data);
         $datas = [
             'patient' => $patient,
             'data' => $data,
@@ -98,7 +99,7 @@ class MemberController extends Controller
                 ->where('positions_treatments.id', $photo->postreat_id)
                 ->select('positions.name')
                 ->first();
-                $positions[$photo->id] = $detailInfo ? $detailInfo->name : 'gada';
+            $positions[$photo->id] = $detailInfo ? $detailInfo->name : 'gada';
         }
 
         if ($treatment == 'trm') {
@@ -106,7 +107,7 @@ class MemberController extends Controller
         } else {
             $pid = [];
             $trm = Treatment::join('positions_treatments', 'positions_treatments.id', 'treatment.positions_treatments_id')
-            ->where('code', $treatment)->first();
+                ->where('code', $treatment)->first();
             if ($trm->position_id) {
                 $pid = explode(',', $trm->position_id);
             }
@@ -121,10 +122,29 @@ class MemberController extends Controller
                 ->get();
         }
 
+        $type = request('type');
+
+        // Saring data berdasarkan jenis
+        if ($type === 'KONSULTASI') {
+            $photos = Photo::where('nobase', $nobase)
+                ->where('treatment_code', 'KONSULTASI')
+                ->get();
+            // Tambahkan logika lain yang sesuai dengan jenis perawatan
+        } else {
+            // Saring data perawatan
+            $photos = Photo::where('nobase', $nobase)
+                ->where('treatment_code', '!=', 'KONSULTASI')
+                ->get();
+            // Tambahkan logika lain yang sesuai dengan jenis perawatan
+        }
+
+        $uniqueTreatmentCodes = collect($photos)->pluck('treatment_code')->unique();
+
         $datas = [
             'patient' => $patient,
             'positions' => $positions,
             'photos' => $photos,
+            'uniqueTreatmentCodes' => $uniqueTreatmentCodes,
             'position' => $position,
             'treatment' => $treatment,
             'photo' => $photo,

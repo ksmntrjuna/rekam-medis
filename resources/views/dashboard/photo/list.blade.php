@@ -35,6 +35,7 @@
 								<th class="font-weight-normal">Kode</th>
 								<th class="font-weight-normal">Posisi</th>
 								<th class="font-weight-normal">Foto</th>
+								<th class="font-weight-normal">Kode Treatment</th>
 								<th class="font-weight-normal">Aksi</th>
 							</tr>
 						</thead>
@@ -51,6 +52,7 @@
 										</div>
 									</a>
 								</td>
+								<td>{{ $row->treatment_code }}</td>
 								<td>
 									<a href="{{ url('dashboard/photo/edit/' . $row->id) }}" class="btn btn-dark"> Edit </a>&nbsp;<a href="#" class="btn btn-dark" onclick="del('{{ url('dashboard/photo/delete', $row->id) }}')"> Hapus </a>
 								</td>

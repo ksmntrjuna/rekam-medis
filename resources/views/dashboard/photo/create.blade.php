@@ -39,9 +39,10 @@
                                         placeholder="Nomor Telepon" required>
                                 </div>
                                 <div class="col-md-6">
-									<label>Tanggal Perawatan</label>
-									<input type="date" class="form-control" id="date" name="date" required>
-								</div>
+                                    <label>Tanggal Perawatan</label>
+                                    <input type="text" class="form-control datepicker" data-date-format="dd-mm-yyyy"
+                                        placeholder="Contoh {{ date('d-m-Y') }}" id="date" name="date" required>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -106,28 +107,27 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+        // Inisialisasi datepicker
         $('.datepicker').datepicker({});
-
+        // Fungsi untuk mengisi opsi posisi
         function fo() {
             '@foreach ($position as $pos)'
             $('#position').append('<option value="{{ $pos->id }}">{{ $pos->name }}</option>');
             '@endforeach'
         }
 
+        // Fungsi untuk menghapus input
         function del() {
             $('#kode_member').val('');
-            $('#treatment').html('');
-            $('#treatment').append('<option value="">Konsultasi</option>');
+            $('#treatment').html('<option value="">Konsultasi</option>');
             $('#position').html('');
             fo();
         }
 
+        // Fungsi untuk mencari member
         function search() {
-            // $('#kode_member').on("keyup input", function(){
-            // var inputVal = $(this).val();
             var inputVal = $('#kode_member').val();
-            // $('#treatment').html('');
-            req++
+            req++;
             if (inputVal.length) {
                 $.ajax({
                     data: {
@@ -150,10 +150,6 @@
                                 $('#telp').val(data.data[0].telp);
                                 $('#nama').prop('readonly', true);
                                 $('#telp').prop('readonly', true);
-                                // $('#treatment').append('<option value="">Konsultasi</option>');
-                                // $.each(treatment, function(key, row){
-                                // 	$('#treatment').append('<option value="'+row.code+'">'+row.name+'</option>');
-                                // });
                             } else {
                                 alert('Member Tidak Ditemukan');
                                 $('#member').val(0);
@@ -161,21 +157,25 @@
                                 $('#telp').val('');
                                 $('#nama').prop('readonly', false);
                                 $('#telp').prop('readonly', false);
-                                // $('#treatment').append('<option value="">Konsultasi</option>');
                             }
                             req -= 1;
                         }
                     }
                 });
             }
-            // }); 
         }
+
+        // Variabel untuk menyimpan jumlah request
         var req = "";
+
+        // Dokumen siap
         $(document).ready(function() {
+            // Event ketika treatment berubah
             $('#treatment').on("change", function() {
                 var treatment = $(this).val();
                 $('#position').html('');
                 if (treatment.length) {
+                    // Ajax untuk mendapatkan data posisi
                     $.ajax({
                         data: {
                             "_token": "{{ csrf_token() }}",
@@ -201,18 +201,4 @@
             });
         });
     </script>
-    <script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var today = new Date();
-			var dd = String(today.getDate()).padStart(2, '0');
-			var mm = String(today.getMonth() + 1).padStart(2, '0');
-			var yyyy = today.getFullYear();
-			var formattedDate = dd + '-' + mm + '-' + yyyy;
-	
-			var minDate = yyyy + '-' + mm + '-' + dd;
-			document.getElementById('date').setAttribute('min', minDate);
-	
-			document.getElementById('date').setAttribute('placeholder', 'contoh ' + formattedDate);
-		});
-	</script>	
 @endsection
