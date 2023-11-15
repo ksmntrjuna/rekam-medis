@@ -32,7 +32,7 @@
 						<thead>
 							<tr class="font-weight-normal">
 								<th class="font-weight-normal">No</th>
-								<th class="font-weight-normal">Kode</th>
+								<th class="font-weight-normal">Kode Member</th>
 								<th class="font-weight-normal">Posisi</th>
 								<th class="font-weight-normal">Foto</th>
 								<th class="font-weight-normal">Kode Treatment</th>

@@ -1,3 +1,4 @@
+<!-- view form edit -->
 @extends('../layouts.app')
 @section('content')
     <!-- Begin Page Content -->
@@ -22,9 +23,15 @@
                             <label>Posisi</label>
                             <select multiple class="form-control select2" name="position[]">
                                 @foreach ($position as $pos)
-                                    <option value="{{ $pos->id }}">{{ strtoupper($pos->name) }}</option>
+                                    <option value="{{ $pos->id }}"
+                                        {{ in_array($pos->id, $selectedPositions) ? 'selected' : '' }}>
+                                        {{ strtoupper($pos->name) }}
+                                    </option>
                                 @endforeach
                             </select>
+                            @if ($errors->has('position'))
+                                <div class="text-danger">{{ $errors->first('position') }}</div>
+                            @endif
                         </div>
                     </div>
                     @if (count($position) > 0)

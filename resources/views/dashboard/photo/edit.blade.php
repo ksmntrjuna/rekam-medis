@@ -105,8 +105,10 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-	$('.datepicker').datepicker({});
-
+	$('.datepicker').datepicker({
+		endDate: new Date()
+	});
+	
 	function fo() {
 		'@foreach($position as $pos)'
 		$('#position').append('<option value="{{$pos->id}}">{{$pos->name}}</option>');

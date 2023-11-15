@@ -9,4 +9,9 @@ class Brand extends Model
 {
     use HasFactory;
     protected $tables = 'brands';
+
+    public function treatments()
+    {
+        return $this->belongsToMany(Treatment::class);
+    }
 }

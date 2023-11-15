@@ -59,7 +59,7 @@
                                     @foreach ($photos->where('treatment_code', $treatmentCode) as $photo)
                                         <div class="col-sm-6 text-center mb-5">
                                             <p><strong>Posisi:</strong> {{ $photo->treatmentPosition->position->name }}
-                                            <p>{{ date('d-m-Y', strtotime($photo->created_at)) }}</p>
+                                            <p>{{ date('d-m-Y', strtotime($photo->date)) }}</p>
                                             </p>
                                             <img src="{{ asset($photo->photo) }}" width="500" height="400"
                                                 style="border-radius: 5px;">

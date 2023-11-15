@@ -79,6 +79,7 @@ Route::get('dashboard/treatment/create', [TreatmentController::class, 'create'])
 Route::post('dashboard/treatment/store', [TreatmentController::class, 'store']);
 Route::get('dashboard/treatment/edit/{id}', [TreatmentController::class, 'edit']);
 Route::post('dashboard/treatment/update', [TreatmentController::class, 'update']);
+Route::delete('dashboard/treatment/delete/{id}', [TreatmentController::class, 'delete']);
 
 Route::get('/lookup/member', [MemberController::class, 'lookup2']);
 Route::get('/position/list', [MemberController::class, 'position2']);

@@ -17,20 +17,22 @@ use Illuminate\Support\Facades\File;
 
 class PositionController extends Controller
 {
-	public function __construct(){
+	public function __construct()
+	{
 		$this->middleware('auth');
 		$this->middleware(function ($request, $next) {
 			$this->user = Auth::user();
-			if($this->user->role!='admin'){
+			if ($this->user->role != 'admin') {
 				return abort(404);
 			}
 			return $next($request);
 		});
 	}
 
-	public function list(){
+	public function list()
+	{
 		$data = Position::orderBy('created_at', 'desc')->get();
-		$role = Role::whereIn('id', [3,4])->get();
+		$role = Role::whereIn('id', [3, 4])->get();
 		$datas = [
 			'role' => $role,
 			'data' => $data,
@@ -72,25 +74,26 @@ class PositionController extends Controller
 		if (empty($request->file('image'))) {
 			$position->image = '';
 		} else {
-			$photo = 'position_'.str_replace(' ', '_', $request->name).'_'.time().
-			'.'.$request->file('image')->getClientOriginalExtension();
+			$photo = 'position_' . str_replace(' ', '_', $request->name) . '_' . time() .
+				'.' . $request->file('image')->getClientOriginalExtension();
 
-			$photo_destination = base_path().'/public/uploads/photos/';
+			$photo_destination = base_path() . '/public/uploads/photos/';
 
 			$request->file('image')->move($photo_destination, $photo);
 			$position->image = $photo;
 		}
 
 		$position->save();
-		LogActivity::create('Tambah Position =>'.$position, 'dashboard');
+		LogActivity::create('Tambah Position =>' . $position, 'dashboard');
 		$role = Role::find($request->role_id);
-		return redirect('/dashboard/position#'.$role->name)->with('alert', 'Data Berhasil Disimpan');
+		return redirect('/dashboard/position#' . $role->name)->with('alert', 'Data Berhasil Disimpan');
 	}
 
-	public function edit($id){
+	public function edit($id)
+	{
 		$brands = Brand::all();
 		$data = Position::find($id);
-		$role = Role::whereIn('id', [3,4])->orderBy('id', 'desc')->get();
+		$role = Role::whereIn('id', [3, 4])->orderBy('id', 'desc')->get();
 		$datas = [
 			'data' => $data,
 			'role' => $role,
@@ -115,18 +118,18 @@ class PositionController extends Controller
 			'status' => $request->status,
 			'brand_id' => $request->brand_id,
 
-		);	
+		);
 		$p = Position::where('id', $request->id)->first();
 		if ($request->file('image')) {
 
-			File::delete(base_path().'/public/uploads/photos/' . $p->image);
+			File::delete(base_path() . '/public/uploads/photos/' . $p->image);
 
 			// $file = $request->file('image');
 
-			$photo = 'position_'.str_replace(' ', '_', $request->name).'_'.time().
-			'.'.$request->file('image')->getClientOriginalExtension();
+			$photo = 'position_' . str_replace(' ', '_', $request->name) . '_' . time() .
+				'.' . $request->file('image')->getClientOriginalExtension();
 
-			$photo_destination = base_path().'/public/uploads/photos/';
+			$photo_destination = base_path() . '/public/uploads/photos/';
 
 			$request->file('image')->move($photo_destination, $photo);
 			$data['image'] = $photo;
@@ -135,31 +138,32 @@ class PositionController extends Controller
 		$update = Position::where('id', $request->id)->update($data);
 		$role = Role::find($request->role_id);
 		if ($update) {
-			LogActivity::create('Edit Position (lama) =>'.$p, 'dashboard');
-			LogActivity::create('Edit Position (baru)=>'.json_encode($data), 'dashboard');
-			return redirect('/dashboard/position#'.$role->name)->with('alert', 'Data Berhasil Diupdate');
+			LogActivity::create('Edit Position (lama) =>' . $p, 'dashboard');
+			LogActivity::create('Edit Position (baru)=>' . json_encode($data), 'dashboard');
+			return redirect('/dashboard/position#' . $role->name)->with('alert', 'Data Berhasil Diupdate');
 		}
 	}
 
-		public function delete($id)
-		{
-			$cek = Photo::where('position', $id)->get();
-			if($cek->count()>0){
-				return redirect('/dashboard/position')->with('alert', 'Data Tidak Dapat Dihapus Karena Sudah Dipakai');
-			}
-			$p = Position::where('id',$id)->first();
-
-			File::delete(base_path().'/public/uploads/photos/' . $p->image);
-
-			$delete = Position::where('id', $id)->delete();
-
-			if ($delete) {
-				LogActivity::create('Delete Position =>'.$p, 'dashboard');
-				return redirect('/dashboard/position')->with('alert', 'Data Berhasil Dihapus');
-			}
+	public function delete($id)
+	{
+		$cek = Photo::where('position', $id)->get();
+		if ($cek->count() > 0) {
+			return redirect('/dashboard/position')->with('alert', 'Data Tidak Dapat Dihapus Karena Sudah Dipakai');
 		}
+		$p = Position::where('id', $id)->first();
 
-	public function treatmentPosition(){
+		File::delete(base_path() . '/public/uploads/photos/' . $p->image);
+
+		$delete = Position::where('id', $id)->delete();
+
+		if ($delete) {
+			LogActivity::create('Delete Position =>' . $p, 'dashboard');
+			return redirect('/dashboard/position')->with('alert', 'Data Berhasil Dihapus');
+		}
+	}
+
+	public function treatmentPosition()
+	{
 		$data = treatmentPosition::get();
 		$datas = [
 			'data' => $data,
@@ -167,7 +171,8 @@ class PositionController extends Controller
 		return view('dashboard.position.treatment_position')->with($datas);
 	}
 
-	public function treatmentPositionCreate(){
+	public function treatmentPositionCreate()
+	{
 		$position = Position::where('role_id', '4')->where('status', '1')->orderBy('name', 'asc')->get();
 		// $tchoosed = treatmentPosition::get();
 		// $tc = [];
@@ -178,8 +183,8 @@ class PositionController extends Controller
 		// dd($choosed);
 		// $code = explode(',', $choosed);
 		$treatment = Treatment::
-		// whereNotIn('code', $code)->
-		orderBy('id', 'asc')->get();
+			// whereNotIn('code', $code)->
+			orderBy('id', 'asc')->get();
 		$datas = [
 			'position' => $position,
 			// 'treatment' => $treatment,
@@ -187,18 +192,20 @@ class PositionController extends Controller
 		return view('dashboard.position.treatment_position_create')->with($datas);
 	}
 
-	public function treatmentPositionStore(Request $request){
+	public function treatmentPositionStore(Request $request)
+	{
 		$tp = new TreatmentPosition();
 		$tp->name = $request->name;
 		$tp->position_id = implode(',', $request->position_id);
 		// $tp->treatment_code = implode(',', $request->treatment_code);
 		$tp->status = $request->status;
 		$tp->save();
-		LogActivity::create('Tambah Treatment Position =>'.$tp, 'dashboard');
+		LogActivity::create('Tambah Treatment Position =>' . $tp, 'dashboard');
 		return redirect('/dashboard/treatment_position')->with('alert', 'Data Berhasil Disimpan');
 	}
 
-	public function treatmentPositionEdit($id){
+	public function treatmentPositionEdit($id)
+	{
 		$data = TreatmentPosition::find($id);
 		$position = Position::where('role_id', '4')->where('status', '1')->orderBy('name', 'asc')->get();
 		$datas = [
@@ -208,7 +215,8 @@ class PositionController extends Controller
 		return view('dashboard.position.treatment_position_edit')->with($datas);
 	}
 
-	public function treatmentPositionUpdate(Request $request){
+	public function treatmentPositionUpdate(Request $request)
+	{
 		$tp = TreatmentPosition::find($request->id);
 		$data = [
 			'id' => $request->id,
@@ -217,9 +225,8 @@ class PositionController extends Controller
 			'status' => $request->status,
 		];
 		$update = treatmentPosition::where('id', $request->id)->update($data);
-		LogActivity::create('Edit Template Position (lama) =>'.$tp, 'dashboard');
-		LogActivity::create('Edit Template Position (baru)=>'.json_encode($data), 'dashboard');
+		LogActivity::create('Edit Template Position (lama) =>' . $tp, 'dashboard');
+		LogActivity::create('Edit Template Position (baru)=>' . json_encode($data), 'dashboard');
 		return redirect('/dashboard/treatment_position')->with('alert', 'Data Berhasil Disimpan');
 	}
-
 }

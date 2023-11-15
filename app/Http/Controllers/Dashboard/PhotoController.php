@@ -72,14 +72,15 @@ class PhotoController extends Controller
 
 	public function upload(Request $request)
 	{
-		// Validasi input
+		// dd($request->all());
 		$validator = Validator::make($request->all(), [
 			'kode_member' => 'required',
 			'nama' => 'required',
 			'telp' => 'required|numeric',
-			'position' => 'required',
-			'photo' => 'image|required|mimes:jpeg,png,jpg,gif,svg,png',
-			'treatment' => 'required', // Tambahkan validasi untuk treatment
+			'position.*' => 'required',
+			'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+			'treatment' => 'required', 
+			'date' => 'required|date_format:d-m-Y'
 		]);
 
 		if ($validator->fails()) {
@@ -101,49 +102,57 @@ class PhotoController extends Controller
 
 		// Format tanggal dan waktu
 		$date = $request->date . ' ' . $request->time;
+		$date = \Carbon\Carbon::createFromFormat('d-m-Y H:i:s', $request->date . ' ' . $request->time)->format('Y-m-d H:i:s');
 
-		// Buat objek Photo
-		$photo = new Photo();
-		$photo->id = Str::uuid();
+		// dd($request->position[0]);
+		foreach ($request->file('photo') as $key => $imagefile) {
+			// Buat objek Photo
+			$photo = new Photo();
+			$photo->id = Str::uuid();
 
-		// Handle file photo
-		$photoPath = null;
-		if ($request->hasFile('photo')) {
-			$uploadedPhoto = $request->file('photo');
-			$photoName = time() . '.' . $uploadedPhoto->getClientOriginalExtension();
-			$uploadedPhoto->move(public_path('photo'), $photoName);
+			// Handle file photo
+			$photoPath = null;
+			$uploadedPhoto = $imagefile;
+			$position = $request->position[$key];
+			// $photoName = time() . '.' . $uploadedPhoto->getClientOriginalExtension();
+			$photoName = time() . '_posisi_' . $position . '.' . $uploadedPhoto->getClientOriginalExtension();
+			$uploadedPhoto->move(public_path('photo'), $photoName);    
 			$photoPath = 'photo/' . $photoName;
 			$photo->photo = $photoPath;
+
+			// Simpan Photo ke database
+			$photo->nobase = $request->kode_member;
+			$photo->patient_name = strtoupper($request->nama);
+			$postreat = TreatmentPosition::where('position_id', $request->position[$key])
+				->where('treatment_id', $request->treatment)
+				->first();
+			$photo->postreat_id = $postreat->id;
+
+			// Dapatkan treatment code dari tabel treatments
+			$treatmentId = $request->treatment;
+			$treatmentCode = Treatment::find($treatmentId)->code;
+
+			$photo->treatment_code = $treatmentCode; // Tambahkan treatment_code
+
+			$photo->date = $date;
+
+			// Isi user_id dan branch
+			if (Auth::user()->role == 'admin') {
+				$user_id = $request->user_id;
+				$branch = User::find($user_id)->branch;
+				$photo->user_id = $user_id;
+				$photo->branch = $branch;
+			} else {
+				$photo->branch = Auth::user()->branch;
+				$photo->user_id = Auth::user()->id;
+			}
+
+			$photo->note = $request->note;
+			$photo->date = $request->date;
+
+			// Simpan Photo ke database
+			$photo->save();
 		}
-
-		// Isi kolom-kolom pada Photo
-		$photo->nobase = $request->kode_member;
-		$photo->patient_name = strtoupper($request->nama);
-		$photo->postreat_id = $request->position;
-
-		// Dapatkan treatment code dari tabel treatments
-		$treatmentId = $request->treatment;
-		$treatmentCode = Treatment::find($treatmentId)->code;
-
-		$photo->treatment_code = $treatmentCode; // Tambahkan treatment_code
-
-		$photo->date = $date;
-
-		// Isi user_id dan branch
-		if (Auth::user()->role == 'admin') {
-			$user_id = $request->user_id;
-			$branch = User::find($user_id)->branch;
-			$photo->user_id = $user_id;
-			$photo->branch = $branch;
-		} else {
-			$photo->branch = Auth::user()->branch;
-			$photo->user_id = Auth::user()->id;
-		}
-
-		$photo->note = $request->note;
-
-		// Simpan Photo ke database
-		$photo->save();
 
 		// Update last pada Patient jika perlu
 		$patient = Patient::where('nobase', $request->kode_member)->orderBy('created_at', 'desc')->first();
@@ -151,7 +160,6 @@ class PhotoController extends Controller
 			$patient->last = $date;
 			$patient->save();
 		}
-
 		// Log aktivitas
 		LogActivity::create('Upload Photo [dashboard] =>' . $photo, 'dashboard');
 
@@ -168,16 +176,25 @@ class PhotoController extends Controller
 		}
 
 		// Mengambil data treatment
-		$treatment = Treatment::all(); // Pastikan Anda mengganti ini sesuai dengan model dan cara Anda mendapatkan data treatment.
+		$treatment = Treatment::all(); 
 
 		// Mengambil data users jika role adalah 'admin'
 		if (Auth::user()->role == 'admin') {
-			$users = User::all(); // Gantilah ini sesuai dengan model dan logika Anda untuk mengambil data users.
+			$users = User::all();
 		} else {
-			$users = []; // Anda bisa menginisialisasi dengan array kosong jika role bukan 'admin'.
+			$users = []; 
 		}
 
 		$position = Position::all();
+
+		// Pass the data to the view
+		$data = [
+			'edit' => $edit,
+			'treatment' => $treatment,
+			'users' => $users,
+			'position' => $position,
+		];
+
 
 		return view('dashboard.photo.edit', compact('edit', 'treatment', 'users', 'position'));
 	}
@@ -189,11 +206,10 @@ class PhotoController extends Controller
 			'kode_member' => 'required',
 			'nama' => 'required',
 			'telp' => 'required|numeric',
-			'position' => 'required',
-			'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,png',
-			'date' => 'required|date_format:d-m-y',
-			// Tambahkan aturan validasi untuk 'date' dan 'time' jika diperlukan
-			'treatment' => 'required', // Tambahkan aturan validasi untuk treatment
+			'position.*' => 'required',
+			'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+			'treatment' => 'required', 
+			'date' => 'required|date_format:d-m-Y'
 		]);
 
 		// Cek apakah validasi gagal
@@ -212,6 +228,7 @@ class PhotoController extends Controller
 			return redirect('/dashboard/photo')->with('alert', 'Foto tidak ditemukan');
 		}
 
+		
 		// Dapatkan treatment code dari tabel treatments
 		$treatmentId = $request->treatment;
 		$treatmentCode = Treatment::find($treatmentId)->code;
@@ -221,8 +238,8 @@ class PhotoController extends Controller
 			'nobase' => $request->kode_member,
 			'postreat_id' => $request->position,
 			'note' => $request->note,
-			'treatment_code' => $treatmentCode, // Tambahkan treatment_code
-			// Tambahkan field lain yang perlu diupdate sesuai kebutuhan
+			'treatment_code' => $treatmentCode, 
+			'date' => $request->date, 
 		];
 
 		// Handle pembaruan foto jika ada

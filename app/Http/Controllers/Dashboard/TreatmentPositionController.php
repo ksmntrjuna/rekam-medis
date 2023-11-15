@@ -53,7 +53,7 @@ class TreatmentPositionController extends Controller
       $treatment->positions()->sync($position_ids);
       DB::commit();
 
-      return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Posisi Perawatan Berhasil Dibuat.');
+      return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Perawatan Posisi Berhasil Dibuat.');
     } catch (\Exception $e) {
       DB::rollback();
 
@@ -74,30 +74,39 @@ class TreatmentPositionController extends Controller
     $position = Position::get();
     $treatment = Treatment::get();
 
-    return view('dashboard.treatment_position.edit', compact('edit', 'position', 'treatment'));
-  }
+    $selectedPositions = DB::table('positions_treatments')
+      ->where('treatment_id', $edit->treatment_id)
+      ->pluck('position_id')
+      ->toArray();
 
+    return view('dashboard.treatment_position.edit', compact('edit', 'position', 'treatment', 'selectedPositions'));
+  }
 
   public function update(Request $request, $id)
   {
+    $request->validate([
+      'position' => 'required|array|min:1',
+    ], [
+      'position.required' => 'Data Posisi Tidak Boleh Kosong.',
+      'position.min' => 'Data Posisi Tidak Boleh Kosong.',
+    ]);
+
     $treatment = Treatment::find($request->input('treatment'));
     $position_ids = $request->input('position');
 
-    // Cek apakah ada pemilihan posisi
     if (!empty($position_ids)) {
       try {
         DB::beginTransaction();
         $treatment->positions()->sync($position_ids);
         DB::commit();
 
-        return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Posisi Perawatan Berhasil Diupdate.');
+        return redirect()->to('/dashboard/treatment_position/')->with('success', 'Data Perawatan Posisi Berhasil Diupdate.');
       } catch (\Exception $e) {
         DB::rollback();
 
         return redirect()->to('/dashboard/treatment_position/')->with('error', 'Terjadi kesalahan. Data tidak berhasil disimpan.');
       }
     } else {
-      // Tidak ada pemilihan posisi, tidak perlu melakukan perubahan
       return redirect()->to('/dashboard/treatment_position/')->with('info', 'Tidak ada perubahan dilakukan.');
     }
   }
@@ -106,6 +115,6 @@ class TreatmentPositionController extends Controller
   {
     $treatmentPosition->delete();
     TreatmentPosition::where('treatment_id', $treatmentPosition->treatment_id)->delete();
-    return redirect()->to('/dashboard/treatment_position/')->with('delete', 'Data Posisi Perawatan Telah Dihapus');
+    return redirect()->to('/dashboard/treatment_position/')->with('delete', 'Data Perawatan Posisi Telah Dihapus');
   }
 }

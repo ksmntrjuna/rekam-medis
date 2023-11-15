@@ -44,7 +44,7 @@
                                 <tr class="bayangan">
                                     <td>{{ $i + 1 }}</td>
                                     <td>
-                                        {{ date('d-m-Y', strtotime($d->created_at)) }}<br>
+                                        {{ date('d-m-Y', strtotime($d->dates)) }}<br>
                                         {{ $d->branch }}
                                     </td>
                                     @if (Auth::user()->role != 'therapist')
@@ -75,6 +75,10 @@
                                     @endif
                                     @if (Auth::user()->role != 'fo')
                                         <td>
+                                            @php
+                                                $hasTreatment = false;
+                                            @endphp
+
                                             @foreach (Photo::getByTreatment(date('Y-m-d', strtotime($d->dates)), $d->nobase) as $treatmentCode => $treatments)
                                                 @if ($treatmentCode != 'KONSULTASI')
                                                     <div class="border p-2">
@@ -94,12 +98,16 @@
                                                                 </div>
                                                             @endforeach
                                                         </div>
+                                                        @php
+                                                            $hasTreatment = true;
+                                                        @endphp
                                                     </div>
                                                 @endif
                                             @endforeach
-                                            @if (Photo::where('nobase', $d->nobase)->where('date', $d->dates)->where('treatment_code', $t->treatment_code)->count() > 0 && $t->treatment_code != 'KONSULTASI')
+
+                                            @if ($hasTreatment)
                                                 <a class="btn btn-dark btn-sm mt-1"
-                                                    href="{{ url('/dashboard/compare/' . $d->nobase . '/' . $d->dates . '/trm?type=' . $t->treatment_code) }}">
+                                                    href="{{ url('/dashboard/compare/' . $d->nobase . '/' . $d->dates . '/trm?type=all') }}">
                                                     Compare
                                                 </a>
                                             @endif

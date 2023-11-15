@@ -32,6 +32,20 @@ class BrandsTableSeeder extends Seeder
                 'name' => 'Natasha',
                 'updated_at' => '2020-12-04 08:07:52',
             ),
+            2 => 
+            array (
+                'created_at' => '2020-12-04 08:07:52',
+                'id' => '3',
+                'name' => 'Toyota',
+                'updated_at' => '2020-12-04 08:07:52',
+            ),
+            3 => 
+            array (
+                'created_at' => '2020-12-04 08:07:52',
+                'id' => '4',
+                'name' => 'Honda',
+                'updated_at' => '2020-12-04 08:07:52',
+            ),
         ));
     }
 }

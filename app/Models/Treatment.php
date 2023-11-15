@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Treatment extends Model
 {
-    use HasFactory;
-    protected $table = 'treatments';
+	use HasFactory;
+	protected $table = 'treatments';
+	protected $fillable = ['code', 'name', 'brand_id'];
 
 	public function brand()
 	{
 		return $this->belongsTo(Brand::class, 'brand_id');
 	}
 
-    public static function getByTreatment($id)
+	public static function getByTreatment($id)
 	{
 		$tpid = [];
 		$tp = TreatmentPosition::find($id);
@@ -27,9 +28,13 @@ class Treatment extends Model
 		return $data;
 	}
 
-    public function positions()
-{
-    return $this->belongsToMany(Position::class, 'positions_treatments', 'treatment_id', 'position_id');
-}
+	public function positions()
+	{
+		return $this->belongsToMany(Position::class, 'positions_treatments', 'treatment_id', 'position_id');
+	}
 
+	public function brands()
+	{
+		return $this->belongsToMany(Brand::class);
+	}
 }

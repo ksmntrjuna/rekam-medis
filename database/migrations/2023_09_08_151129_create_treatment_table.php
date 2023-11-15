@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name', 255)->nullable();
             $table->timestamps();
             $table->string('treatment_position_id', 255)->nullable()->index('treatment_position_id');
-
+            $table->unique(['code', 'brand_id', 'name']);
 
         });
     }

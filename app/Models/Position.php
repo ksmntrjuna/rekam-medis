@@ -40,5 +40,9 @@ class Position extends Model
 	{
 		return $this->belongsTo(Brand::class, 'brand_id');
 	}
-	
+
+	public function treatmentPositions()
+    {
+        return $this->belongsToMany(TreatmentPosition::class, 'positions_treatments', 'position_id', 'treatment_id');
+    }
 }

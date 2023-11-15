@@ -9,6 +9,7 @@ class Photo extends Model
 {
     use HasFactory;
     protected $table = 'photos';
+    protected $dates = ['date'];
     protected $fillable = ['photo', 'patient_name', 'position', 'date', 'user_id', 'note', 'created_at', 'treatment_code'];
     public $incrementing = false;
 

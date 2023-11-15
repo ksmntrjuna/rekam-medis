@@ -92,7 +92,7 @@
 									</td>
 									<td>{{$row->brand['name']}}</td>
 									<td>
-										<a href="{{url('dashboard/position/edit/'.$row->id)}}" class="btn btn-dark"> Edit </a>&nbsp;<a href="#" class="btn btn-dark" onclick="del('{{ url('dashboard/position/delete', $row->id) }}')"> Hapus </a>
+										<a href="{{url('dashboard/position/edit/'.$row->id)}}" class="btn btn-dark"> Edit </a>&nbsp;<a href="#" class="btn btn-danger" onclick="del('{{ url('dashboard/position/delete', $row->id) }}')"> Delete </a>
 									</td>
 								</tr>
 								@endforeach
