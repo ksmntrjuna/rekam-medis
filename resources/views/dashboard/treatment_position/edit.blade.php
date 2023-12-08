@@ -14,13 +14,23 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+                        @if (Auth::user()->role === 'super admin')
+                            <div class="form-group col-md-8">
+                                <label for="brand">Brand</label>
+                                <select class="form-control" name="brand" disabled>
+                                    <option value="{{ $edit->treatment->brand->id }}">
+                                        {{ strtoupper($edit->treatment->brand->name) }}
+                                    </option>
+                                </select>
+                            </div>
+                        @endif
                         <div class="form-group col-md-8">
                             <label for="treatment">Perawatan</label>
                             <input type="text" class="form-control" value="{{ $edit->treatment->name }}" disabled>
                             <input type="hidden" name="treatment" value="{{ $edit->treatment_id }}">
                         </div>
                         <div class="form-group col-md-8">
-                            <label>Posisi</label>
+                            <label for="position">Posisi</label>
                             <select multiple class="form-control select2" name="position[]">
                                 @foreach ($position as $pos)
                                     <option value="{{ $pos->id }}"

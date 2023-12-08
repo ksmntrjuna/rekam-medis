@@ -12,6 +12,21 @@ class Brand extends Model
 
     public function treatments()
     {
-        return $this->belongsToMany(Treatment::class);
+        return $this->hasMany(Treatment::class);
+    }
+
+    public function positions()
+    {
+        return $this->hasMany(Position::class);
+    }
+
+    public function treatmentPositions()
+    {
+        return $this->hasMany(TreatmentPosition::class);
+    }
+
+    public function outlets()
+    {
+        return $this->hasMany(Outlet::class);
     }
 }

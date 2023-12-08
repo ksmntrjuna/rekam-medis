@@ -25,6 +25,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('role', 255);
             $table->string('branch', 255);
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

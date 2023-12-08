@@ -79,7 +79,7 @@ class PhotoController extends Controller
 			'telp' => 'required|numeric',
 			'position.*' => 'required',
 			'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
-			'treatment' => 'required', 
+			'treatment' => 'required',
 			'date' => 'required|date_format:d-m-Y'
 		]);
 
@@ -100,9 +100,6 @@ class PhotoController extends Controller
 			$patient->save();
 		}
 
-		// Format tanggal dan waktu
-		$date = $request->date . ' ' . $request->time;
-		$date = \Carbon\Carbon::createFromFormat('d-m-Y H:i:s', $request->date . ' ' . $request->time)->format('Y-m-d H:i:s');
 
 		// dd($request->position[0]);
 		foreach ($request->file('photo') as $key => $imagefile) {
@@ -116,7 +113,7 @@ class PhotoController extends Controller
 			$position = $request->position[$key];
 			// $photoName = time() . '.' . $uploadedPhoto->getClientOriginalExtension();
 			$photoName = time() . '_posisi_' . $position . '.' . $uploadedPhoto->getClientOriginalExtension();
-			$uploadedPhoto->move(public_path('photo'), $photoName);    
+			$uploadedPhoto->move(public_path('photo'), $photoName);
 			$photoPath = 'photo/' . $photoName;
 			$photo->photo = $photoPath;
 
@@ -126,14 +123,29 @@ class PhotoController extends Controller
 			$postreat = TreatmentPosition::where('position_id', $request->position[$key])
 				->where('treatment_id', $request->treatment)
 				->first();
-			$photo->postreat_id = $postreat->id;
+
+			// Pastikan $postreat tidak null sebelum mencoba mengakses id
+			if ($postreat) {
+				$photo->postreat_id = $postreat->id;
+
+				// Dapatkan treatment_id dari model Treatment
+				$treatmentId = $postreat->treatment_id;
+
+				// Simpan treatment_id ke dalam foto
+				$photo->treatment_id = $treatmentId;
+			} else {
+				// Handle jika TreatmentPosition tidak ditemukan
+				return response()->json(['status' => 'error', 'message' => 'Treatment Position not found']);
+			}
 
 			// Dapatkan treatment code dari tabel treatments
 			$treatmentId = $request->treatment;
 			$treatmentCode = Treatment::find($treatmentId)->code;
+			$photo->treatment_code = $treatmentCode;
 
-			$photo->treatment_code = $treatmentCode; // Tambahkan treatment_code
-
+			// Format tanggal dan waktu
+			$date = $request->date . ' ' . $request->time;
+			$date = \Carbon\Carbon::createFromFormat('d-m-Y H:i:s', $request->date . ' ' . $request->time)->format('Y-m-d H:i:s');
 			$photo->date = $date;
 
 			// Isi user_id dan branch
@@ -148,18 +160,19 @@ class PhotoController extends Controller
 			}
 
 			$photo->note = $request->note;
-			$photo->date = $request->date;
+			// $photo->date = $request->date;
+
 
 			// Simpan Photo ke database
 			$photo->save();
 		}
-
 		// Update last pada Patient jika perlu
 		$patient = Patient::where('nobase', $request->kode_member)->orderBy('created_at', 'desc')->first();
 		if ($patient->last < $date) {
 			$patient->last = $date;
 			$patient->save();
 		}
+		// dd($date);
 		// Log aktivitas
 		LogActivity::create('Upload Photo [dashboard] =>' . $photo, 'dashboard');
 
@@ -167,119 +180,133 @@ class PhotoController extends Controller
 		return redirect('/dashboard/photo')->with('alert', 'Data Berhasil Diupdate');
 	}
 
-	public function edit($id)
+	public function edit($nobase, $treatment_id)
 	{
-		$edit = Photo::find($id);
-
+		$edit = Photo::leftJoin('treatments', 'treatments.code', '=', 'photos.treatment_code')
+			->select('photos.*', 'treatments.id as treatment_id')
+			->where('photos.nobase', $nobase)
+			->where('photos.treatment_id', $treatment_id)
+			->first();
 		if (!$edit) {
 			return redirect('/dashboard/photo')->with('alert', 'Foto tidak ditemukan');
 		}
 
+		$photos = Photo::leftJoin('treatments', 'treatments.code', '=', 'photos.treatment_code')
+			->leftJoin('positions_treatments', 'photos.postreat_id', '=', 'positions_treatments.id')
+			->leftJoin('positions', 'positions_treatments.position_id', '=', 'positions.id')
+			->select('photos.*', 'treatments.id as treatment_id', 'positions.name as position_name')
+			->where('photos.nobase', $nobase)
+			->where('photos.treatment_id', $treatment_id)
+			->get();
+
+
 		// Mengambil data treatment
-		$treatment = Treatment::all(); 
+		$treatment = Treatment::all();
 
 		// Mengambil data users jika role adalah 'admin'
 		if (Auth::user()->role == 'admin') {
 			$users = User::all();
 		} else {
-			$users = []; 
+			$users = [];
 		}
 
 		$position = Position::all();
 
-		// Pass the data to the view
 		$data = [
 			'edit' => $edit,
 			'treatment' => $treatment,
 			'users' => $users,
 			'position' => $position,
+			'photos' => $photos,
 		];
-
-
-		return view('dashboard.photo.edit', compact('edit', 'treatment', 'users', 'position'));
+		// dd($photos);
+		return view('dashboard.photo.edit', compact('edit', 'treatment', 'users', 'position', 'photos'));
 	}
 
 	public function update(Request $request)
 	{
-		// Validasi input
 		$validator = Validator::make($request->all(), [
 			'kode_member' => 'required',
 			'nama' => 'required',
 			'telp' => 'required|numeric',
-			'position.*' => 'required',
+			// 'position.*' => 'required_without:photo.*',
 			'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
-			'treatment' => 'required', 
-			'date' => 'required|date_format:d-m-Y'
+			'treatment' => $request->has('treatment') ? 'required' : '',
+			'date' => 'required|date_format:d-m-Y',
 		]);
 
-		// Cek apakah validasi gagal
 		if ($validator->fails()) {
-			return redirect()
-				->back()
-				->withErrors($validator)
-				->withInput();
+			return response()->json(['status' => 'error', 'message' => $validator->errors()->first()]);
 		}
 
-		// Ambil data foto yang akan diperbarui
-		$photo = Photo::find($request->id);
+		// $photoIds = explode(',', $request->id);
+		// $photos = Photo::findMany($photoIds);
+		$photos = Photo::all();
 
-		// Cek apakah foto ditemukan
-		if (!$photo) {
+		// Check if any photos are found
+		if (!$photos) {
 			return redirect('/dashboard/photo')->with('alert', 'Foto tidak ditemukan');
 		}
+		// dd($photos);
 
-		
-		// Dapatkan treatment code dari tabel treatments
-		$treatmentId = $request->treatment;
-		$treatmentCode = Treatment::find($treatmentId)->code;
+		// Loop through each photo and update data
+		foreach ($photos as $key => $photo) {
+			$data = [
+				'nobase' => $request->kode_member,
+				'postreat_id' => $request->position[$key],
+				'note' => $request->note,
+				'date' => \Carbon\Carbon::createFromFormat('d-m-Y H:i:s', $request->date . ' ' . $request->time)->format('Y-m-d H:i:s'),
+			];
 
-		// Persiapkan data yang akan diupdate
-		$data = [
-			'nobase' => $request->kode_member,
-			'postreat_id' => $request->position,
-			'note' => $request->note,
-			'treatment_code' => $treatmentCode, 
-			'date' => $request->date, 
-		];
+			// Handle pembaruan foto jika ada
+			if ($request->hasFile('photo') && isset($request->file('photo')[$key])) {
+				// Get the uploaded photo
+				$uploadedPhoto = $request->file('photo')[$key];
 
-		// Handle pembaruan foto jika ada
-		if ($request->hasFile('photo')) {
-			$uploadedPhoto = $request->file('photo');
-			$photoName = time() . '.' . $uploadedPhoto->getClientOriginalExtension();
+				// Generate a unique name for each photo
+				$photoName = time() . '_' . $key . '.' . $uploadedPhoto->getClientOriginalExtension();
 
-			// Simpan foto ke direktori yang sesuai
-			$uploadedPhoto->move(public_path('photo'), $photoName);
+				// Move the photo to the desired directory
+				$uploadedPhoto->move(public_path('photo'), $photoName);
 
-			// Hapus foto lama jika ada
-			if (File::exists(public_path($photo->photo))) {
-				File::delete(public_path($photo->photo));
+				// Setel path foto baru
+				$data['photo'] = 'photo/' . $photoName;
+
+				// Remove the old photo file
+				if (File::exists(public_path($photo->photo))) {
+					File::delete(public_path($photo->photo));
+				}
 			}
 
-			// Setel path foto baru
-			$data['photo'] = 'photo/' . $photoName;
+			// Update data for each photo
+			$photo->update($data);
+
+			// Log aktivitas pembaruan foto
+			LogActivity::create('Edit Photo (lama) =>' . $photo, 'dashboard');
+			LogActivity::create('Edit Photo (baru) =>' . json_encode($data), 'dashboard');
 		}
-
-		// Update data
-		$photo->update($data);
-
-		// Log aktivitas pembaruan foto
-		LogActivity::create('Edit Photo (lama) =>' . $photo, 'dashboard');
-		LogActivity::create('Edit Photo (baru) =>' . json_encode($data), 'dashboard');
 
 		return redirect('/dashboard/photo')->with('alert', 'Data Berhasil Diupdate');
 	}
 
-	public function delete($id)
+	public function delete($nobase, $treatment_id)
 	{
-		$p = Photo::where('id', $id)->first();
-		// File::delete(base_path().'/public/uploads/photos/' . $p->photo);		// local delete
-		Storage::delete(config('filesystems.disks.s3.folder') . '' . $p->photo);		// delete from S3
+		$photos = Photo::where('nobase', $nobase)->where('treatment_id', $treatment_id)->get();
 
-		$delete = Photo::where('id', $id)->delete();
-
-		if ($delete) {
-			LogActivity::create('Delete Photo =>' . $p, 'dashboard');
-			return redirect('/dashboard/photo')->with('alert', 'Data Berhasil Dihapus');
+		if ($photos->isEmpty()) {
+			return redirect('/dashboard/photo')->with('error', 'Photos not found');
 		}
+
+		foreach ($photos as $photo) {
+			// Delete the photo from the storage (S3 in this case)
+			Storage::delete(config('filesystems.disks.s3.folder') . $photo->photo);
+
+			// Delete the record from the database
+			$photo->delete();
+		}
+
+		LogActivity::create('Delete Photos => Nobase: ' . $nobase . ', Treatment ID: ' . $treatment_id, 'dashboard');
+
+		return redirect('/dashboard/photo')->with('alert', 'Data Berhasil Dihapus');
 	}
 }

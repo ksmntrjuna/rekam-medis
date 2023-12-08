@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\Brand;
 use App\Models\Position;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class TreatmentPositionController extends Controller
     $this->middleware('auth');
     $this->middleware(function ($request, $next) {
       $this->user = Auth::user();
-      if ($this->user->role != 'admin') {
+      if ($this->user->role != 'super admin' && Auth::user()->role != 'admin') {
         return abort(404);
       }
       return $next($request);
@@ -26,21 +27,66 @@ class TreatmentPositionController extends Controller
 
   public function list()
   {
-    $data = TreatmentPosition::get();
-    $datas = [
-      'data' => $data,
-    ];
-    return view('dashboard.treatment_position.list')->with($datas);
+    $user = Auth::user();
+    $brands = Brand::get();
+
+    $data = [];
+
+    if ($user->role === 'super admin') {
+      $data = TreatmentPosition::with(['treatment.brand', 'position.brand'])->get();
+    } elseif ($user->role === 'admin' && $user->brand) {
+      $brandId = $user->brand->id;
+      $data = TreatmentPosition::whereHas('treatment', function ($query) use ($brandId) {
+        $query->where('brand_id', $brandId);
+      })->orWhereHas('position', function ($query) use ($brandId) {
+        $query->where('brand_id', $brandId);
+      })->with(['treatment.brand', 'position.brand'])->get();
+    }
+
+    return view('dashboard.treatment_position.list', compact('data', 'brands'));
   }
 
   public function create()
   {
-    $position = Position::get();
-    $treatment = Treatment::get();
-    $treatmentPosition = TreatmentPosition::get();
+    $user = Auth::user(); // Mengambil user yang sedang login
+    $brands = Brand::get(); // Ambil semua brand untuk dropdown brand
 
+    // Inisialisasi data Treatment dan Position
+    $treatment = [];
+    $position = [];
 
-    return view('dashboard.treatment_position.create', compact('position', 'treatment', 'treatmentPosition'));
+    // Jika user adalah super admin, ambil data Treatment dan Position sesuai dengan brand yang dipilih
+    if ($user->role === 'super admin') {
+      $selectedBrandId = request('brand'); // Ambil brand yang dipilih dari dropdown
+
+      if ($selectedBrandId) {
+        $brand = Brand::find($selectedBrandId);
+        $treatment = $brand->treatments;
+        $position = $brand->positions;
+      }
+    } elseif ($user->role === 'admin') {
+      // Jika user adalah admin, ambil data Treatment dan Position sesuai dengan brand yang terkait dengan admin
+      $treatment = $user->brand->treatments;
+      $position = $user->brand->positions;
+    }
+
+    return view('dashboard.treatment_position.create', compact('position', 'treatment', 'brands'));
+  }
+
+  public function getTreatments($brandId)
+  {
+    $brand = Brand::find($brandId);
+    $treatments = $brand->treatments;
+
+    return response()->json($treatments);
+  }
+
+  public function getPositions($brandId)
+  {
+    $brand = Brand::find($brandId);
+    $positions = $brand->positions;
+
+    return response()->json($positions);
   }
 
   public function store(Request $request)
@@ -71,7 +117,7 @@ class TreatmentPositionController extends Controller
 
   public function edit(TreatmentPosition $edit)
   {
-    $position = Position::get();
+    $position = Position::where('brand_id', $edit->treatment->brand_id)->get();
     $treatment = Treatment::get();
 
     $selectedPositions = DB::table('positions_treatments')

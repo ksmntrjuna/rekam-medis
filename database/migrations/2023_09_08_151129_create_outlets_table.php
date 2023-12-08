@@ -39,6 +39,8 @@ return new class extends Migration
             $table->string('url_outlet_photo', 255)->nullable();
             $table->string('response', 255)->nullable();
             $table->string('merchant', 255)->nullable();
+            $table->unsignedBigInteger('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands');
 
             $table->index(['code', 'outlet_name_pos', 'outlet_address'], 'lookup');
         });

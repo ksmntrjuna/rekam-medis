@@ -17,6 +17,15 @@ class Treatment extends Model
 		return $this->belongsTo(Brand::class, 'brand_id');
 	}
 
+	public static function getByRoleAndBrand($roleId, $brandId)
+	{
+		return self::where('role_id', $roleId)
+			->whereHas('brand', function ($query) use ($brandId) {
+				$query->where('id', $brandId);
+			})
+			->get();
+	}
+
 	public static function getByTreatment($id)
 	{
 		$tpid = [];

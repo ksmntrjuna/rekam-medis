@@ -30,22 +30,28 @@
                             <input type="text" class="form-control" placeholder="Nama" name="name"
                                 value="{{ $data->name }}" required>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label>Brand</label>
-                            <select class="form-control" name="brand_id" required="">
-                                @foreach ($brands as $p)
-                                    <option value="{{ $p->id }}" {{ $p->id == $data->brand_id ? 'selected' : '' }}>
-                                        {{ $p->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                        {{-- Hanya tampilkan input brand jika user adalah superadmin --}}
+                        @if (Auth::user()->role == 'super admin')
+                            <div class="form-group col-md-6">
+                                <label>Brand</label>
+                                <select class="form-control" name="brand_id" required="">
+                                    @foreach ($brands as $p)
+                                        <option value="{{ $p->id }}"
+                                            {{ $p->id == $data->brand_id ? 'selected' : '' }}>
+                                            {{ $p->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @else
+                            {{-- Jika user adalah admin, set nilai awal sesuai dengan brand admin tersebut --}}
+                            <input type="hidden" name="brand_id" value="{{ Auth::user()->brand_id }}">
+                        @endif
                     </div>
                     <button type="submit" class="btn btn-dark"> Simpan </button>
                 </form>
             </div>
         </div>
-
     </div>
     <!-- /.container-fluid -->
 @endsection

@@ -20,6 +20,15 @@ class Position extends Model
 		return $data;
 	}
 
+	public static function getByRoleAndBrand($roleId, $brandId)
+	{
+		return self::where('role_id', $roleId)
+			->whereHas('brand', function ($query) use ($brandId) {
+				$query->where('id', $brandId);
+			})
+			->get();
+	}
+	
 	public static function getByTreatment($id)
 	{
 		$tpid = [];
@@ -29,6 +38,11 @@ class Position extends Model
 		}
 		$data = Position::whereIn('id', $tpid)->get();
 		return $data;
+	}
+
+	public function role()
+	{
+		return $this->belongsTo(Role::class, 'role_id');
 	}
 
 	public function treatments()
@@ -42,7 +56,8 @@ class Position extends Model
 	}
 
 	public function treatmentPositions()
-    {
-        return $this->belongsToMany(TreatmentPosition::class, 'positions_treatments', 'position_id', 'treatment_id');
-    }
+	{
+		return $this->belongsToMany(TreatmentPosition::class, 'positions_treatments', 'position_id', 'treatment_id');
+	}
+
 }

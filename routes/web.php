@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\PhotoController;
+use App\Http\Controllers\Dashboard\BrandsController;
 use App\Http\Controllers\Dashboard\MemberController;
 use App\Http\Controllers\Dashboard\PositionController;
 use App\Http\Controllers\Dashboard\TreatmentController;
@@ -47,6 +48,7 @@ Route::get('dashboard/compare/{nobase}/{date}/{treatment}', [MemberController::c
 
 Route::get('dashboard/user', [UserController::class, 'list'])->name('dashboard.user');
 Route::get('dashboard/user/create', [UserController::class, 'create']);
+Route::get('/get-outlets-by-brand/{brandId}', [UserController::class, 'getOutletsByBrand'])->name('getOutletsByBrand');
 Route::post('dashboard/user/store', [UserController::class, 'store']);
 Route::get('dashboard/user/edit/{id}', [UserController::class, 'edit']);
 Route::post('dashboard/user/update', [UserController::class, 'update']);
@@ -73,6 +75,8 @@ Route::get('dashboard/treatment_position/edit/{edit}', [TreatmentPositionControl
 Route::put('dashboard/treatment_position/update/{id}', [TreatmentPositionController::class, 'update']);
 Route::delete('dashboard/treatment_position/{treatmentPosition}', [TreatmentPositionController::class, 'destroy']);
 Route::get('/get-position-details/{treatmentId}', [TreatmentPositionController::class, 'getPositionDetails']);
+Route::get('/get-treatments/{brandId}', [TreatmentPositionController::class, 'getTreatments']);
+Route::get('/get-positions/{brandId}', [TreatmentPositionController::class, 'getPositions']);
 
 Route::get('dashboard/treatment/list', [TreatmentController::class, 'list'])->name('dashboard.treatment');
 Route::get('dashboard/treatment/create', [TreatmentController::class, 'create']);
@@ -84,3 +88,10 @@ Route::delete('dashboard/treatment/delete/{id}', [TreatmentController::class, 'd
 Route::get('/lookup/member', [MemberController::class, 'lookup2']);
 Route::get('/position/list', [MemberController::class, 'position2']);
 Route::get('/photo/posisi/{id_perawatan}', [MemberController::class, 'getPosisi']);
+
+Route::get('dashboard/brands', [BrandsController::class, 'list'])->name('dashboard.brands');
+Route::get('dashboard/brands/create', [BrandsController::class, 'create']);
+Route::post('dashboard/brands/store', [BrandsController::class, 'store']);
+Route::get('dashboard/brands/edit/{id}', [BrandsController::class, 'edit']);
+Route::put('dashboard/brands/update/{id}', [BrandsController::class, 'update']);
+Route::delete('dashboard/brands/destroy/{destroy}', [BrandsController::class, 'destroy']);

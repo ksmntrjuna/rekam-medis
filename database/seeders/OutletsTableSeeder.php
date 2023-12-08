@@ -14,19 +14,20 @@ class OutletsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('outlets')->delete();
-        
-        \DB::table('outlets')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('outlets')->insert(array(
+            0 =>
+            array(
                 'call' => '0911345743',
                 'city_name' => 'Ambon',
                 'city_postal_code' => '97222',
                 'city_type' => 'Kota',
                 'code' => 'AMB01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 14,
                 'id_outlet' => 1,
                 'id_outlet_photo' => 66,
@@ -40,7 +41,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Maluku City Mall',
                 'outlet_name_pos' => 'AMBON 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0911) 345743',
+                'outlet_phone' => '(0911) 345743',
                 'outlet_postal_code' => '97128',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -48,14 +49,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-29 09:11:23',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6041542945274.jpg',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'call' => '065133710',
                 'city_name' => 'Banda Aceh',
                 'city_postal_code' => '23238',
                 'city_type' => 'Kota',
                 'code' => 'BAC01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 20,
                 'id_outlet' => 2,
                 'id_outlet_photo' => 30,
@@ -69,7 +71,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Banda Aceh',
                 'outlet_name_pos' => 'BANDA ACEH 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0651) 33710',
+                'outlet_phone' => '(0651) 33710',
                 'outlet_postal_code' => '23127',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -77,14 +79,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6131542941588.jpg',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'call' => '0227317753',
                 'city_name' => 'Bandung',
                 'city_postal_code' => '40311',
                 'city_type' => 'Kabupaten',
                 'code' => 'BDG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 22,
                 'id_outlet' => 3,
                 'id_outlet_photo' => 37,
@@ -96,9 +99,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.9284762',
                 'outlet_longitude' => '107.62327260000006',
                 'outlet_name' => 'Natasha Bandung Telaga Bodas',
-            'outlet_name_pos' => 'BANDUNG 01 (TELAGA BODAS)',
+                'outlet_name_pos' => 'BANDUNG 01 (TELAGA BODAS)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(022) 7317753',
+                'outlet_phone' => '(022) 7317753',
                 'outlet_postal_code' => '40263',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -106,14 +109,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-31 10:58:15',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1371542941818.jpg',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'call' => '0227233263',
                 'city_name' => 'Bandung',
                 'city_postal_code' => '40311',
                 'city_type' => 'Kabupaten',
                 'code' => 'BDG02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 22,
                 'id_outlet' => 4,
                 'id_outlet_photo' => 38,
@@ -125,9 +129,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.903103099999999',
                 'outlet_longitude' => '107.62795890000007',
                 'outlet_name' => 'Natasha Bandung Supratman',
-            'outlet_name_pos' => 'BANDUNG 02 (WR SUPRATMAN)',
+                'outlet_name_pos' => 'BANDUNG 02 (WR SUPRATMAN)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(022) 7233263',
+                'outlet_phone' => '(022) 7233263',
                 'outlet_postal_code' => '40122',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -135,14 +139,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-31 11:09:45',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7601542941852.jpg',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'call' => '0226128755',
                 'city_name' => 'Bandung',
                 'city_postal_code' => '40311',
                 'city_type' => 'Kabupaten',
                 'code' => 'BDG03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 22,
                 'id_outlet' => 5,
                 'id_outlet_photo' => 39,
@@ -154,9 +159,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.929766',
                 'outlet_longitude' => '107.586986',
                 'outlet_name' => 'Natasha Bandung Festival Citylink',
-            'outlet_name_pos' => 'BANDUNG 03 (CITY LINK)',
+                'outlet_name_pos' => 'BANDUNG 03 (CITY LINK)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(022) 6128755',
+                'outlet_phone' => '(022) 6128755',
                 'outlet_postal_code' => '40231',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -164,14 +169,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 05:04:54',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5111542941887.jpg',
             ),
-            5 => 
-            array (
+            5 =>
+            array(
                 'call' => '02518333281',
                 'city_name' => 'Bogor',
                 'city_postal_code' => '16911',
                 'city_type' => 'Kabupaten',
                 'code' => 'BGR01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 78,
                 'id_outlet' => 6,
                 'id_outlet_photo' => 40,
@@ -183,9 +189,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.581598',
                 'outlet_longitude' => '106.812869',
                 'outlet_name' => 'Natasha Bogor',
-            'outlet_name_pos' => 'BOGOR 01 (BARUNG)',
+                'outlet_name_pos' => 'BOGOR 01 (BARUNG)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0251) 8333281',
+                'outlet_phone' => '(0251) 8333281',
                 'outlet_postal_code' => '16152',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -193,14 +199,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-12 22:29:38',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/2281542941912.jpg',
             ),
-            6 => 
-            array (
+            6 =>
+            array(
                 'call' => '05116742377',
                 'city_name' => 'Banjarmasin',
                 'city_postal_code' => '70117',
                 'city_type' => 'Kota',
                 'code' => 'BJM01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 36,
                 'id_outlet' => 7,
                 'id_outlet_photo' => 68,
@@ -212,9 +219,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-3.348420200000001',
                 'outlet_longitude' => '114.62501329999998',
                 'outlet_name' => 'Natasha Banjarmasin',
-            'outlet_name_pos' => 'BANJARMASIN (DUTA MALL)',
+                'outlet_name_pos' => 'BANJARMASIN (DUTA MALL)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0511) 6742377',
+                'outlet_phone' => '(0511) 6742377',
                 'outlet_postal_code' => '70248',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -222,14 +229,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8501542945313.jpg',
             ),
-            7 => 
-            array (
+            7 =>
+            array(
                 'call' => '0361244639',
                 'city_name' => 'Denpasar',
                 'city_postal_code' => '80227',
                 'city_type' => 'Kota',
                 'code' => 'BLI01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 114,
                 'id_outlet' => 8,
                 'id_outlet_photo' => 80,
@@ -241,9 +249,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-8.6358204',
                 'outlet_longitude' => '115.23050139999998',
                 'outlet_name' => 'Natasha Bali Gatot Soebroto',
-            'outlet_name_pos' => 'BALI 01 (GATSU)',
+                'outlet_name_pos' => 'BALI 01 (GATSU)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0361) 244639',
+                'outlet_phone' => '(0361) 244639',
                 'outlet_postal_code' => '80239',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -251,14 +259,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/601542945966.jpg',
             ),
-            8 => 
-            array (
+            8 =>
+            array(
                 'call' => '03618477401',
                 'city_name' => 'Denpasar',
                 'city_postal_code' => '80227',
                 'city_type' => 'Kota',
                 'code' => 'BLI02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 114,
                 'id_outlet' => 9,
                 'id_outlet_photo' => 81,
@@ -270,9 +279,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-8.7090853',
                 'outlet_longitude' => '115.18389679999996',
                 'outlet_name' => 'Natasha Bali Kuta Sunset Road',
-            'outlet_name_pos' => 'BALI 02 (SUNSET)',
+                'outlet_name_pos' => 'BALI 02 (SUNSET)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0361) 8477401',
+                'outlet_phone' => '(0361) 8477401',
                 'outlet_postal_code' => '80227',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -280,14 +289,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9601542945990.jpg',
             ),
-            9 => 
-            array (
+            9 =>
+            array(
                 'call' => '0361221446',
                 'city_name' => 'Denpasar',
                 'city_postal_code' => '80227',
                 'city_type' => 'Kota',
                 'code' => 'BLI03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 114,
                 'id_outlet' => 10,
                 'id_outlet_photo' => 82,
@@ -299,9 +309,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-8.673370299999998',
                 'outlet_longitude' => '115.23204770000007',
                 'outlet_name' => 'Natasha Bali Renon',
-            'outlet_name_pos' => 'BALI 03 (RENON)',
+                'outlet_name_pos' => 'BALI 03 (RENON)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0361) 221446',
+                'outlet_phone' => '(0361) 221446',
                 'outlet_postal_code' => '80227',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -309,14 +319,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9571542946009.jpg',
             ),
-            10 => 
-            array (
+            10 =>
+            array(
                 'call' => '0254200855',
                 'city_name' => 'Serang',
                 'city_postal_code' => '42182',
                 'city_type' => 'Kabupaten',
                 'code' => 'BNT01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 402,
                 'id_outlet' => 12,
                 'id_outlet_photo' => 21,
@@ -330,7 +341,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Banten',
                 'outlet_name_pos' => 'SERANG BANTEN 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0254) 200855',
+                'outlet_phone' => '(0254) 200855',
                 'outlet_postal_code' => '42111',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -338,14 +349,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/371542941317.jpg',
             ),
-            11 => 
-            array (
+            11 =>
+            array(
                 'call' => '0542440667',
                 'city_name' => 'Balikpapan',
                 'city_postal_code' => '76111',
                 'city_type' => 'Kota',
                 'code' => 'BPN02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 19,
                 'id_outlet' => 14,
                 'id_outlet_photo' => 67,
@@ -357,9 +369,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-1.2716241',
                 'outlet_longitude' => '116.85266100000001',
                 'outlet_name' => 'Natasha Balikpapan Sudirman',
-            'outlet_name_pos' => 'BALIKPAPAN 02 (SUDIRMAN)',
+                'outlet_name_pos' => 'BALIKPAPAN 02 (SUDIRMAN)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0542) 440667',
+                'outlet_phone' => '(0542) 440667',
                 'outlet_postal_code' => '76114',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -367,14 +379,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 12:38:46',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/3731542945295.jpg',
             ),
-            12 => 
-            array (
+            12 =>
+            array(
                 'call' => '0778470282',
                 'city_name' => 'Batam',
                 'city_postal_code' => '29413',
                 'city_type' => 'Kota',
                 'code' => 'BTM01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 48,
                 'id_outlet' => 15,
                 'id_outlet_photo' => 34,
@@ -388,7 +401,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Batam',
                 'outlet_name_pos' => 'BATAM 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0778) 470282',
+                'outlet_phone' => '(0778) 470282',
                 'outlet_postal_code' => '29461',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -396,14 +409,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-29 09:00:49',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8621542941720.jpg',
             ),
-            13 => 
-            array (
+            13 =>
+            array(
                 'call' => '03333383838',
                 'city_name' => 'Banyuwangi',
                 'city_postal_code' => '68416',
                 'city_type' => 'Kabupaten',
                 'code' => 'BWI01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 42,
                 'id_outlet' => 16,
                 'id_outlet_photo' => 83,
@@ -417,7 +431,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Banyuwangi',
                 'outlet_name_pos' => 'BANYUWANGI 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0333) 3383838',
+                'outlet_phone' => '(0333) 3383838',
                 'outlet_postal_code' => '68461',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -425,14 +439,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/381542946033.jpg',
             ),
-            14 => 
-            array (
+            14 =>
+            array(
                 'call' => '0282538424',
                 'city_name' => 'Cilacap',
                 'city_postal_code' => '53211',
                 'city_type' => 'Kabupaten',
                 'code' => 'CLP01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 105,
                 'id_outlet' => 17,
                 'id_outlet_photo' => 61,
@@ -446,7 +461,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Cilacap',
                 'outlet_name_pos' => 'CILACAP 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0282) 538424',
+                'outlet_phone' => '(0282) 538424',
                 'outlet_postal_code' => '53223',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -454,14 +469,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9441542942880.jpg',
             ),
-            15 => 
-            array (
+            15 =>
+            array(
                 'call' => '0231233513',
                 'city_name' => 'Cirebon',
                 'city_postal_code' => '45611',
                 'city_type' => 'Kabupaten',
                 'code' => 'CRB01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 108,
                 'id_outlet' => 18,
                 'id_outlet_photo' => 41,
@@ -475,7 +491,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Cirebon',
                 'outlet_name_pos' => 'CIREBON 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0231) 233513',
+                'outlet_phone' => '(0231) 233513',
                 'outlet_postal_code' => '45122',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -483,14 +499,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-29 08:43:05',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/4451542941937.jpg',
             ),
-            16 => 
-            array (
+            16 =>
+            array(
                 'call' => '0313972479',
                 'city_name' => 'Gresik',
                 'city_postal_code' => '61115',
                 'city_type' => 'Kabupaten',
                 'code' => 'GRS01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 133,
                 'id_outlet' => 20,
                 'id_outlet_photo' => 84,
@@ -504,7 +521,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Gresik',
                 'outlet_name_pos' => 'GRESIK 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(031) 3972479',
+                'outlet_phone' => '(031) 3972479',
                 'outlet_postal_code' => '61122',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -512,14 +529,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7961542946056.jpg',
             ),
-            17 => 
-            array (
+            17 =>
+            array(
                 'call' => '04358525877',
                 'city_name' => 'Gorontalo',
                 'city_postal_code' => '96218',
                 'city_type' => 'Kabupaten',
                 'code' => 'GTO01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 129,
                 'id_outlet' => 21,
                 'id_outlet_photo' => 78,
@@ -533,7 +551,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Gorontalo',
                 'outlet_name_pos' => 'GORONTALO 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0435) 8525877',
+                'outlet_phone' => '(0435) 8525877',
                 'outlet_postal_code' => '96114',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -541,14 +559,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-11 12:36:31',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7451542945518.jpg',
             ),
-            18 => 
-            array (
+            18 =>
+            array(
                 'call' => '09675150008',
                 'city_name' => 'Jayapura',
                 'city_postal_code' => '99352',
                 'city_type' => 'Kabupaten',
                 'code' => 'JAY01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 157,
                 'id_outlet' => 22,
                 'id_outlet_photo' => 69,
@@ -562,7 +581,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Jayapura',
                 'outlet_name_pos' => 'JAYAPURA 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0967) 5150008',
+                'outlet_phone' => '(0967) 5150008',
                 'outlet_postal_code' => '99115',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -570,14 +589,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 11:09:11',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/3771542945333.jpg',
             ),
-            19 => 
-            array (
+            19 =>
+            array(
                 'call' => '0331411847',
                 'city_name' => 'Jember',
                 'city_postal_code' => '68113',
                 'city_type' => 'Kabupaten',
                 'code' => 'JBR01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 160,
                 'id_outlet' => 23,
                 'id_outlet_photo' => 85,
@@ -591,7 +611,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Jember',
                 'outlet_name_pos' => 'JEMBER 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0331) 411847',
+                'outlet_phone' => '(0331) 411847',
                 'outlet_postal_code' => '68118',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -599,14 +619,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/211542946075.jpg',
             ),
-            20 => 
-            array (
+            20 =>
+            array(
                 'call' => '0217207924',
                 'city_name' => 'Jakarta Selatan',
                 'city_postal_code' => '12230',
                 'city_type' => 'Kota',
                 'code' => 'JKT01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 153,
                 'id_outlet' => 24,
                 'id_outlet_photo' => 7,
@@ -618,9 +639,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.2521812',
                 'outlet_longitude' => '106.80128760000002',
                 'outlet_name' => 'Natasha Jakarta Wijaya',
-            'outlet_name_pos' => 'JAKARTA 01 (WIJAYA)',
+                'outlet_name_pos' => 'JAKARTA 01 (WIJAYA)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 7207924',
+                'outlet_phone' => '(021) 7207924',
                 'outlet_postal_code' => '12230',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -628,14 +649,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-29 12:25:58',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/341542940856.jpg',
             ),
-            21 => 
-            array (
+            21 =>
+            array(
                 'call' => '0214514844',
                 'city_name' => 'Jakarta Utara',
                 'city_postal_code' => '14140',
                 'city_type' => 'Kota',
                 'code' => 'JKT02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 155,
                 'id_outlet' => 25,
                 'id_outlet_photo' => 8,
@@ -647,9 +669,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.1601684',
                 'outlet_longitude' => '106.9035641',
                 'outlet_name' => 'Natasha Jakarta Kelapa Gading',
-            'outlet_name_pos' => 'JAKARTA 02 (KLP GDG)',
+                'outlet_name_pos' => 'JAKARTA 02 (KLP GDG)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 4514844',
+                'outlet_phone' => '(021) 4514844',
                 'outlet_postal_code' => '14140',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -657,14 +679,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-30 11:44:31',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6651542940908.jpg',
             ),
-            22 => 
-            array (
+            22 =>
+            array(
                 'call' => '02153160801',
                 'city_name' => 'Tangerang Selatan',
                 'city_postal_code' => '15332',
                 'city_type' => 'Kota',
                 'code' => 'JKT03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 457,
                 'id_outlet' => 26,
                 'id_outlet_photo' => 9,
@@ -676,9 +699,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.275994499999999',
                 'outlet_longitude' => '106.65976410000007',
                 'outlet_name' => 'Natasha jakarta BSD',
-            'outlet_name_pos' => 'JAKARTA 03 (BSD)',
+                'outlet_name_pos' => 'JAKARTA 03 (BSD)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 53160801',
+                'outlet_phone' => '(021) 53160801',
                 'outlet_postal_code' => '15320',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -686,14 +709,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-04 19:46:59',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/121542940961.jpg',
             ),
-            23 => 
-            array (
+            23 =>
+            array(
                 'call' => '0215609760',
                 'city_name' => 'Jakarta Barat',
                 'city_postal_code' => '11220',
                 'city_type' => 'Kota',
                 'code' => 'JKT04',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 151,
                 'id_outlet' => 27,
                 'id_outlet_photo' => 10,
@@ -705,9 +729,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.1785182',
                 'outlet_longitude' => '106.79211439999995',
                 'outlet_name' => 'Natasha jakarta Taman Anggrek',
-            'outlet_name_pos' => 'JAKARTA 04 (TA)',
+                'outlet_name_pos' => 'JAKARTA 04 (TA)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 5609760',
+                'outlet_phone' => '(021) 5609760',
                 'outlet_postal_code' => '11470',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -715,14 +739,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/3311542940989.jpg',
             ),
-            24 => 
-            array (
+            24 =>
+            array(
                 'call' => '0217370465',
                 'city_name' => 'Tangerang Selatan',
                 'city_postal_code' => '15332',
                 'city_type' => 'Kota',
                 'code' => 'JKT05',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 457,
                 'id_outlet' => 28,
                 'id_outlet_photo' => 11,
@@ -734,9 +759,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.272073499999999',
                 'outlet_longitude' => '106.74760650000007',
                 'outlet_name' => 'Natasha Jakarta Bintaro',
-            'outlet_name_pos' => 'JAKARTA 05 (BINTARO)',
+                'outlet_name_pos' => 'JAKARTA 05 (BINTARO)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 7370465',
+                'outlet_phone' => '(021) 7370465',
                 'outlet_postal_code' => '15221',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -744,14 +769,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-29 12:28:48',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/681542941019.jpg',
             ),
-            25 => 
-            array (
+            25 =>
+            array(
                 'call' => '02122676762',
                 'city_name' => 'Jakarta Utara',
                 'city_postal_code' => '14140',
                 'city_type' => 'Kota',
                 'code' => 'JKT06',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 155,
                 'id_outlet' => 29,
                 'id_outlet_photo' => 12,
@@ -763,9 +789,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.127320',
                 'outlet_longitude' => '106.790171',
                 'outlet_name' => 'Natasha Jakarta Pluit',
-            'outlet_name_pos' => 'JAKARTA 06 (PLUIT)',
+                'outlet_name_pos' => 'JAKARTA 06 (PLUIT)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 22676762',
+                'outlet_phone' => '(021) 22676762',
                 'outlet_postal_code' => '14450',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -773,14 +799,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6591542941047.jpg',
             ),
-            26 => 
-            array (
+            26 =>
+            array(
                 'call' => '0217754451',
                 'city_name' => 'Depok',
                 'city_postal_code' => '16416',
                 'city_type' => 'Kota',
                 'code' => 'JKT07',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 115,
                 'id_outlet' => 30,
                 'id_outlet_photo' => 13,
@@ -792,9 +819,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.398565199999998',
                 'outlet_longitude' => '106.82052429999999',
                 'outlet_name' => 'Natasha Depok',
-            'outlet_name_pos' => 'JAKARTA 07 (DEPOK)',
+                'outlet_name_pos' => 'JAKARTA 07 (DEPOK)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 7754451',
+                'outlet_phone' => '(021) 7754451',
                 'outlet_postal_code' => '16431',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -802,14 +829,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-31 11:28:57',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6811542941073.jpg',
             ),
-            27 => 
-            array (
+            27 =>
+            array(
                 'call' => '02188856051',
                 'city_name' => 'Bekasi',
                 'city_postal_code' => '17837',
                 'city_type' => 'Kabupaten',
                 'code' => 'JKT08',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 54,
                 'id_outlet' => 31,
                 'id_outlet_photo' => 42,
@@ -821,9 +849,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.248078',
                 'outlet_longitude' => '106.98592819999999',
                 'outlet_name' => 'Natasha Bekasi Kayuringin',
-            'outlet_name_pos' => 'JAKARTA 08 (BEKASI)',
+                'outlet_name_pos' => 'JAKARTA 08 (BEKASI)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 88856051',
+                'outlet_phone' => '(021) 88856051',
                 'outlet_postal_code' => '17144',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -831,14 +859,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-11 12:26:40',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1621542942143.jpg',
             ),
-            28 => 
-            array (
+            28 =>
+            array(
                 'call' => '02184312778',
                 'city_name' => 'Bekasi',
                 'city_postal_code' => '17837',
                 'city_type' => 'Kabupaten',
                 'code' => 'JKT09',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 54,
                 'id_outlet' => 32,
                 'id_outlet_photo' => 14,
@@ -850,9 +879,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.377363799999999',
                 'outlet_longitude' => '106.92045869999993',
                 'outlet_name' => 'Natasha Cibubur',
-            'outlet_name_pos' => 'JAKARTA 09 (CIBUBUR)',
+                'outlet_name_pos' => 'JAKARTA 09 (CIBUBUR)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 84312778',
+                'outlet_phone' => '(021) 84312778',
                 'outlet_postal_code' => '17433',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -860,14 +889,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:45:21',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/2531542941097.jpg',
             ),
-            29 => 
-            array (
+            29 =>
+            array(
                 'call' => '02172782340',
                 'city_name' => 'Jakarta Pusat',
                 'city_postal_code' => '10540',
                 'city_type' => 'Kota',
                 'code' => 'JKT10',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 152,
                 'id_outlet' => 33,
                 'id_outlet_photo' => 15,
@@ -879,9 +909,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.227368657588376',
                 'outlet_longitude' => '106.79716229438782',
                 'outlet_name' => 'Natasha Jakarta Senayan City',
-            'outlet_name_pos' => 'JAKARTA 10 (SENCI)',
+                'outlet_name_pos' => 'JAKARTA 10 (SENCI)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 72782340',
+                'outlet_phone' => '(021) 72782340',
                 'outlet_postal_code' => '10270',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -889,14 +919,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/3811542941121.jpg',
             ),
-            30 => 
-            array (
+            30 =>
+            array(
                 'call' => '02189907481',
                 'city_name' => 'Bekasi',
                 'city_postal_code' => '17837',
                 'city_type' => 'Kabupaten',
                 'code' => 'JKT11',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 54,
                 'id_outlet' => 34,
                 'id_outlet_photo' => 43,
@@ -908,9 +939,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.3341602',
                 'outlet_longitude' => '107.13609040000006',
                 'outlet_name' => 'Natasha Cikarang',
-            'outlet_name_pos' => 'JAKARTA 11 (CKR)',
+                'outlet_name_pos' => 'JAKARTA 11 (CKR)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 89907481',
+                'outlet_phone' => '(021) 89907481',
                 'outlet_postal_code' => '17530',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -918,14 +949,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-12 15:48:04',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8121542942171.jpg',
             ),
-            31 => 
-            array (
+            31 =>
+            array(
                 'call' => '02145867971',
                 'city_name' => 'Jakarta Utara',
                 'city_postal_code' => '14140',
                 'city_type' => 'Kota',
                 'code' => 'JKT12',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 155,
                 'id_outlet' => 35,
                 'id_outlet_photo' => 16,
@@ -937,9 +969,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.1509375',
                 'outlet_longitude' => '106.89024180000001',
                 'outlet_name' => 'Natasha Jakarta MOI',
-            'outlet_name_pos' => 'JAKARTA 12 (MOI)',
+                'outlet_name_pos' => 'JAKARTA 12 (MOI)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 45867971',
+                'outlet_phone' => '(021) 45867971',
                 'outlet_postal_code' => '14240',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -947,14 +979,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/301542941146.jpg',
             ),
-            32 => 
-            array (
+            32 =>
+            array(
                 'call' => '02130480790',
                 'city_name' => 'Jakarta Pusat',
                 'city_postal_code' => '10540',
                 'city_type' => 'Kota',
                 'code' => 'JKT13',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 152,
                 'id_outlet' => 36,
                 'id_outlet_photo' => 17,
@@ -966,9 +999,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.2246383',
                 'outlet_longitude' => '106.83042599999999',
                 'outlet_name' => 'Natasha Jakarta Kuningan City',
-            'outlet_name_pos' => 'JAKARTA 13 (KUNINGAN)',
+                'outlet_name_pos' => 'JAKARTA 13 (KUNINGAN)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 30480790',
+                'outlet_phone' => '(021) 30480790',
                 'outlet_postal_code' => '12940',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -976,14 +1009,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1381542941182.jpg',
             ),
-            33 => 
-            array (
+            33 =>
+            array(
                 'call' => '02154212412',
                 'city_name' => 'Tangerang',
                 'city_postal_code' => '15914',
                 'city_type' => 'Kabupaten',
                 'code' => 'JKT14',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 455,
                 'id_outlet' => 37,
                 'id_outlet_photo' => 18,
@@ -995,9 +1029,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.236448',
                 'outlet_longitude' => '106.63108399999999',
                 'outlet_name' => 'Natasha Serpong Gading',
-            'outlet_name_pos' => 'JAKARTA 14 (GADING SERPONG)',
+                'outlet_name_pos' => 'JAKARTA 14 (GADING SERPONG)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 54212412',
+                'outlet_phone' => '(021) 54212412',
                 'outlet_postal_code' => '15810',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1005,14 +1039,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/3691542941229.jpg',
             ),
-            34 => 
-            array (
+            34 =>
+            array(
                 'call' => '02129309838',
                 'city_name' => 'Tangerang',
                 'city_postal_code' => '15914',
                 'city_type' => 'Kabupaten',
                 'code' => 'JKT15',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 455,
                 'id_outlet' => 38,
                 'id_outlet_photo' => 19,
@@ -1024,9 +1059,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.193981799999999',
                 'outlet_longitude' => '106.63378899999998',
                 'outlet_name' => 'Natasha Tangerang City',
-            'outlet_name_pos' => 'JAKARTA 15 (TANGCITY)',
+                'outlet_name_pos' => 'JAKARTA 15 (TANGCITY)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 29309838',
+                'outlet_phone' => '(021) 29309838',
                 'outlet_postal_code' => '15118',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1034,14 +1069,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1241542941260.jpg',
             ),
-            35 => 
-            array (
+            35 =>
+            array(
                 'call' => '02187787661',
                 'city_name' => 'Jakarta Timur',
                 'city_postal_code' => '13330',
                 'city_type' => 'Kota',
                 'code' => 'JKT16',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 154,
                 'id_outlet' => 39,
                 'id_outlet_photo' => 20,
@@ -1053,9 +1089,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.2909579',
                 'outlet_longitude' => '106.88145179999992',
                 'outlet_name' => 'Natasha Jakarta Tamini',
-            'outlet_name_pos' => 'JAKARTA 16 (TAMINI)',
+                'outlet_name_pos' => 'JAKARTA 16 (TAMINI)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 87787661',
+                'outlet_phone' => '(021) 87787661',
                 'outlet_postal_code' => '13560',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1063,14 +1099,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5241542941290.jpg',
             ),
-            36 => 
-            array (
+            36 =>
+            array(
                 'call' => '02129613073',
                 'city_name' => 'Bekasi',
                 'city_postal_code' => '17837',
                 'city_type' => 'Kabupaten',
                 'code' => 'JKT17',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 54,
                 'id_outlet' => 40,
                 'id_outlet_photo' => 44,
@@ -1082,9 +1119,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.2712824',
                 'outlet_longitude' => '106.97177379999994',
                 'outlet_name' => 'Natasha Bekasi Grand Galaxy',
-            'outlet_name_pos' => 'JAKARTA 17 (GRAND GALAXY-BEKASI 2)',
+                'outlet_name_pos' => 'JAKARTA 17 (GRAND GALAXY-BEKASI 2)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 29613073',
+                'outlet_phone' => '(021) 29613073',
                 'outlet_postal_code' => '17147',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1092,14 +1129,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-31 18:22:45',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6751542942203.jpg',
             ),
-            37 => 
-            array (
+            37 =>
+            array(
                 'call' => '02122035850',
                 'city_name' => 'Jakarta Pusat',
                 'city_postal_code' => '10540',
                 'city_type' => 'Kota',
                 'code' => 'JKT18',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 152,
                 'id_outlet' => 41,
                 'id_outlet_photo' => 22,
@@ -1113,7 +1151,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Jakarta Harmonie',
                 'outlet_name_pos' => 'JAKARTA HARMONI',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 22035850',
+                'outlet_phone' => '(021) 22035850',
                 'outlet_postal_code' => '10120',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1121,14 +1159,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:49:06',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7031542941350.jpg',
             ),
-            38 => 
-            array (
+            38 =>
+            array(
                 'call' => '02122463288',
                 'city_name' => 'Jakarta Timur',
                 'city_postal_code' => '13330',
                 'city_type' => 'Kota',
                 'code' => 'JKT19',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 154,
                 'id_outlet' => 42,
                 'id_outlet_photo' => 23,
@@ -1140,9 +1179,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.172581',
                 'outlet_longitude' => '106.95230100000003',
                 'outlet_name' => 'Natasha Jakarta AEON Cakung',
-            'outlet_name_pos' => 'JAKARTA 19 (AEON)',
+                'outlet_name_pos' => 'JAKARTA 19 (AEON)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(021) 22463288',
+                'outlet_phone' => '(021) 22463288',
                 'outlet_postal_code' => '13910',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1150,14 +1189,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-30 11:14:27',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6061542941374.jpg',
             ),
-            39 => 
-            array (
+            39 =>
+            array(
                 'call' => '02130051683',
                 'city_name' => 'Jakarta Utara',
                 'city_postal_code' => '14140',
                 'city_type' => 'Kota',
                 'code' => 'JKT20',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 155,
                 'id_outlet' => 43,
                 'id_outlet_photo' => 24,
@@ -1171,7 +1211,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Jakarta PIK',
                 'outlet_name_pos' => 'JAKARTA PIK',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(021) 30051683',
+                'outlet_phone' => '(021) 30051683',
                 'outlet_postal_code' => '14460',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1179,14 +1219,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 05:03:34',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6211542941400.jpg',
             ),
-            40 => 
-            array (
+            40 =>
+            array(
                 'call' => '0741571222',
                 'city_name' => 'Jambi',
                 'city_postal_code' => '36111',
                 'city_type' => 'Kota',
                 'code' => 'JMB01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 156,
                 'id_outlet' => 44,
                 'id_outlet_photo' => 31,
@@ -1200,7 +1241,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Jambi',
                 'outlet_name_pos' => 'JAMBI 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0741) 571222',
+                'outlet_phone' => '(0741) 571222',
                 'outlet_postal_code' => '36139',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1208,14 +1249,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:44:35',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9881542941641.jpg',
             ),
-            41 => 
-            array (
+            41 =>
+            array(
                 'call' => '0274564686',
                 'city_name' => 'Yogyakarta',
                 'city_postal_code' => '55222',
                 'city_type' => 'Kota',
                 'code' => 'JOG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 501,
                 'id_outlet' => 45,
                 'id_outlet_photo' => 31,
@@ -1227,9 +1269,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.7829899',
                 'outlet_longitude' => '110.38768930000003',
                 'outlet_name' => 'Natasha Yogyakarta Jl. Adi Sucipto',
-            'outlet_name_pos' => 'JOGJA 01 (JL. SLO)',
+                'outlet_name_pos' => 'JOGJA 01 (JL. SLO)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0274) 564686',
+                'outlet_phone' => '(0274) 564686',
                 'outlet_postal_code' => '55221',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1237,14 +1279,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9881542941641.jpg',
             ),
-            42 => 
-            array (
+            42 =>
+            array(
                 'call' => '0274542040',
                 'city_name' => 'Yogyakarta',
                 'city_postal_code' => '55222',
                 'city_type' => 'Kota',
                 'code' => 'JOG02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 501,
                 'id_outlet' => 46,
                 'id_outlet_photo' => 49,
@@ -1256,9 +1299,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.75791889',
                 'outlet_longitude' => '110.38172044',
                 'outlet_name' => 'Natasha Yogyakarta Grha Jl. Kaliurang',
-            'outlet_name_pos' => 'JOGJA 02 (JAKAL)',
+                'outlet_name_pos' => 'JOGJA 02 (JAKAL)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0274) 542040',
+                'outlet_phone' => '(0274) 542040',
                 'outlet_postal_code' => '55281',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1266,14 +1309,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-29 12:28:08',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/2301542942535.jpg',
             ),
-            43 => 
-            array (
+            43 =>
+            array(
                 'call' => '02744331140',
                 'city_name' => 'Yogyakarta',
                 'city_postal_code' => '55222',
                 'city_type' => 'Kota',
                 'code' => 'JOG03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 501,
                 'id_outlet' => 47,
                 'id_outlet_photo' => 50,
@@ -1285,9 +1329,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.782118800000002',
                 'outlet_longitude' => '110.40135520000001',
                 'outlet_name' => 'Natasha Yogyakarta Plaza Ambarukmo',
-            'outlet_name_pos' => 'JOGJA 03 (AMPLAZ)',
+                'outlet_name_pos' => 'JOGJA 03 (AMPLAZ)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0274) 4331140',
+                'outlet_phone' => '(0274) 4331140',
                 'outlet_postal_code' => '55281',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1295,14 +1339,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-30 10:06:39',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1961542942560.jpg',
             ),
-            44 => 
-            array (
+            44 =>
+            array(
                 'call' => '0274561188',
                 'city_name' => 'Yogyakarta',
                 'city_postal_code' => '55222',
                 'city_type' => 'Kota',
                 'code' => 'JOG04',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 501,
                 'id_outlet' => 48,
                 'id_outlet_photo' => 51,
@@ -1314,9 +1359,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.7839354',
                 'outlet_longitude' => '110.37248799999998',
                 'outlet_name' => 'Natasha Yogyakarta Sabirin Kota Baru',
-            'outlet_name_pos' => 'JOGJA 04 (SABIRIN)',
+                'outlet_name_pos' => 'JOGJA 04 (SABIRIN)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0274) 561188',
+                'outlet_phone' => '(0274) 561188',
                 'outlet_postal_code' => '55224',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1324,14 +1369,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-01 09:47:45',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5691542942582.jpg',
             ),
-            45 => 
-            array (
+            45 =>
+            array(
                 'call' => '0274374544',
                 'city_name' => 'Yogyakarta',
                 'city_postal_code' => '55222',
                 'city_type' => 'Kota',
                 'code' => 'JOG05',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 501,
                 'id_outlet' => 49,
                 'id_outlet_photo' => 52,
@@ -1343,9 +1389,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.8139748',
                 'outlet_longitude' => '110.36847',
                 'outlet_name' => 'Natasha Yogyakarta Katamso',
-            'outlet_name_pos' => 'JOGJA 05 (KATAMSO)',
+                'outlet_name_pos' => 'JOGJA 05 (KATAMSO)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0274) 374544',
+                'outlet_phone' => '(0274) 374544',
                 'outlet_postal_code' => '55152',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1353,14 +1399,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1561542942609.jpg',
             ),
-            46 => 
-            array (
+            46 =>
+            array(
                 'call' => '04013196304',
                 'city_name' => 'Kendari',
                 'city_postal_code' => '93126',
                 'city_type' => 'Kota',
                 'code' => 'KDI01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 182,
                 'id_outlet' => 50,
                 'id_outlet_photo' => 70,
@@ -1374,7 +1421,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Kendari',
                 'outlet_name_pos' => 'KENDARI 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0401) 3196304',
+                'outlet_phone' => '(0401) 3196304',
                 'outlet_postal_code' => '93118',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1382,14 +1429,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-12 13:36:52',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8611542945352.jpg',
             ),
-            47 => 
-            array (
+            47 =>
+            array(
                 'call' => '03542891013',
                 'city_name' => 'Kediri',
                 'city_postal_code' => '64184',
                 'city_type' => 'Kabupaten',
                 'code' => 'KDR01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 178,
                 'id_outlet' => 51,
                 'id_outlet_photo' => 86,
@@ -1403,7 +1451,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Kediri',
                 'outlet_name_pos' => 'KEDIRI 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0354) 2891013',
+                'outlet_phone' => '(0354) 2891013',
                 'outlet_postal_code' => '64123',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1411,14 +1459,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7611542946095.jpg',
             ),
-            48 => 
-            array (
+            48 =>
+            array(
                 'call' => '0291446417',
                 'city_name' => 'Kudus',
                 'city_postal_code' => '59311',
                 'city_type' => 'Kabupaten',
                 'code' => 'KDS01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 209,
                 'id_outlet' => 52,
                 'id_outlet_photo' => 60,
@@ -1432,7 +1481,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Kudus',
                 'outlet_name_pos' => 'KUDUS 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0291) 446417',
+                'outlet_phone' => '(0291) 446417',
                 'outlet_postal_code' => '59311',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1440,14 +1489,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-04 20:07:44',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5161542942836.jpg',
             ),
-            49 => 
-            array (
+            49 =>
+            array(
                 'call' => '0272322288',
                 'city_name' => 'Klaten',
                 'city_postal_code' => '57411',
                 'city_type' => 'Kabupaten',
                 'code' => 'KLT01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 196,
                 'id_outlet' => 96,
                 'id_outlet_photo' => 62,
@@ -1461,7 +1511,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Klaten',
                 'outlet_name_pos' => 'KLATEN 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0272) 322288',
+                'outlet_phone' => '(0272) 322288',
                 'outlet_postal_code' => '57414',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1469,14 +1519,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-09 14:30:16',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6291542942903.jpg',
             ),
-            50 => 
-            array (
+            50 =>
+            array(
                 'call' => '03808439056',
                 'city_name' => 'Kupang',
                 'city_postal_code' => '85362',
                 'city_type' => 'Kabupaten',
                 'code' => 'KPG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 212,
                 'id_outlet' => 97,
                 'id_outlet_photo' => 87,
@@ -1490,7 +1541,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Kupang',
                 'outlet_name_pos' => 'KUPANG 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0380) 8439056',
+                'outlet_phone' => '(0380) 8439056',
                 'outlet_postal_code' => '85111',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1498,14 +1549,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1411542946119.jpg',
             ),
-            51 => 
-            array (
+            51 =>
+            array(
                 'call' => '02678408559',
                 'city_name' => 'Karawang',
                 'city_postal_code' => '41311',
                 'city_type' => 'Kabupaten',
                 'code' => 'KRW01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 171,
                 'id_outlet' => 98,
                 'id_outlet_photo' => 48,
@@ -1519,7 +1571,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Karawang',
                 'outlet_name_pos' => 'KARAWANG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0267) 8408559',
+                'outlet_phone' => '(0267) 8408559',
                 'outlet_postal_code' => '41314',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1527,14 +1579,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 14:37:52',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6481542942310.jpg',
             ),
-            52 => 
-            array (
+            52 =>
+            array(
                 'call' => '0721255155',
                 'city_name' => 'Bandar Lampung',
                 'city_postal_code' => '35139',
                 'city_type' => 'Kota',
                 'code' => 'LPG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 21,
                 'id_outlet' => 100,
                 'id_outlet_photo' => 33,
@@ -1548,7 +1601,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Lampung',
                 'outlet_name_pos' => 'LAMPUNG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0721) 255155',
+                'outlet_phone' => '(0721) 255155',
                 'outlet_postal_code' => '35118',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1556,14 +1609,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1521542941692.jpg',
             ),
-            53 => 
-            array (
+            53 =>
+            array(
                 'call' => '0351497401',
                 'city_name' => 'Madiun',
                 'city_postal_code' => '63153',
                 'city_type' => 'Kabupaten',
                 'code' => 'MDN01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 247,
                 'id_outlet' => 102,
                 'id_outlet_photo' => 88,
@@ -1577,7 +1631,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Madiun',
                 'outlet_name_pos' => 'MADIUN 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0351) 497401',
+                'outlet_phone' => '(0351) 497401',
                 'outlet_postal_code' => '63153',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1585,14 +1639,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/4561542946277.jpg',
             ),
-            54 => 
-            array (
+            54 =>
+            array(
                 'call' => '03243515994',
                 'city_name' => 'Pamekasan',
                 'city_postal_code' => '69319',
                 'city_type' => 'Kabupaten',
                 'code' => 'MDR01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 330,
                 'id_outlet' => 103,
                 'id_outlet_photo' => 89,
@@ -1606,7 +1661,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Pamekasan',
                 'outlet_name_pos' => 'PAMEKASAN01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0324) 3515994',
+                'outlet_phone' => '(0324) 3515994',
                 'outlet_postal_code' => '69319',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1614,14 +1669,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6641542946310.jpg',
             ),
-            55 => 
-            array (
+            55 =>
+            array(
                 'call' => '0614159366',
                 'city_name' => 'Medan',
                 'city_postal_code' => '20228',
                 'city_type' => 'Kota',
                 'code' => 'MED01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 278,
                 'id_outlet' => 116,
                 'id_outlet_photo' => 26,
@@ -1635,7 +1691,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Medan Gadjah Mada',
                 'outlet_name_pos' => 'MEDAN 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(061) 4159366',
+                'outlet_phone' => '(061) 4159366',
                 'outlet_postal_code' => '20153',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1643,14 +1699,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-03 23:57:40',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8961542941480.jpg',
             ),
-            56 => 
-            array (
+            56 =>
+            array(
                 'call' => '0614140041',
                 'city_name' => 'Medan',
                 'city_postal_code' => '20228',
                 'city_type' => 'Kota',
                 'code' => 'MED02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 278,
                 'id_outlet' => 117,
                 'id_outlet_photo' => 27,
@@ -1664,7 +1721,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Medan Plaza',
                 'outlet_name_pos' => 'MEDAN 02',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(061) 4140041',
+                'outlet_phone' => '(061) 4140041',
                 'outlet_postal_code' => '20113',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1672,14 +1729,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-30 19:51:23',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5991542941505.jpg',
             ),
-            57 => 
-            array (
+            57 =>
+            array(
                 'call' => '0293361655',
                 'city_name' => 'Magelang',
                 'city_postal_code' => '56519',
                 'city_type' => 'Kabupaten',
                 'code' => 'MGL01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 249,
                 'id_outlet' => 118,
                 'id_outlet_photo' => 5,
@@ -1693,7 +1751,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Magelang',
                 'outlet_name_pos' => 'MAGELANG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0293) 361655',
+                'outlet_phone' => '(0293) 361655',
                 'outlet_postal_code' => '56519',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1701,14 +1759,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9921542940023.jpg',
             ),
-            58 => 
-            array (
+            58 =>
+            array(
                 'call' => '0411427247',
                 'city_name' => 'Makassar',
                 'city_postal_code' => '90111',
                 'city_type' => 'Kota',
                 'code' => 'MKS01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 254,
                 'id_outlet' => 119,
                 'id_outlet_photo' => 71,
@@ -1722,7 +1781,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Makasar Hertasning',
                 'outlet_name_pos' => 'MAKASAR 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0411) 427247',
+                'outlet_phone' => '(0411) 427247',
                 'outlet_postal_code' => '90222',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1730,14 +1789,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8401542945373.jpg',
             ),
-            59 => 
-            array (
+            59 =>
+            array(
                 'call' => '04113604106',
                 'city_name' => 'Makassar',
                 'city_postal_code' => '90111',
                 'city_type' => 'Kota',
                 'code' => 'MKS02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 254,
                 'id_outlet' => 120,
                 'id_outlet_photo' => 72,
@@ -1749,7 +1809,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-5.1606565',
                 'outlet_longitude' => '119.39445599999999',
                 'outlet_name' => 'Natasha Makasar Trans Studio',
-            'outlet_name_pos' => 'MAKASAR 02 (TRANS STUDIO)',
+                'outlet_name_pos' => 'MAKASAR 02 (TRANS STUDIO)',
                 'outlet_open_hours' => '10:00:00',
                 'outlet_phone' => '0411-3604106 / 3604107',
                 'outlet_postal_code' => '90224',
@@ -1759,14 +1819,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7701542945394.jpg',
             ),
-            60 => 
-            array (
+            60 =>
+            array(
                 'call' => '0341551460',
                 'city_name' => 'Malang',
                 'city_postal_code' => '65163',
                 'city_type' => 'Kabupaten',
                 'code' => 'MLG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 255,
                 'id_outlet' => 121,
                 'id_outlet_photo' => 90,
@@ -1780,7 +1841,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Malang Bondowoso',
                 'outlet_name_pos' => 'MALANG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0341) 551460',
+                'outlet_phone' => '(0341) 551460',
                 'outlet_postal_code' => '65115',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1788,14 +1849,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7151542946331.jpg',
             ),
-            61 => 
-            array (
+            61 =>
+            array(
                 'call' => '0341488290',
                 'city_name' => 'Malang',
                 'city_postal_code' => '65163',
                 'city_type' => 'Kabupaten',
                 'code' => 'MLG02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 255,
                 'id_outlet' => 122,
                 'id_outlet_photo' => 91,
@@ -1809,7 +1871,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Malang Soekarno-Hatta',
                 'outlet_name_pos' => 'MALANG 02',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0341) 488290',
+                'outlet_phone' => '(0341) 488290',
                 'outlet_postal_code' => '65142',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1817,14 +1879,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-30 14:19:07',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5501542946351.jpg',
             ),
-            62 => 
-            array (
+            62 =>
+            array(
                 'call' => '0431876990',
                 'city_name' => 'Manado',
                 'city_postal_code' => '95247',
                 'city_type' => 'Kota',
                 'code' => 'MNO01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 267,
                 'id_outlet' => 123,
                 'id_outlet_photo' => 73,
@@ -1838,7 +1901,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Manado',
                 'outlet_name_pos' => 'MANADO 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0431) 876990',
+                'outlet_phone' => '(0431) 876990',
                 'outlet_postal_code' => '95122',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1846,14 +1909,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6931542945411.jpg',
             ),
-            63 => 
-            array (
+            63 =>
+            array(
                 'call' => '03706172576',
                 'city_name' => 'Mataram',
                 'city_postal_code' => '83131',
                 'city_type' => 'Kota',
                 'code' => 'MTM01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 276,
                 'id_outlet' => 124,
                 'id_outlet_photo' => 92,
@@ -1867,7 +1931,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Mataram',
                 'outlet_name_pos' => 'MATARAM 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0370) 6172576',
+                'outlet_phone' => '(0370) 6172576',
                 'outlet_postal_code' => '83127',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1875,14 +1939,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5141542946425.jpg',
             ),
-            64 => 
-            array (
+            64 =>
+            array(
                 'call' => '0751891832',
                 'city_name' => 'Padang',
                 'city_postal_code' => '25112',
                 'city_type' => 'Kota',
                 'code' => 'PDG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 318,
                 'id_outlet' => 135,
                 'id_outlet_photo' => 35,
@@ -1896,7 +1961,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Padang',
                 'outlet_name_pos' => 'PADANG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0751) 891832',
+                'outlet_phone' => '(0751) 891832',
                 'outlet_postal_code' => '25115',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1904,14 +1969,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/561542941746.jpg',
             ),
-            65 => 
-            array (
+            65 =>
+            array(
                 'call' => '07174262230',
                 'city_name' => 'Pangkal Pinang',
                 'city_postal_code' => '33115',
                 'city_type' => 'Kota',
                 'code' => 'PGK01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 334,
                 'id_outlet' => 136,
                 'id_outlet_photo' => 32,
@@ -1925,7 +1991,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Pangkalpinang',
                 'outlet_name_pos' => 'PANGKALPINANG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0717) 4262230',
+                'outlet_phone' => '(0717) 4262230',
                 'outlet_postal_code' => '33148',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1933,14 +1999,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 05:04:12',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/2171542941666.jpg',
             ),
-            66 => 
-            array (
+            66 =>
+            array(
                 'call' => '0285412206',
                 'city_name' => 'Pekalongan',
                 'city_postal_code' => '51161',
                 'city_type' => 'Kabupaten',
                 'code' => 'PKL01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 348,
                 'id_outlet' => 137,
                 'id_outlet_photo' => 64,
@@ -1954,7 +2021,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Pekalongan',
                 'outlet_name_pos' => 'PEKALONGAN 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0285) 412206',
+                'outlet_phone' => '(0285) 412206',
                 'outlet_postal_code' => '51123',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -1962,20 +2029,21 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/81542942964.jpg',
             ),
-            67 => 
-            array (
+            67 =>
+            array(
                 'call' => '0761864359',
                 'city_name' => 'Pekanbaru',
                 'city_postal_code' => '28112',
                 'city_type' => 'Kota',
                 'code' => 'PKU01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 350,
                 'id_outlet' => 138,
                 'id_outlet_photo' => 28,
                 'id_province' => 26,
                 'merchant' => 'natasha',
-            'outlet_address' => 'SKA Mall Lt. 1 No. 45, Jl. Soekarno Hatta (Tuanku Tambusai), Delima, Tampan, Pekanbaru City, Riau 28291',
+                'outlet_address' => 'SKA Mall Lt. 1 No. 45, Jl. Soekarno Hatta (Tuanku Tambusai), Delima, Tampan, Pekanbaru City, Riau 28291',
                 'outlet_close_hours' => '21:30:00',
                 'outlet_email' => 'pekanbaruska@natashaskin.co.id',
                 'outlet_latitude' => '0.500118',
@@ -1983,7 +2051,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Pekanbaru Ska Mall',
                 'outlet_name_pos' => 'PEKANBARU SKA MALL',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0761) 864359',
+                'outlet_phone' => '(0761) 864359',
                 'outlet_postal_code' => '28291',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -1991,14 +2059,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:48:25',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8951542941534.jpg',
             ),
-            68 => 
-            array (
+            68 =>
+            array(
                 'call' => '076141878',
                 'city_name' => 'Pekanbaru',
                 'city_postal_code' => '28112',
                 'city_type' => 'Kota',
                 'code' => 'PKU02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 350,
                 'id_outlet' => 139,
                 'id_outlet_photo' => 29,
@@ -2012,7 +2081,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Pekanbaru Soetomo',
                 'outlet_name_pos' => 'PEKANBARU 02',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0761) 41878',
+                'outlet_phone' => '(0761) 41878',
                 'outlet_postal_code' => '28142',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2020,14 +2089,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/1001542941562.jpg',
             ),
-            69 => 
-            array (
+            69 =>
+            array(
                 'call' => '05363238582',
                 'city_name' => 'Palangka Raya',
                 'city_postal_code' => '73112',
                 'city_type' => 'Kota',
                 'code' => 'PKY01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 326,
                 'id_outlet' => 140,
                 'id_outlet_photo' => 74,
@@ -2041,7 +2111,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Palangkaraya',
                 'outlet_name_pos' => 'PALANGKARAYA 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0536) 3238582',
+                'outlet_phone' => '(0536) 3238582',
                 'outlet_postal_code' => '73112',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2049,14 +2119,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:31:43',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/2751542945431.jpg',
             ),
-            70 => 
-            array (
+            70 =>
+            array(
                 'call' => '0711363067',
                 'city_name' => 'Palembang',
                 'city_postal_code' => '31512',
                 'city_type' => 'Kota',
                 'code' => 'PLM01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 327,
                 'id_outlet' => 141,
                 'id_outlet_photo' => 25,
@@ -2070,7 +2141,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Palembang',
                 'outlet_name_pos' => 'PALEMBANG 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0711) 363067',
+                'outlet_phone' => '(0711) 363067',
                 'outlet_postal_code' => '30128',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2078,14 +2149,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9601542941442.jpg',
             ),
-            71 => 
-            array (
+            71 =>
+            array(
                 'call' => '04514134331',
                 'city_name' => 'Palu',
                 'city_postal_code' => '94111',
                 'city_type' => 'Kota',
                 'code' => 'PLU01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 329,
                 'id_outlet' => 142,
                 'id_outlet_photo' => 25,
@@ -2099,7 +2171,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Palu',
                 'outlet_name_pos' => 'PALU 01',
                 'outlet_open_hours' => '11:00:00',
-            'outlet_phone' => '(0451) 4134331',
+                'outlet_phone' => '(0451) 4134331',
                 'outlet_postal_code' => '94221',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -2107,14 +2179,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9601542941442.jpg',
             ),
-            72 => 
-            array (
+            72 =>
+            array(
                 'call' => '0352489298',
                 'city_name' => 'Ponorogo',
                 'city_postal_code' => '63411',
                 'city_type' => 'Kabupaten',
                 'code' => 'PNG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 363,
                 'id_outlet' => 143,
                 'id_outlet_photo' => 93,
@@ -2128,7 +2201,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Ponorogo',
                 'outlet_name_pos' => 'PONOROGO 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0352) 489298',
+                'outlet_phone' => '(0352) 489298',
                 'outlet_postal_code' => '63419',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2136,14 +2209,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/41542946449.jpg',
             ),
-            73 => 
-            array (
+            73 =>
+            array(
                 'call' => '0561571711',
                 'city_name' => 'Pontianak',
                 'city_postal_code' => '78971',
                 'city_type' => 'Kabupaten',
                 'code' => 'PTK01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 364,
                 'id_outlet' => 144,
                 'id_outlet_photo' => 75,
@@ -2157,7 +2231,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Pontianak',
                 'outlet_name_pos' => 'PONTIANAK 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0561) 571711',
+                'outlet_phone' => '(0561) 571711',
                 'outlet_postal_code' => '78117',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2165,14 +2239,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5581542945450.jpg',
             ),
-            74 => 
-            array (
+            74 =>
+            array(
                 'call' => '02648641952',
                 'city_name' => 'Purwakarta',
                 'city_postal_code' => '41119',
                 'city_type' => 'Kabupaten',
                 'code' => 'PWK01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 376,
                 'id_outlet' => 145,
                 'id_outlet_photo' => 45,
@@ -2186,7 +2261,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Purwakarta',
                 'outlet_name_pos' => 'PURWAKARTA 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0264) 8641952',
+                'outlet_phone' => '(0264) 8641952',
                 'outlet_postal_code' => '41118',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2194,14 +2269,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/8381542942238.jpg',
             ),
-            75 => 
-            array (
+            75 =>
+            array(
                 'call' => '02816577222',
                 'city_name' => 'Banyumas',
                 'city_postal_code' => '53114',
                 'city_type' => 'Kabupaten',
                 'code' => 'PWT01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 41,
                 'id_outlet' => 146,
                 'id_outlet_photo' => 59,
@@ -2215,7 +2291,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Purwokerto',
                 'outlet_name_pos' => 'PURWOKERTO 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0281) 6577222',
+                'outlet_phone' => '(0281) 6577222',
                 'outlet_postal_code' => '53111',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2223,14 +2299,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-03 09:18:18',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6751542942814.jpg',
             ),
-            76 => 
-            array (
+            76 =>
+            array(
                 'call' => '0315924023',
                 'city_name' => 'Surabaya',
                 'city_postal_code' => '60119',
                 'city_type' => 'Kota',
                 'code' => 'SBY01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 444,
                 'id_outlet' => 148,
                 'id_outlet_photo' => 94,
@@ -2242,9 +2319,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.281286',
                 'outlet_longitude' => '112.78129999999999',
                 'outlet_name' => 'Natasha Surabaya Kertajaya',
-            'outlet_name_pos' => 'SURABAYA 01 (KERTAJAYA)',
+                'outlet_name_pos' => 'SURABAYA 01 (KERTAJAYA)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(031) 5924023',
+                'outlet_phone' => '(031) 5924023',
                 'outlet_postal_code' => '60116',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2252,14 +2329,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7751542946471.jpg',
             ),
-            77 => 
-            array (
+            77 =>
+            array(
                 'call' => '0315636490',
                 'city_name' => 'Surabaya',
                 'city_postal_code' => '60119',
                 'city_type' => 'Kota',
                 'code' => 'SBY02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 444,
                 'id_outlet' => 149,
                 'id_outlet_photo' => 95,
@@ -2271,9 +2349,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.285152999999999',
                 'outlet_longitude' => '112.7329714',
                 'outlet_name' => 'Natasha Surabaya Sutomo',
-            'outlet_name_pos' => 'SURABAYA 02 (SUTOMO)',
+                'outlet_name_pos' => 'SURABAYA 02 (SUTOMO)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(031) 5636490',
+                'outlet_phone' => '(031) 5636490',
                 'outlet_postal_code' => '60241',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2281,14 +2359,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-31 10:07:31',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9721542946490.jpg',
             ),
-            78 => 
-            array (
+            78 =>
+            array(
                 'call' => '0317390048',
                 'city_name' => 'Surabaya',
                 'city_postal_code' => '60119',
                 'city_type' => 'Kota',
                 'code' => 'SBY03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 444,
                 'id_outlet' => 150,
                 'id_outlet_photo' => 96,
@@ -2300,9 +2379,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.290463',
                 'outlet_longitude' => '112.6748986',
                 'outlet_name' => 'Natasha Surabaya Pakuwon',
-            'outlet_name_pos' => 'SURABAYA 03 (PAKUWON)',
+                'outlet_name_pos' => 'SURABAYA 03 (PAKUWON)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(031) 7390048',
+                'outlet_phone' => '(031) 7390048',
                 'outlet_postal_code' => '60227',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -2310,14 +2389,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/91542946516.jpg',
             ),
-            79 => 
-            array (
+            79 =>
+            array(
                 'call' => '0315341315',
                 'city_name' => 'Surabaya',
                 'city_postal_code' => '60119',
                 'city_type' => 'Kota',
                 'code' => 'SBY04',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 444,
                 'id_outlet' => 151,
                 'id_outlet_photo' => 97,
@@ -2329,9 +2409,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.260465799999999',
                 'outlet_longitude' => '112.7449603',
                 'outlet_name' => 'Natasha Surabaya Mustajab',
-            'outlet_name_pos' => 'SURABAYA 04 (MUSTAJAB)',
+                'outlet_name_pos' => 'SURABAYA 04 (MUSTAJAB)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(031) 5341315',
+                'outlet_phone' => '(031) 5341315',
                 'outlet_postal_code' => '60272',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2339,14 +2419,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-30 09:57:08',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/4901542946537.jpg',
             ),
-            80 => 
-            array (
+            80 =>
+            array(
                 'call' => '0318943750',
                 'city_name' => 'Sidoarjo',
                 'city_postal_code' => '61219',
                 'city_type' => 'Kabupaten',
                 'code' => 'SDA01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 409,
                 'id_outlet' => 152,
                 'id_outlet_photo' => 98,
@@ -2360,7 +2441,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Sidoarjo',
                 'outlet_name_pos' => 'SIDOARJO 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(031) 8943750',
+                'outlet_phone' => '(031) 8943750',
                 'outlet_postal_code' => '61212',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2368,14 +2449,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:39:31',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/761542946561.jpg',
             ),
-            81 => 
-            array (
+            81 =>
+            array(
                 'call' => '02666250789',
                 'city_name' => 'Sukabumi',
                 'city_postal_code' => '43311',
                 'city_type' => 'Kabupaten',
                 'code' => 'SKB01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 430,
                 'id_outlet' => 154,
                 'id_outlet_photo' => 46,
@@ -2387,9 +2469,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.916437200000001',
                 'outlet_longitude' => '106.9318045',
                 'outlet_name' => 'Natasha Sukabumi',
-            'outlet_name_pos' => 'SUKABUMI 01 (SURYA KENCANA)',
+                'outlet_name_pos' => 'SUKABUMI 01 (SURYA KENCANA)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0266) 6250789',
+                'outlet_phone' => '(0266) 6250789',
                 'outlet_postal_code' => '43113',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2397,14 +2479,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/3201542942263.jpg',
             ),
-            82 => 
-            array (
+            82 =>
+            array(
                 'call' => '0271740200',
-            'city_name' => 'Surakarta (Solo)',
+                'city_name' => 'Surakarta (Solo)',
                 'city_postal_code' => '57113',
                 'city_type' => 'Kota',
                 'code' => 'SLO01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 445,
                 'id_outlet' => 155,
                 'id_outlet_photo' => 56,
@@ -2416,9 +2499,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.570672299999999',
                 'outlet_longitude' => '110.80139839999993',
                 'outlet_name' => 'Natasha Solo Rajiman',
-            'outlet_name_pos' => 'SOLO 01 (RAJIMAN)',
+                'outlet_name_pos' => 'SOLO 01 (RAJIMAN)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0271) 740200',
+                'outlet_phone' => '(0271) 740200',
                 'outlet_postal_code' => '57142',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2426,14 +2509,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7071542942731.jpg',
             ),
-            83 => 
-            array (
+            83 =>
+            array(
                 'call' => '02717651540',
-            'city_name' => 'Surakarta (Solo)',
+                'city_name' => 'Surakarta (Solo)',
                 'city_postal_code' => '57113',
                 'city_type' => 'Kota',
                 'code' => 'SLO02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 445,
                 'id_outlet' => 156,
                 'id_outlet_photo' => 57,
@@ -2445,9 +2529,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.560514200000001',
                 'outlet_longitude' => '110.7883008',
                 'outlet_name' => 'Natasha Solo Square',
-            'outlet_name_pos' => 'SOLO 02 (SOLO SQUARE)',
+                'outlet_name_pos' => 'SOLO 02 (SOLO SQUARE)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0271) 7651540',
+                'outlet_phone' => '(0271) 7651540',
                 'outlet_postal_code' => '57113',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2455,14 +2539,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7511542942756.jpg',
             ),
-            84 => 
-            array (
+            84 =>
+            array(
                 'call' => '02717891229',
-            'city_name' => 'Surakarta (Solo)',
+                'city_name' => 'Surakarta (Solo)',
                 'city_postal_code' => '57113',
                 'city_type' => 'Kota',
                 'code' => 'SLO03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 445,
                 'id_outlet' => 157,
                 'id_outlet_photo' => 58,
@@ -2474,9 +2559,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-7.598773899999999',
                 'outlet_longitude' => '110.81675760000007',
                 'outlet_name' => 'Natasha Solo The Park',
-            'outlet_name_pos' => 'SOLO 03 (THE PARK)',
+                'outlet_name_pos' => 'SOLO 03 (THE PARK)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0271) 7891229',
+                'outlet_phone' => '(0271) 7891229',
                 'outlet_postal_code' => '57552',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2484,14 +2569,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/5811542942781.jpg',
             ),
-            85 => 
-            array (
+            85 =>
+            array(
                 'call' => '0298316220',
                 'city_name' => 'Salatiga',
                 'city_postal_code' => '50711',
                 'city_type' => 'Kota',
                 'code' => 'SLT01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 386,
                 'id_outlet' => 158,
                 'id_outlet_photo' => 65,
@@ -2505,7 +2591,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Salatiga',
                 'outlet_name_pos' => 'SALATIGA 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0298) 316220',
+                'outlet_phone' => '(0298) 316220',
                 'outlet_postal_code' => '50711',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2513,14 +2599,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-04 10:43:14',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761542942985.jpg',
             ),
-            86 => 
-            array (
+            86 =>
+            array(
                 'call' => '05414113459',
                 'city_name' => 'Samarinda',
                 'city_postal_code' => '75133',
                 'city_type' => 'Kota',
                 'code' => 'SMD01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 387,
                 'id_outlet' => 159,
                 'id_outlet_photo' => 76,
@@ -2532,9 +2619,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-0.4659222',
                 'outlet_longitude' => '117.14884059999997',
                 'outlet_name' => 'Natasha Samarinda Muh Yamin',
-            'outlet_name_pos' => 'SAMARINDA 01 (GATSU)',
+                'outlet_name_pos' => 'SAMARINDA 01 (GATSU)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0541) 4113459',
+                'outlet_phone' => '(0541) 4113459',
                 'outlet_postal_code' => '75133',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2542,14 +2629,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/261542945471.jpg',
             ),
-            87 => 
-            array (
+            87 =>
+            array(
                 'call' => '05417770908',
                 'city_name' => 'Samarinda',
                 'city_postal_code' => '75133',
                 'city_type' => 'Kota',
                 'code' => 'SMD02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 387,
                 'id_outlet' => 160,
                 'id_outlet_photo' => 77,
@@ -2563,7 +2651,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Samarinda Plaza Mulia',
                 'outlet_name_pos' => 'SAMARINDA MULIA MALL',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0541) 7770908',
+                'outlet_phone' => '(0541) 7770908',
                 'outlet_postal_code' => '75133',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -2571,14 +2659,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-09 09:22:38',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/941542945498.jpg',
             ),
-            88 => 
-            array (
+            88 =>
+            array(
                 'call' => '0243518073',
                 'city_name' => 'Semarang',
                 'city_postal_code' => '50511',
                 'city_type' => 'Kabupaten',
                 'code' => 'SMG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 398,
                 'id_outlet' => 161,
                 'id_outlet_photo' => 53,
@@ -2590,9 +2679,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.982002899999999',
                 'outlet_longitude' => '110.43582630000003',
                 'outlet_name' => 'Natasha Semarang Rejosari',
-            'outlet_name_pos' => 'SEMARANG 01 (REJOSARI)',
+                'outlet_name_pos' => 'SEMARANG 01 (REJOSARI)',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(024) 3518073',
+                'outlet_phone' => '(024) 3518073',
                 'outlet_postal_code' => '50125',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2600,14 +2689,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:43:10',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/9851542942648.jpg',
             ),
-            89 => 
-            array (
+            89 =>
+            array(
                 'call' => '0248507747',
                 'city_name' => 'Semarang',
                 'city_postal_code' => '50511',
                 'city_type' => 'Kabupaten',
                 'code' => 'SMG02',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 398,
                 'id_outlet' => 162,
                 'id_outlet_photo' => 54,
@@ -2621,7 +2711,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Semarang Candi',
                 'outlet_name_pos' => 'SEMARANG 02',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(024) 8507747',
+                'outlet_phone' => '(024) 8507747',
                 'outlet_postal_code' => '50232',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2629,14 +2719,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-12 18:04:46',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7361542942672.jpg',
             ),
-            90 => 
-            array (
+            90 =>
+            array(
                 'call' => '02486579161',
                 'city_name' => 'Semarang',
                 'city_postal_code' => '50511',
                 'city_type' => 'Kabupaten',
                 'code' => 'SMG03',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 398,
                 'id_outlet' => 163,
                 'id_outlet_photo' => 55,
@@ -2648,9 +2739,9 @@ class OutletsTableSeeder extends Seeder
                 'outlet_latitude' => '-6.97892',
                 'outlet_longitude' => '110.41590199999996',
                 'outlet_name' => 'Natasha Semarang Paragon Mall',
-            'outlet_name_pos' => 'SEMARANG 03 (PARAGON)',
+                'outlet_name_pos' => 'SEMARANG 03 (PARAGON)',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(024) 86579161',
+                'outlet_phone' => '(024) 86579161',
                 'outlet_postal_code' => '50132',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -2658,14 +2749,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-12 10:11:59',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/6761542942698.jpg',
             ),
-            91 => 
-            array (
+            91 =>
+            array(
                 'call' => '09513175883',
                 'city_name' => 'Sorong',
                 'city_postal_code' => '98431',
                 'city_type' => 'Kabupaten',
                 'code' => 'SRG01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 424,
                 'id_outlet' => 164,
                 'id_outlet_photo' => 79,
@@ -2679,7 +2771,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Sorong',
                 'outlet_name_pos' => 'SORONG 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0951) 3175883',
+                'outlet_phone' => '(0951) 3175883',
                 'outlet_postal_code' => '98415',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2687,14 +2779,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:46:39',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/601542945535.jpg',
             ),
-            92 => 
-            array (
+            92 =>
+            array(
                 'call' => '0283320299',
                 'city_name' => 'Tegal',
                 'city_postal_code' => '52419',
                 'city_type' => 'Kabupaten',
                 'code' => 'TGL01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 472,
                 'id_outlet' => 170,
                 'id_outlet_photo' => 63,
@@ -2708,7 +2801,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Tegal',
                 'outlet_name_pos' => 'TEGAL 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0283) 320299',
+                'outlet_phone' => '(0283) 320299',
                 'outlet_postal_code' => '52121',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2716,14 +2809,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:40:08',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/4951542942939.jpg',
             ),
-            93 => 
-            array (
+            93 =>
+            array(
                 'call' => '07714443165',
                 'city_name' => 'Tanjung Pinang',
                 'city_postal_code' => '29111',
                 'city_type' => 'Kota',
                 'code' => 'TJP01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 462,
                 'id_outlet' => 171,
                 'id_outlet_photo' => 36,
@@ -2737,7 +2831,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Tanjung Pinang',
                 'outlet_name_pos' => 'TANJUNG PINANG 01',
                 'outlet_open_hours' => '10:00:00',
-            'outlet_phone' => '(0771) 4443165',
+                'outlet_phone' => '(0771) 4443165',
                 'outlet_postal_code' => '29125',
                 'outlet_status' => 1,
                 'outlet_type' => 'mall',
@@ -2745,14 +2839,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-08-28 04:53:13',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/2261542941771.jpg',
             ),
-            94 => 
-            array (
+            94 =>
+            array(
                 'call' => '0265336244',
                 'city_name' => 'Tasikmalaya',
                 'city_postal_code' => '46411',
                 'city_type' => 'Kabupaten',
                 'code' => 'TSM01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 468,
                 'id_outlet' => 172,
                 'id_outlet_photo' => 47,
@@ -2766,7 +2861,7 @@ class OutletsTableSeeder extends Seeder
                 'outlet_name' => 'Natasha Tasikmalaya',
                 'outlet_name_pos' => 'TASIKMALAYA 01',
                 'outlet_open_hours' => '09:00:00',
-            'outlet_phone' => '(0265) 336244',
+                'outlet_phone' => '(0265) 336244',
                 'outlet_postal_code' => '46124',
                 'outlet_status' => 1,
                 'outlet_type' => 'ruko',
@@ -2774,14 +2869,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-04 10:44:28',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7711542942285.jpg',
             ),
-            95 => 
-            array (
+            95 =>
+            array(
                 'call' => '03614727933',
                 'city_name' => 'Denpasar',
                 'city_postal_code' => '80227',
                 'city_type' => 'Kota',
                 'code' => 'BLI04',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 114,
                 'id_outlet' => 176,
                 'id_outlet_photo' => 102,
@@ -2803,14 +2899,15 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => '2020-09-12 18:41:42',
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761568691306.jpg',
             ),
-            96 => 
-            array (
+            96 =>
+            array(
                 'call' => '08112831123',
                 'city_name' => 'Bengkulu',
                 'city_postal_code' => '38229',
                 'city_type' => 'Kota',
                 'code' => 'BGU01',
                 'created_at' => NULL,
+                'brand_id' => '2',
                 'id_city' => 62,
                 'id_outlet' => 179,
                 'id_outlet_photo' => 102,
@@ -2832,8 +2929,126 @@ class OutletsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761568691306.jpg',
             ),
+            97 =>
+            array(
+                'call' => '081234567890',
+                'city_name' => 'Jogja',
+                'city_postal_code' => '00000',
+                'city_type' => 'Kota',
+                'code' => 'JOG13',
+                'created_at' => NULL,
+                'brand_id' => '1',
+                'id_city' => 62,
+                'id_outlet' => 180,
+                'id_outlet_photo' => 102,
+                'id_province' => 4,
+                'merchant' => 'naavagreen',
+                'outlet_address' => 'Jl. Jati no 3, Kelurahan Padang Jati, Ratu Samban, Bengkulu',
+                'outlet_close_hours' => '20:00:00',
+                'outlet_email' => 'jogja@naaavagreen.co.id',
+                'outlet_latitude' => '-3.7989453',
+                'outlet_longitude' => '102.27255609999997',
+                'outlet_name' => 'Naavagreen jogja',
+                'outlet_name_pos' => NULL,
+                'outlet_open_hours' => '09:00:00',
+                'outlet_phone' => '08112831123',
+                'outlet_postal_code' => '38229',
+                'outlet_status' => 1,
+                'outlet_type' => 'ruko',
+                'response' => NULL,
+                'updated_at' => NULL,
+                'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761568691306.jpg',
+            ),
+            98 =>
+            array(
+                'call' => '08112831123',
+                'city_name' => 'solo',
+                'city_postal_code' => '38229',
+                'city_type' => 'Kota',
+                'code' => 'SOL13',
+                'created_at' => NULL,
+                'brand_id' => '1',
+                'id_city' => 62,
+                'id_outlet' => 181,
+                'id_outlet_photo' => 102,
+                'id_province' => 4,
+                'merchant' => 'naavagreen',
+                'outlet_address' => 'Jl. Jati no 3, Kelurahan Padang Jati, Ratu Samban, Bengkulu',
+                'outlet_close_hours' => '20:00:00',
+                'outlet_email' => 'Solo@naavagreen.co.id',
+                'outlet_latitude' => '-3.7989453',
+                'outlet_longitude' => '102.27255609999997',
+                'outlet_name' => 'Naavagreen Solo',
+                'outlet_name_pos' => NULL,
+                'outlet_open_hours' => '09:00:00',
+                'outlet_phone' => '08112831123',
+                'outlet_postal_code' => '38229',
+                'outlet_status' => 1,
+                'outlet_type' => 'ruko',
+                'response' => NULL,
+                'updated_at' => NULL,
+                'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761568691306.jpg',
+            ),
+            99 =>
+            array(
+                'call' => '08112831123',
+                'city_name' => 'Salatiga',
+                'city_postal_code' => '38229',
+                'city_type' => 'Kota',
+                'code' => 'SAT13',
+                'created_at' => NULL,
+                'brand_id' => '1',
+                'id_city' => 62,
+                'id_outlet' => 182,
+                'id_outlet_photo' => 102,
+                'id_province' => 4,
+                'merchant' => 'naavagreen',
+                'outlet_address' => 'Jl. Jati no 3, Kelurahan Padang Jati, Ratu Samban, Bengkulu',
+                'outlet_close_hours' => '20:00:00',
+                'outlet_email' => 'salatiga@naavagreen.co.id',
+                'outlet_latitude' => '-3.7989453',
+                'outlet_longitude' => '102.27255609999997',
+                'outlet_name' => 'Naavagreen Salatiga',
+                'outlet_name_pos' => NULL,
+                'outlet_open_hours' => '09:00:00',
+                'outlet_phone' => '08112831123',
+                'outlet_postal_code' => '38229',
+                'outlet_status' => 1,
+                'outlet_type' => 'ruko',
+                'response' => NULL,
+                'updated_at' => NULL,
+                'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761568691306.jpg',
+            ),
+            100 =>
+            array(
+                'call' => '08112831123',
+                'city_name' => 'Boyolali',
+                'city_postal_code' => '38229',
+                'city_type' => 'Kota',
+                'code' => 'BOY13',
+                'created_at' => NULL,
+                'brand_id' => '1',
+                'id_city' => 62,
+                'id_outlet' => 183,
+                'id_outlet_photo' => 102,
+                'id_province' => 4,
+                'merchant' => 'naavagreen',
+                'outlet_address' => 'Jl. Jati no 3, Kelurahan Padang Jati, Ratu Samban, Bengkulu',
+                'outlet_close_hours' => '20:00:00',
+                'outlet_email' => 'boyolali@naavagreen.co.id',
+                'outlet_latitude' => '-3.7989453',
+                'outlet_longitude' => '102.27255609999997',
+                'outlet_name' => 'Naavagreen boyolali',
+                'outlet_name_pos' => NULL,
+                'outlet_open_hours' => '09:00:00',
+                'outlet_phone' => '08112831123',
+                'outlet_postal_code' => '38229',
+                'outlet_status' => 1,
+                'outlet_type' => 'ruko',
+                'response' => NULL,
+                'updated_at' => NULL,
+                'url_outlet_photo' => 'https://api.natashaskin.net/img/outlet/7761568691306.jpg',
+            ),
         ));
-        
-        
     }
 }

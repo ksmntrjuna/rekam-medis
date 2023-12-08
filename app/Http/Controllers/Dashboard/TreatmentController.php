@@ -17,7 +17,7 @@ class TreatmentController extends Controller
 		$this->middleware('auth');
 		$this->middleware(function ($request, $next) {
 			$this->user = Auth::user();
-			if ($this->user->role != 'admin') {
+			if ($this->user->role != 'super admin' && Auth::user()->role != 'admin') {
 				return abort(404);
 			}
 			return $next($request);
@@ -26,10 +26,18 @@ class TreatmentController extends Controller
 
 	public function list()
 	{
-		$data = Treatment::get();
+		$user = Auth::user();
+
+		if ($user->role == 'super admin') {
+			$data = Treatment::all();
+		} else {
+			$data = Treatment::where('brand_id', $user->brand_id)->get();
+		}
+
 		$datas = [
 			'data' => $data,
 		];
+
 		return view('dashboard.treatment.list')->with($datas);
 	}
 
