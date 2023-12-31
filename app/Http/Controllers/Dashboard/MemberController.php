@@ -25,8 +25,10 @@ class MemberController extends Controller
         $get = (object)[
             'nobase' => $request->nobase,
         ];
+
         $not = ['dokter', 'admin', 'cabang'];
         $auth = Auth::user();
+
         $q = Patient::select(
             'patients.id',
             'patients.nobase as kode_member',
@@ -38,27 +40,42 @@ class MemberController extends Controller
         )
             ->with('photo')
             ->has('photo');
-        if (!in_array($auth->role, $not)) {
+
+        // Filtering logic for super admin
+        if ($auth->role === 'super_admin') {
+            // No additional filtering for super admin
+        }
+
+        // Filtering logic for admin
+        elseif ($auth->role === 'admin') {
+            // Filter by brand_id matching the admin's brand_id
             $q->whereHas('photo', function ($qu) use ($auth) {
-                $qu->where('photos.user_id', $auth->id);
+                $qu->where('photos.brand_id', $auth->brand_id);
             });
         }
-        if ($auth->role == 'cabang') {
+
+        // Filtering logic for cabang
+        elseif ($auth->role === 'cabang') {
+            // Filter by branch matching the cabang's branch
             $q->whereHas('photo', function ($qu) use ($auth) {
                 $qu->where('photos.branch', $auth->branch);
             });
         }
+
         if ($request->nobase) {
             $q->where('patients.nobase', $request->nobase);
         }
+
         $data = $q->groupBy('patients.nobase')
-            ->orderBy('patients.last', 'desc')
-            ->limit(50)
+        ->orderBy('patients.last', 'desc')
+        ->limit(50)
             ->get();
+
         $datas = [
             'data' => $data,
             'get' => $get,
         ];
+
         return view('dashboard.member.list')->with($datas);
     }
 
@@ -67,24 +84,42 @@ class MemberController extends Controller
         $auth = Auth::user();
         $patient = Patient::where('nobase', $nobase)->first();
 
-        $data = Photo::select(DB::raw('DATE(date) dates'), 'nobase', 'branch', 'created_at', 'treatment_code')
+        if ($auth->role == 'super admin') {
+            $data = Photo::select(DB::raw('DATE(date) dates'), 'nobase', 'branch', 'created_at', 'treatment_code', 'brand_id', 'treatment_id')
             ->where('nobase', $nobase)
-            ->with(['treatmentPosition.position'])
-            ->when($auth->role != 'dokter' && $auth->role != 'admin' && $auth->role != 'cabang', function ($query) use ($auth) {
-                $query->where('user_id', $auth->id);
-            })
-            ->when($auth->role == 'cabang', function ($query) use ($auth) {
-                $query->where('branch', $auth->branch);
-            })
-            ->orderBy('dates', 'desc')
-            ->groupBy('dates')
-            ->get();
+                ->with(['treatmentPosition.position'])
+                ->orderBy('dates', 'desc')
+                ->groupBy('dates')
+                ->get();
+        } elseif ($auth->role == 'admin') {
+            $data = Photo::select(DB::raw('DATE(date) dates'), 'nobase', 'branch', 'created_at', 'treatment_code', 'brand_id', 'treatment_id')
+            ->where('nobase', $nobase)
+                ->where('brand_id', $auth->brand_id) // Filter based on brand_id
+                ->with(['treatmentPosition.position'])
+                ->orderBy('dates', 'desc')
+                ->groupBy('dates')
+                ->get();
+        } else {
+            // // For other roles, proceed with the existing logic
+            // $data = Photo::select(DB::raw('DATE(date) dates'), 'nobase', 'branch', 'created_at', 'treatment_code')
+            // ->where('nobase', $nobase)
+            //     ->with(['treatmentPosition.position'])
+            //     ->when($auth->role != 'dokter' && $auth->role != 'admin' && $auth->role != 'cabang', function ($query) use ($auth) {
+            //         $query->where('user_id', $auth->id);
+            //     })
+            //     ->when($auth->role == 'cabang', function ($query) use ($auth) {
+            //         $query->where('branch', $auth->branch);
+            //     })
+            //     ->orderBy('dates', 'desc')
+            //     ->groupBy('dates')
+            //     ->get();
+        }
 
-        // dd($data);
         $datas = [
             'patient' => $patient,
             'data' => $data,
         ];
+
         LogActivity::create('Lihat Perawatan =>' . $patient, 'dashboard');
         return view('dashboard.member.perawatan')->with($datas);
     }

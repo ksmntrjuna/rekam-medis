@@ -57,9 +57,10 @@ Route::post('dashboard/user/password', [UserController::class, 'resetPassword'])
 Route::get('dashboard/photo', [PhotoController::class, 'list'])->name('dashboard.photo');
 Route::get('dashboard/photo/create', [PhotoController::class, 'create'])->name('dashboard.photo.create');
 Route::post('dashboard/photo/upload', [PhotoController::class, 'upload']);
-Route::get('dashboard/photo/edit/{id}', [PhotoController::class, 'edit']);
+Route::get('dashboard/photo/edit/{nobase}/{treatment_id}', [PhotoController::class, 'edit']);
 Route::put('dashboard/photo/update', [PhotoController::class, 'update']);
-Route::get('dashboard/photo/delete/{id}', [PhotoController::class, 'delete']);
+Route::get('dashboard/photo/delete/{nobase}/{treatment_id}', [PhotoController::class, 'delete']);
+Route::post('dashboard/photo/fetch-data', [PhotoController::class, 'fetchData']);
 
 Route::get('dashboard/position', [PositionController::class, 'list'])->name('dashboard.position');
 Route::get('dashboard/position/create', [PositionController::class, 'create'])->name('dashboard.position.create');
